@@ -1,0 +1,53 @@
+:root {
+  /* Tapping PS Brand Palette */
+  --color-teal-dark:    #2d7671;
+  --color-teal-mid:     #8abbb7;
+  --color-teal-bright:  #29a39a;
+  --color-teal-light:   #d4dfde;
+
+  /* Semantic UI colours */
+  --color-primary:        var(--color-teal-dark);
+  --color-primary-hover:  #235c58;
+  --color-accent:         var(--color-teal-bright);
+  --color-accent-hover:   #207d75;
+  --color-surface:        #ffffff;
+  --color-surface-raised: #f8fafa;
+  --color-border:         var(--color-teal-light);
+  --color-border-strong:  var(--color-teal-mid);
+  --color-text:           #1a2e2d;
+  --color-text-secondary: #4a6b68;
+  --color-text-light:     #7a9e9b;
+
+  /* Status colours */
+  --color-live:        #1a7a44;
+  --color-live-bg:     #f0faf4;
+  --color-live-border: #85c9a0;
+  --color-building:        #8a6d1a;
+  --color-building-bg:     #fdf8ec;
+  --color-building-border: #e3cd8a;
+  --color-planned:        #5a7d7b;
+  --color-planned-bg:     #f5f8f8;
+  --color-planned-border: #c5d5d4;
+
+  /* Typography — system stack, no external font requests */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(45,118,113,0.12);
+  --shadow-md: 0 4px 12px rgba(45,118,113,0.15);
+  --shadow-lg: 0 8px 24px rgba(45,118,113,0.18);
+}

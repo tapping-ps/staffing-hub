@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# local env files (secrets live here, never committed)
+*.local
+.env
+.env.*
+
+# logs and OS noise
+*.log
+.DS_Store
+Thumbs.db
+
+# NOTE: docs/ is the committed build output served by GitHub Pages.
+# It is deliberately NOT ignored.

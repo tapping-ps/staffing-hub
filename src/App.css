@@ -1,0 +1,137 @@
+.hub {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-5) var(--space-6);
+}
+
+/* Header */
+.hub-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding-bottom: var(--space-6);
+  border-bottom: 3px solid var(--color-teal-bright);
+  margin-bottom: var(--space-6);
+}
+
+.hub-logo {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+}
+
+.hub-school {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-teal-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hub-header-text h1 {
+  font-size: 2.4rem;
+  color: var(--color-teal-dark);
+}
+
+/* Intro */
+.hub-intro p {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  max-width: 640px;
+  margin-bottom: var(--space-8);
+}
+
+/* Tile grid */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+
+.tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.tile-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.tile h3 {
+  font-size: 1.15rem;
+  color: var(--color-teal-dark);
+}
+
+.tile p {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+}
+
+.tile-planned {
+  opacity: 0.75;
+}
+
+/* Status badges */
+.badge {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.badge-live {
+  color: var(--color-live);
+  background: var(--color-live-bg);
+  border-color: var(--color-live-border);
+}
+
+.badge-building {
+  color: var(--color-building);
+  background: var(--color-building-bg);
+  border-color: var(--color-building-border);
+}
+
+.badge-planned {
+  color: var(--color-planned);
+  background: var(--color-planned-bg);
+  border-color: var(--color-planned-border);
+}
+
+/* Footer */
+.hub-footer {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.hub-footer p {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  max-width: 640px;
+}
+
+@media (max-width: 560px) {
+  .hub-header {
+    gap: var(--space-4);
+  }
+  .hub-logo {
+    width: 60px;
+    height: 60px;
+  }
+  .hub-header-text h1 {
+    font-size: 1.7rem;
+  }
+}
