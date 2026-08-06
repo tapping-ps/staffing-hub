@@ -79,6 +79,19 @@
   opacity: 0.75;
 }
 
+.tile-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.tile-link:hover {
+  border-color: var(--color-teal-bright);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
 /* Status badges */
 .badge {
   flex-shrink: 0;

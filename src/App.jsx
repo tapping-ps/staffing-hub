@@ -2,8 +2,8 @@ import { MODULES, STATUS_LABELS } from './modules.js'
 import './App.css'
 
 function ModuleTile({ module }) {
-  return (
-    <div className={`tile tile-${module.status}`}>
+  const body = (
+    <>
       <div className="tile-head">
         <h3>{module.name}</h3>
         <span className={`badge badge-${module.status}`}>
@@ -11,8 +11,16 @@ function ModuleTile({ module }) {
         </span>
       </div>
       <p>{module.description}</p>
-    </div>
+    </>
   )
+  if (module.href) {
+    return (
+      <a className={`tile tile-${module.status} tile-link`} href={module.href}>
+        {body}
+      </a>
+    )
+  }
+  return <div className={`tile tile-${module.status}`}>{body}</div>
 }
 
 export default function App() {

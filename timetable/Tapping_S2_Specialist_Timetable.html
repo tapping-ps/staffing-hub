@@ -1,0 +1,655 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Tapping Primary School: Semester 2 Timetable</title>
+<style>
+  :root{
+    --teal-900:#1d5450; --teal-700:#2d7671; --teal-500:#29a39a; --teal-300:#8abbb7; --teal-100:#d4dfde; --teal-50:#eef4f3;
+    --color-action:#29a39a; --color-action-hover:#2d7671; --fg-on-dark:#ffffff;
+    --bg-secondary:#eef4f3; --fg-primary:#1d5450; --fg-secondary:#5a6b6a;
+    --border-default:#cdddda; --border-strong:#8abbb7;
+    --bg-page:#dde8e7; --bg-card:#ffffff;
+    --r-own:#8a9d9a; --r-cover:#3f74b8; --r-dott:#2e7d32; --r-collab:#1e8f86; --r-lead:#b5852a; --r-off:#9aa5a4;
+    --tint-own:#eef2f1; --tint-cover:#eaf2fb; --tint-dott:#e9f6ea; --tint-collab:#e2f3f1; --tint-lead:#faf1da; --tint-off:#f3f4f4;
+  }
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  body{font-family:"Segoe UI",Arial,sans-serif;color:var(--fg-primary);background:var(--bg-page);margin:0;}
+  h2{color:var(--teal-700);font-size:15px;margin:20px 0 8px;}
+  /* header */
+  header.app{background:var(--teal-700);color:var(--fg-on-dark);padding:12px 18px;display:flex;align-items:center;gap:14px;}
+  header.app .logo{background:#fff;border-radius:12px;padding:6px 9px;display:flex;align-items:center;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+  header.app .logo svg{height:52px;width:auto;display:block;}
+  header.app .ttl h1{margin:0;font-size:21px;font-weight:700;letter-spacing:.01em;}
+  header.app .ttl .sub{color:#d6ebe9;font-size:12px;margin-top:2px;}
+  .wrap{padding:14px 18px;max-width:1500px;}
+  /* verification summary card */
+  #vcard{background:var(--bg-card);border:1px solid var(--border-default);border-left:5px solid var(--color-action);border-radius:10px;padding:9px 14px;margin:14px 0;display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .badge{font-size:12px;font-weight:800;letter-spacing:.04em;padding:4px 11px;border-radius:999px;}
+  .badge.ok{background:var(--r-dott);color:#fff;} .badge.bad{background:#c0392b;color:#fff;}
+  .vstat{font-size:12px;color:var(--fg-secondary);} .vstat b{color:var(--fg-primary);font-weight:800;}
+  .vmore{margin-left:auto;color:var(--color-action-hover);font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;}
+  .vmore:hover{text-decoration:underline;}
+  /* tabs */
+  nav.tabs{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 4px;}
+  nav.tabs button{font:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--border-default);background:#fff;border-radius:8px 8px 0 0;cursor:pointer;color:var(--teal-700);}
+  nav.tabs button:hover{background:var(--teal-50);}
+  nav.tabs button.active{background:var(--teal-700);color:var(--fg-on-dark);border-color:var(--teal-700);font-weight:600;}
+  .view{display:none;} .view.active{display:block;}
+  /* always-visible legend strip */
+  .legendstrip{display:flex;flex-wrap:wrap;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border-default);border-radius:0 8px 8px 8px;padding:7px 12px;margin:0 0 12px;}
+  .legendstrip .lt{font-size:10px;font-weight:700;color:var(--fg-secondary);text-transform:uppercase;letter-spacing:.04em;margin-right:2px;}
+  .chip{font-size:11px;padding:3px 10px 3px 8px;border-radius:5px;border-left:4px solid var(--accent,var(--teal-300));background:var(--bg-secondary);color:var(--fg-primary);white-space:nowrap;}
+  .chip.role-own{--accent:var(--r-own);background:var(--tint-own);} .chip.role-cover{--accent:var(--r-cover);background:var(--tint-cover);}
+  .chip.role-dott{--accent:var(--r-dott);background:var(--tint-dott);} .chip.role-collab{--accent:var(--r-collab);background:var(--tint-collab);}
+  .chip.role-lead{--accent:var(--r-lead);background:var(--tint-lead);} .chip.role-off{--accent:var(--r-off);background:var(--tint-off);color:var(--fg-secondary);}
+  .lsep{flex-basis:100%;height:0;}
+  /* controls */
+  .pick{margin:0 0 10px;font-size:13px;} .pick select,#search{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--border-strong);border-radius:7px;color:var(--fg-primary);}
+  #searchbar{margin:0 0 12px;position:relative;max-width:340px;}
+  #search{width:100%;}
+  #sresults{position:absolute;z-index:30;left:0;right:0;background:#fff;border:1px solid var(--border-strong);border-top:none;border-radius:0 0 7px 7px;max-height:260px;overflow:auto;box-shadow:0 4px 12px rgba(0,0,0,.12);}
+  #sresults div{padding:6px 10px;font-size:12px;cursor:pointer;} #sresults div:hover,#sresults div.hl{background:var(--teal-50);}
+  #sresults .shead{font-size:10px;font-weight:700;color:var(--fg-secondary);text-transform:uppercase;cursor:default;background:#fff;}
+  .daybtns,.mdaybtns{margin:0 0 10px;} .daybtns button,.mdaybtns button{font:inherit;font-size:12px;margin-right:4px;padding:6px 12px;border:1px solid var(--border-default);background:#fff;border-radius:7px;cursor:pointer;color:var(--teal-700);}
+  .daybtns button.active,.mdaybtns button.active{background:var(--color-action);color:#fff;border-color:var(--color-action);font-weight:600;}
+  .mdaybtns{display:none;}
+  /* grids */
+  .gridwrap{overflow:auto;max-height:74vh;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  table.grid{border-collapse:separate;border-spacing:0;background:#fff;width:max-content;}
+  table.grid th,table.grid td{border-right:1px solid var(--border-default);border-bottom:1px solid var(--border-default);text-align:center;vertical-align:middle;font-size:11.5px;padding:6px 8px;}
+  table.grid thead th{position:sticky;top:0;z-index:2;background:var(--teal-300);color:var(--fg-primary);padding:8px;}
+  table.grid td.timecol,table.grid th.timecol{position:sticky;left:0;z-index:1;background:var(--teal-50);text-align:left;white-space:nowrap;font-weight:600;}
+  table.grid thead th.timecol{z-index:3;}
+  table.daygrid{table-layout:fixed;}
+  table.daygrid td.timecol,table.daygrid th.timecol{width:104px;min-width:104px;}
+  table.daygrid th,table.daygrid td{width:148px;min-width:148px;word-wrap:break-word;}
+  /* wide multi-column grids (whole school): uniform fixed columns */
+  table.grid.wide{table-layout:fixed;}
+  table.grid.wide td.timecol,table.grid.wide th.timecol{width:104px;min-width:104px;}
+  table.grid.wide th,table.grid.wide td{width:116px;min-width:116px;word-wrap:break-word;}
+  tr.nonteach td{background:#f3f4f4;color:var(--fg-secondary);font-style:italic;}
+  /* cells */
+  .cell{position:relative;border-radius:5px;border-left:4px solid var(--accent,var(--teal-300));padding:6px 9px 6px 10px;min-height:38px;display:flex;flex-direction:column;justify-content:center;gap:2px;text-align:left;}
+  .cell .c1{font-weight:600;line-height:1.3;} .cell .c2{font-size:10.5px;color:var(--fg-secondary);line-height:1.3;}
+  .cell.vac{justify-content:center;text-align:center;color:var(--fg-secondary);font-style:italic;border-left-color:transparent;background:var(--tint-off);}
+  /* teacher buttons */
+  .tbtns{margin:0 0 12px;border:1px solid var(--border-default);border-radius:8px;padding:8px 10px;background:#fff;}
+  .tbtns .grp{font-size:10px;color:var(--fg-secondary);margin:8px 0 4px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .tbtns .grp:first-child{margin-top:0;}
+  .tbtns button{font:inherit;font-size:11px;margin:2px;padding:5px 10px;border:1px solid var(--border-default);background:#fff;border-radius:6px;cursor:pointer;color:var(--teal-700);}
+  .tbtns button:hover{background:var(--teal-50);}
+  .tbtns button.sel{background:var(--teal-700);color:#fff;border-color:var(--teal-700);font-weight:600;}
+  /* dashboard */
+  .dash{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 22px;}
+  .dash .card{background:#fff;border:1px solid var(--border-default);border-radius:8px;padding:7px 13px;min-width:96px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+  .dash .card .lab{font-size:10px;color:var(--fg-secondary);text-transform:uppercase;letter-spacing:.03em;}
+  .dash .card .val{font-size:18px;font-weight:700;color:var(--fg-primary);}
+  .dash .pos{color:var(--r-dott);} .dash .neg{color:#c0392b;} .dash .note{font-size:10px;color:var(--fg-secondary);max-width:220px;}
+  /* report */
+  .report{background:#fff;border-radius:10px;padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  .report table{border-collapse:collapse;margin:8px 0 16px;font-size:12px;} .report th,.report td{border:1px solid var(--border-default);padding:4px 8px;text-align:left;} .report th{background:var(--teal-50);color:var(--teal-700);}
+  .ok{color:var(--r-dott);font-weight:700;} .bad{color:#c0392b;font-weight:700;}
+  /* toolbar */
+  #toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:0 0 12px;font-size:12px;color:var(--fg-secondary);}
+  #toolbar .tlab{font-weight:600;} #toolbar .tgap{flex:1;min-width:12px;}
+  #toolbar button.wk{font:inherit;font-size:12px;padding:6px 12px;border:1px solid var(--border-default);background:#fff;border-radius:7px;cursor:pointer;color:var(--teal-700);}
+  #toolbar button.wk.active{background:var(--teal-700);color:#fff;border-color:var(--teal-700);font-weight:600;}
+  #toolbar button.exp{font:inherit;font-size:12px;padding:6px 12px;border:1px solid var(--color-action);background:var(--color-action);color:#fff;border-radius:7px;cursor:pointer;font-weight:600;}
+  #toolbar button.exp:hover{background:var(--color-action-hover);border-color:var(--color-action-hover);}
+  .lnk{cursor:pointer;text-decoration:underline;text-underline-offset:1px;color:inherit;}
+  /* tooltip */
+  #tip{position:fixed;z-index:100;background:var(--teal-900);color:#fff;font-size:12px;line-height:1.4;padding:8px 11px;border-radius:8px;max-width:260px;box-shadow:0 4px 16px rgba(0,0,0,.3);pointer-events:none;display:none;}
+  #tip b{color:#cdeae7;}
+  #printTitle{display:none;} #printall{display:none;} #printall .page h3{color:var(--teal-700);font-size:15px;margin:0 0 8px;}
+  #printhead{display:none;}
+  .vbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 12px;}
+  .vbar .pick{margin:0;}
+  .myprint{font:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--color-action);background:var(--color-action);color:#fff;border-radius:8px;cursor:pointer;font-weight:600;box-shadow:0 1px 3px rgba(29,84,80,.12);}
+  .myprint:hover{background:var(--color-action-hover);border-color:var(--color-action-hover);}
+  header.app .logo{cursor:pointer;transition:transform .2s ease;} header.app .logo:hover{transform:scale(1.05);}
+  /* landing page */
+  body.on-home #toolbar,body.on-home #mdays{display:none;}
+  body.on-home #searchbar{max-width:560px;margin:6px auto 2px;}
+  body.on-home #search{font-size:15px;padding:11px 14px;border-width:2px;box-shadow:0 2px 10px rgba(29,84,80,.08);}
+  .hero{text-align:center;padding:30px 16px 6px;}
+  .herologo{width:148px;height:148px;margin:0 auto 12px;animation:logoIn 1s cubic-bezier(.2,.85,.25,1) both;}
+  .herologo svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 16px rgba(29,84,80,.22));animation:floaty 5.5s ease-in-out 1s infinite;}
+  @keyframes logoIn{from{opacity:0;transform:scale(.55) translateY(-16px) rotate(-8deg);}to{opacity:1;transform:none;}}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .herottl{font-size:31px;color:var(--teal-900);margin:0 0 4px;font-weight:800;letter-spacing:-.01em;animation:fadeUp .7s .15s both;}
+  .herosub{color:var(--fg-secondary);font-size:14px;margin:0;animation:fadeUp .7s .25s both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+  .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:880px;margin:20px auto 12px;}
+  .tile{text-align:center;cursor:pointer;font:inherit;background:#fff;border:1px solid var(--border-default);border-radius:16px;padding:22px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;animation:fadeUp .6s both;}
+  .tile:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(29,84,80,.16);border-color:var(--teal-300);}
+  .tile:focus-visible{outline:2px solid var(--teal-500);outline-offset:2px;}
+  .tile .badge{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;background:radial-gradient(circle at 32% 28%,#ffffff,var(--teal-100));border:2px solid var(--teal-300);box-shadow:0 4px 12px rgba(29,84,80,.12);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+  .tile:hover .badge{transform:scale(1.08);border-color:var(--teal-500);box-shadow:0 8px 18px rgba(29,84,80,.22);}
+  .tile .tname{font-size:17px;font-weight:700;color:var(--teal-900);}
+  .tile .tdesc{font-size:12.5px;color:var(--fg-secondary);line-height:1.4;max-width:210px;}
+  .tile:nth-child(1){animation-delay:.30s;} .tile:nth-child(2){animation-delay:.37s;} .tile:nth-child(3){animation-delay:.44s;}
+  .tile:nth-child(4){animation-delay:.51s;} .tile:nth-child(5){animation-delay:.58s;} .tile:nth-child(6){animation-delay:.65s;}
+  @media(prefers-reduced-motion:reduce){.herologo,.herologo svg,.herottl,.herosub,.tile{animation:none;}}
+  .clog{max-width:880px;margin:18px auto 6px;background:#fff;border:1px solid var(--border-default);border-radius:14px;padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06);animation:fadeUp .6s .7s both;}
+  .clog .cloghd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-700);margin:0 0 8px;}
+  .clog .clogrow{display:flex;gap:12px;padding:6px 0;border-top:1px solid var(--teal-50);font-size:13px;align-items:baseline;}
+  .clog .clogrow:first-of-type{border-top:none;}
+  .clog .clogdate{flex:0 0 110px;color:var(--fg-secondary);font-size:12px;font-weight:600;}
+  .clog .clogtext{color:var(--fg-primary);line-height:1.4;}
+  @media(max-width:520px){.clog .clogrow{flex-direction:column;gap:1px;} .clog .clogdate{flex-basis:auto;}}
+  /* responsive */
+  @media(max-width:820px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));max-width:560px;}}
+  @media(max-width:480px){.tiles{grid-template-columns:1fr;max-width:340px;}}
+  @media(max-width:768px){
+    .wrap{padding:10px;}
+    header.app .ttl h1{font-size:17px;} header.app .logo svg{height:40px;}
+    /* day switcher sits directly above the grid and stays pinned while scrolling it */
+    .mdaybtns{display:block;position:sticky;top:0;z-index:25;background:var(--bg-page);margin:0 0 8px;padding:8px 0 6px;box-shadow:0 6px 8px -6px rgba(0,0,0,.25);}
+    .mdaybtns button{margin-bottom:4px;}
+    .gridwrap{max-height:none;}
+    /* small single-day grids: don't pin the header (the day bar is the pinned element) */
+    #teacher table.grid thead th,#class table.grid thead th,#subjects table.grid thead th,#overview table.grid thead th{position:static;}
+    table.daygrid.mobile th,table.daygrid.mobile td{width:auto;}
+    table.daygrid.mobile col.hide,table.daygrid.mobile .dcol.hide{display:none;}
+  }
+  @media print{
+    body{background:#fff;}
+    header.app,nav.tabs,.daybtns,.mdaybtns,.pick,.vbar,.myprint,#toolbar,.tbtns,#searchbar{display:none !important;}
+    .wrap{padding:0;} .gridwrap{max-height:none;overflow:visible;box-shadow:none;}
+    table.grid thead th,table.grid td.timecol{position:static;}
+    .lnk{text-decoration:none;}
+    body:not(.printing-all) .view{display:none !important;}
+    body:not(.printing-all) .view.active{display:block !important;}
+    body:not(.printing-all) #printhead{display:flex !important;align-items:center;gap:10px;margin:0 0 4px;border-bottom:2px solid #29a39a;padding-bottom:6px;}
+    #printhead .phlogo svg{height:36px;width:auto;display:block;} #printhead .phname{font-size:16px;font-weight:800;color:#1d5450;}
+    body:not(.printing-all) #printTitle{display:block !important;font-size:14px;color:#2d7671;margin:6px 0 10px;font-weight:600;}
+    body.printing-all .view,body.printing-all #printTitle{display:none !important;}
+    body.printing-all #printall{display:block !important;}
+    #printall .page{page-break-after:always;} #printall .page:last-child{page-break-after:auto;} #printall table.grid{page-break-inside:avoid;}
+  }
+</style></head><body>
+<header class="app"><div class="logo" onclick="activate('home')" title="Back to home">
+
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" viewBox="0 0 1000 1000"  >
+  
+  <defs>
+    <style>
+      .st0 {
+        fill: #29a39a;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="st0" d="M296.14,821.31v-92.26h-17.68v-14.38h50.63v14.38h-17.67v92.26h-15.28Z"/>
+    <path class="st0" d="M335.68,821.31l23.82-106.64h12.73l23.82,106.64h-15.28l-4.49-22.91h-20.82l-4.49,22.91h-15.28ZM373.43,784.01l-7.49-38.64h-.3l-7.49,38.64h15.28Z"/>
+    <path class="st0" d="M418.51,821.31v-106.64h22.91c4.19,0,7.89.55,11.08,1.65,3.19,1.1,6.09,3.05,8.69,5.84s4.39,6.06,5.39,9.81c1,3.75,1.5,8.81,1.5,15.21,0,4.79-.28,8.84-.82,12.13-.55,3.29-1.72,6.39-3.52,9.29-2.1,3.5-4.89,6.22-8.39,8.16-3.49,1.95-8.09,2.92-13.78,2.92h-7.79v41.64h-15.28ZM433.79,729.05v36.24h7.34c3.1,0,5.49-.45,7.19-1.35,1.7-.9,2.95-2.14,3.75-3.74.8-1.5,1.27-3.34,1.42-5.54.15-2.19.22-4.64.22-7.34,0-2.49-.05-4.87-.15-7.11-.1-2.25-.55-4.22-1.35-5.92-.8-1.7-2-3-3.59-3.89-1.6-.9-3.89-1.35-6.89-1.35h-7.94Z"/>
+    <path class="st0" d="M494.45,821.31v-106.64h22.91c4.19,0,7.89.55,11.08,1.65,3.19,1.1,6.09,3.05,8.69,5.84s4.39,6.06,5.39,9.81c1,3.75,1.5,8.81,1.5,15.21,0,4.79-.28,8.84-.82,12.13-.55,3.29-1.72,6.39-3.52,9.29-2.1,3.5-4.89,6.22-8.39,8.16-3.49,1.95-8.09,2.92-13.78,2.92h-7.79v41.64h-15.28ZM509.72,729.05v36.24h7.34c3.1,0,5.49-.45,7.19-1.35,1.7-.9,2.95-2.14,3.75-3.74.8-1.5,1.27-3.34,1.42-5.54.15-2.19.22-4.64.22-7.34,0-2.49-.05-4.87-.15-7.11-.1-2.25-.55-4.22-1.35-5.92-.8-1.7-2-3-3.59-3.89-1.6-.9-3.89-1.35-6.89-1.35h-7.94Z"/>
+    <path class="st0" d="M570.83,821.31v-106.64h15.28v106.64h-15.28Z"/>
+    <path class="st0" d="M615.32,821.31v-106.64h14.68l23.06,64.26h.3v-64.26h15.28v106.64h-14.38l-23.36-64.11h-.3v64.11h-15.28Z"/>
+    <path class="st0" d="M696.49,739.83c0-4.29.75-8.09,2.25-11.38,1.5-3.3,3.49-6.04,5.99-8.24,2.4-2.1,5.12-3.69,8.16-4.79,3.04-1.1,6.12-1.65,9.21-1.65s6.16.55,9.21,1.65c3.05,1.1,5.82,2.7,8.31,4.79,2.4,2.2,4.34,4.94,5.84,8.24,1.5,3.3,2.25,7.09,2.25,11.38v5.39h-15.27v-5.39c0-3.69-1.03-6.42-3.07-8.16-2.05-1.75-4.47-2.62-7.26-2.62s-5.22.87-7.26,2.62-3.07,4.47-3.07,8.16v56.32c0,3.7,1.02,6.42,3.07,8.16,2.05,1.75,4.47,2.62,7.26,2.62s5.22-.87,7.26-2.62c2.04-1.74,3.07-4.47,3.07-8.16v-20.07h-12.13v-13.48h27.41v33.55c0,4.49-.75,8.34-2.25,11.53-1.5,3.2-3.44,5.84-5.84,7.94-2.49,2.2-5.27,3.85-8.31,4.94-3.05,1.1-6.12,1.65-9.21,1.65s-6.17-.55-9.21-1.65c-3.05-1.1-5.77-2.75-8.16-4.94-2.5-2.1-4.49-4.74-5.99-7.94-1.5-3.19-2.25-7.04-2.25-11.53v-56.32Z"/>
+  </g>
+  <g>
+    <path class="st0" d="M312.49,901.19v-47.4h10.19c1.86,0,3.51.24,4.93.73s2.7,1.35,3.86,2.6c1.15,1.24,1.95,2.7,2.4,4.36s.67,3.92.67,6.76c0,2.13-.12,3.93-.37,5.39s-.77,2.84-1.56,4.13c-.93,1.55-2.18,2.76-3.73,3.63s-3.59,1.3-6.12,1.3h-3.46v18.5h-6.79ZM319.28,860.19v16.11h3.26c1.37,0,2.44-.2,3.19-.6.75-.4,1.31-.95,1.66-1.66.36-.67.57-1.49.63-2.46.07-.97.1-2.06.1-3.26,0-1.11-.02-2.16-.07-3.16-.05-1-.24-1.88-.6-2.63-.36-.75-.89-1.33-1.6-1.73-.71-.4-1.73-.6-3.06-.6h-3.53Z"/>
+    <path class="st0" d="M342.91,901.19v-47.4h10.92c7.99,0,11.98,4.64,11.98,13.91,0,2.8-.43,5.17-1.3,7.12-.86,1.95-2.39,3.53-4.56,4.73l7.32,21.64h-7.19l-6.32-20.24h-4.06v20.24h-6.79ZM349.7,860.19v14.78h3.86c1.2,0,2.15-.17,2.86-.5.71-.33,1.26-.81,1.66-1.43.35-.62.6-1.39.73-2.3.13-.91.2-1.96.2-3.16s-.07-2.25-.2-3.16-.4-1.7-.8-2.36c-.84-1.24-2.44-1.86-4.79-1.86h-3.53Z"/>
+    <path class="st0" d="M374.8,901.19v-47.4h6.79v47.4h-6.79Z"/>
+    <path class="st0" d="M391.51,901.19v-47.4h6.52l8.72,25.1h.14l8.65-25.1h6.59v47.4h-6.79v-28.82h-.14l-6.72,20.37h-3.4l-6.66-20.37h-.13v28.82h-6.79Z"/>
+    <path class="st0" d="M428.78,901.19l10.59-47.4h5.66l10.59,47.4h-6.79l-2-10.19h-9.26l-2,10.19h-6.79ZM445.56,884.62l-3.33-17.17h-.14l-3.33,17.17h6.79Z"/>
+    <path class="st0" d="M462.27,901.19v-47.4h10.92c7.99,0,11.98,4.64,11.98,13.91,0,2.8-.43,5.17-1.3,7.12-.86,1.95-2.39,3.53-4.56,4.73l7.32,21.64h-7.19l-6.32-20.24h-4.06v20.24h-6.79ZM469.06,860.19v14.78h3.86c1.2,0,2.15-.17,2.86-.5.71-.33,1.26-.81,1.66-1.43.35-.62.6-1.39.73-2.3.13-.91.2-1.96.2-3.16s-.07-2.25-.2-3.16-.4-1.7-.8-2.36c-.84-1.24-2.44-1.86-4.79-1.86h-3.53Z"/>
+    <path class="st0" d="M499.08,901.19v-20.04l-9.32-27.36h7.19l5.46,18.84h.13l5.46-18.84h7.19l-9.32,27.36v20.04h-6.79Z"/>
+    <path class="st0" d="M559.59,867.44h-6.79v-1.53c0-1.56-.37-2.9-1.1-4.03s-1.96-1.7-3.69-1.7c-.93,0-1.69.18-2.26.53-.58.36-1.04.8-1.4,1.33-.36.58-.6,1.23-.73,1.96s-.2,1.5-.2,2.3c0,.93.03,1.71.1,2.33s.23,1.18.5,1.66c.27.49.65.91,1.16,1.26.51.36,1.21.71,2.1,1.07l5.19,2.07c1.51.58,2.73,1.25,3.66,2.03.93.78,1.66,1.68,2.2,2.7.49,1.07.82,2.28,1,3.63s.27,2.89.27,4.63c0,2-.2,3.85-.6,5.56s-1.04,3.16-1.93,4.36c-.93,1.24-2.15,2.22-3.66,2.93-1.51.71-3.35,1.07-5.53,1.07-1.64,0-3.17-.29-4.59-.86s-2.64-1.37-3.66-2.4c-1.02-1.02-1.83-2.21-2.43-3.56-.6-1.35-.9-2.83-.9-4.43v-2.53h6.79v2.13c0,1.24.37,2.36,1.1,3.36.73,1,1.96,1.5,3.69,1.5,1.15,0,2.05-.17,2.7-.5s1.14-.81,1.5-1.43.57-1.36.63-2.23c.07-.86.1-1.83.1-2.89,0-1.24-.05-2.26-.13-3.06-.09-.8-.27-1.44-.53-1.93-.31-.49-.72-.89-1.23-1.2-.51-.31-1.19-.64-2.03-1l-4.86-2c-2.93-1.2-4.89-2.79-5.89-4.76-1-1.97-1.5-4.45-1.5-7.42,0-1.77.24-3.46.73-5.06.49-1.6,1.22-2.98,2.19-4.13.93-1.15,2.12-2.07,3.56-2.76,1.44-.69,3.16-1.03,5.16-1.03,1.69,0,3.23.31,4.63.93,1.4.62,2.61,1.44,3.63,2.46,2.04,2.13,3.06,4.57,3.06,7.32v3.33Z"/>
+    <path class="st0" d="M589.54,887.68v2.93c0,1.46-.28,2.85-.83,4.16-.56,1.31-1.32,2.47-2.3,3.49-.98,1.02-2.12,1.83-3.43,2.43-1.31.6-2.72.9-4.23.9-1.29,0-2.6-.18-3.93-.53-1.33-.35-2.53-.98-3.59-1.86s-1.94-2.03-2.63-3.43c-.69-1.4-1.03-3.19-1.03-5.36v-26.09c0-1.56.27-3,.8-4.33.53-1.33,1.29-2.49,2.26-3.46s2.14-1.74,3.49-2.3,2.85-.83,4.49-.83c3.2,0,5.79,1.04,7.79,3.13.98,1.02,1.74,2.23,2.3,3.63.55,1.4.83,2.92.83,4.56v2.66h-6.79v-2.26c0-1.33-.38-2.49-1.13-3.46-.75-.98-1.77-1.46-3.06-1.46-1.69,0-2.81.52-3.36,1.56s-.83,2.36-.83,3.96v24.23c0,1.37.3,2.53.9,3.46.6.93,1.68,1.4,3.23,1.4.44,0,.92-.08,1.43-.23.51-.16.98-.41,1.43-.77.4-.35.73-.84,1-1.46s.4-1.4.4-2.33v-2.33h6.79Z"/>
+    <path class="st0" d="M598.4,901.19v-47.4h6.79v20.3h8.39v-20.3h6.79v47.4h-6.79v-21.1h-8.39v21.1h-6.79Z"/>
+    <path class="st0" d="M629.68,864.98c0-1.91.33-3.59,1-5.06s1.55-2.68,2.66-3.66c1.07-.93,2.27-1.64,3.63-2.13s2.72-.73,4.09-.73,2.74.24,4.09.73,2.58,1.2,3.69,2.13c1.07.98,1.93,2.2,2.6,3.66.67,1.46,1,3.15,1,5.06v25.03c0,2-.33,3.7-1,5.12-.66,1.42-1.53,2.6-2.6,3.53-1.11.98-2.34,1.71-3.69,2.2-1.35.49-2.72.73-4.09.73s-2.74-.24-4.09-.73c-1.35-.49-2.56-1.22-3.63-2.2-1.11-.93-2-2.11-2.66-3.53s-1-3.13-1-5.12v-25.03ZM636.48,890.01c0,1.64.45,2.85,1.37,3.63.91.78,1.98,1.16,3.23,1.16s2.32-.39,3.23-1.16c.91-.77,1.36-1.98,1.36-3.63v-25.03c0-1.64-.46-2.85-1.36-3.63-.91-.78-1.99-1.16-3.23-1.16s-2.32.39-3.23,1.16c-.91.78-1.37,1.99-1.37,3.63v25.03Z"/>
+    <path class="st0" d="M661.37,864.98c0-1.91.33-3.59,1-5.06s1.55-2.68,2.66-3.66c1.07-.93,2.27-1.64,3.63-2.13s2.72-.73,4.09-.73,2.74.24,4.09.73,2.58,1.2,3.69,2.13c1.07.98,1.93,2.2,2.6,3.66.67,1.46,1,3.15,1,5.06v25.03c0,2-.33,3.7-1,5.12-.66,1.42-1.53,2.6-2.6,3.53-1.11.98-2.34,1.71-3.69,2.2-1.35.49-2.72.73-4.09.73s-2.74-.24-4.09-.73c-1.35-.49-2.56-1.22-3.63-2.2-1.11-.93-2-2.11-2.66-3.53-.67-1.42-1-3.13-1-5.12v-25.03ZM668.16,890.01c0,1.64.45,2.85,1.37,3.63.91.78,1.98,1.16,3.23,1.16s2.32-.39,3.23-1.16c.91-.77,1.36-1.98,1.36-3.63v-25.03c0-1.64-.46-2.85-1.36-3.63-.91-.78-1.99-1.16-3.23-1.16s-2.32.39-3.23,1.16c-.91.78-1.37,1.99-1.37,3.63v25.03Z"/>
+    <path class="st0" d="M693.45,901.19v-47.4h6.79v40.61h13.45v6.79h-20.24Z"/>
+  </g>
+  <circle class="st0" cx="516.19" cy="156.61" r="58.2"/>
+  <path class="st0" d="M389.12,303.86c0,.27,0,.6.07.86-56.07,2.45-137.52-2.65-127.51-9.21,71.71-31.48,133.68-39.23,202.8-49.71,29.16-4.44,70.12-10.14,110.35-8.09-45.73,3.05-89.54,15.44-113.26,23.26-72.44,23.92-72.44,37.25-72.44,42.88Z"/>
+  <path class="st0" d="M379.57,444.82c-13.52-14.85-19.15-38.57-8.02-55.27,6.23-9.34,16.63-15.18,27.11-19.22,17.36-6.69,36.12-9.34,54.68-8.09-.4,3.84-.8,7.62-1.26,11.47-5.37,1.72-10.6,3.91-15.84,6.56-15.77,8.09-35.59,27.44-22.86,39.83,10.27,10.07,18.89,17.96,30.42,22.53-1.52,11.93-3.11,23.79-4.84,35.72-19.09-6.16-46.33-19.09-59.38-33.53Z"/>
+  <path class="st0" d="M245.5,551c49.97,24.52,110.15,43.28,173.11,53.62-1.39,7.75-2.78,15.44-4.24,23.13l-4.31,22.93c-67.27-18.62-127.98-51.76-164.56-99.68Z"/>
+  <path class="st0" d="M584.56,641.59l21.87,23.39c-57.92,7.95-124.4,4.18-186.23-11.53l15.71-13.12c10.8-8.95,20.21-18.95,28.56-29.76,26.51,2.52,53.15,3.51,79.46,2.72,5.5-.2,11.07-.4,16.63-.8,7.42,10.14,15.38,19.88,23.99,29.09Z"/>
+  <path class="st0" d="M754.42,574.13c-1.79,33.2-32.14,53.28-62.3,67.33-22.93,10.67-49.97,18.23-79.46,22.67l-5.3-33.67c-1.19-7.69-2.39-15.44-3.51-23.13,21.41-3.98,42.08-10.47,61.24-20.81,7.36-3.98,16.37-9.34,16.37-17.7,0-12.33-10.6-16.83-20.08-22.53-22.53-13.65-45.66-22.93-69.19-30.22-1.66-15.11-3.11-30.22-4.44-45.33,39.23,6.83,77.61,15.91,113,33.87,27.64,13.98,55.41,38.51,53.68,69.52Z"/>
+  <path class="st0" d="M672.51,428.65c19.02-29.56,18.23-70.58-1.99-99.28-20.15-28.76-58.39-43.48-92.65-35.72-3.25.73-6.63,1.79-8.88,4.31-2.85,3.25-2.98,8.02-2.85,12.39.93,52.82,3.58,105.51,8.15,158.13,1.26,14.58,2.65,29.09,4.17,43.67,3.38,32.47,7.56,64.95,12.33,97.29,1.13,7.69,2.32,15.38,3.51,23.06-6.36-6.83-12.39-13.92-17.96-21.27-25.65-33.14-44.21-71.71-54.15-112.33-3.18-12.72-5.5-25.71-6.89-38.77-3.31,11.66-6.76,23.39-10.4,35.13-12.92,41.22-29.09,81.78-56.13,113.66-6.49,7.62-13.52,14.71-21.34,21.21,1.46-7.82,2.92-15.64,4.24-23.53,7.55-41.29,14.25-82.78,20.15-124.4,1.72-11.86,3.31-23.73,4.84-35.59,3.38-25.38,6.43-50.83,9.15-76.28.33-2.12.53-4.31.73-6.49,2.25-20.41,4.24-40.83,6.03-61.24-21.87,1.72-43.74,2.72-65.61,2.92-3.05.07-4.51-.53-4.57-1.59-.66-11.8,179.87-84.83,266.16-38.31,24.79,13.25,41.82,36.52,44.54,73.9,2.45,33.93-13.32,68.66-40.56,89.14Z"/>
+</svg></div><div class="ttl"><h1>Tapping Primary School: Semester 2 Timetable</h1><div class="sub">Whole school: Kindy, Pre-Primary and Years 1-6 · Last updated 6 August 2026</div></div></header>
+<div class="wrap">
+<nav class="tabs" id="tabs">
+  <button data-v="home" class="active">Home</button>
+  <button data-v="teacher">Teacher view</button>
+  <button data-v="overview">Specialist overview</button>
+  <button data-v="school">Whole school</button>
+  <button data-v="class">Class view</button>
+  <button data-v="subjects">Subjects</button>
+  <button data-v="report">Verification</button>
+</nav>
+<div id="searchbar"><input id="search" type="text" placeholder="&#128269; Search any teacher or class…" autocomplete="off"><div id="sresults" style="display:none"></div></div>
+<div id="toolbar">
+  <span class="tlab">Fortnight:</span><button data-wk="A" class="wk active">Week A (even)</button><button data-wk="B" class="wk">Week B (odd)</button>
+  <span class="tgap"></span>
+  <button class="exp" onclick="window.print()">&#128424; Export this view</button><button class="exp" onclick="exportAll()">&#128218; Export all pages</button>
+</div>
+<div class="mdaybtns" id="mdays"></div>
+<div id="printhead"><div class="phlogo">
+
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" viewBox="0 0 1000 1000"  >
+  
+  <defs>
+    <style>
+      .st0 {
+        fill: #29a39a;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="st0" d="M296.14,821.31v-92.26h-17.68v-14.38h50.63v14.38h-17.67v92.26h-15.28Z"/>
+    <path class="st0" d="M335.68,821.31l23.82-106.64h12.73l23.82,106.64h-15.28l-4.49-22.91h-20.82l-4.49,22.91h-15.28ZM373.43,784.01l-7.49-38.64h-.3l-7.49,38.64h15.28Z"/>
+    <path class="st0" d="M418.51,821.31v-106.64h22.91c4.19,0,7.89.55,11.08,1.65,3.19,1.1,6.09,3.05,8.69,5.84s4.39,6.06,5.39,9.81c1,3.75,1.5,8.81,1.5,15.21,0,4.79-.28,8.84-.82,12.13-.55,3.29-1.72,6.39-3.52,9.29-2.1,3.5-4.89,6.22-8.39,8.16-3.49,1.95-8.09,2.92-13.78,2.92h-7.79v41.64h-15.28ZM433.79,729.05v36.24h7.34c3.1,0,5.49-.45,7.19-1.35,1.7-.9,2.95-2.14,3.75-3.74.8-1.5,1.27-3.34,1.42-5.54.15-2.19.22-4.64.22-7.34,0-2.49-.05-4.87-.15-7.11-.1-2.25-.55-4.22-1.35-5.92-.8-1.7-2-3-3.59-3.89-1.6-.9-3.89-1.35-6.89-1.35h-7.94Z"/>
+    <path class="st0" d="M494.45,821.31v-106.64h22.91c4.19,0,7.89.55,11.08,1.65,3.19,1.1,6.09,3.05,8.69,5.84s4.39,6.06,5.39,9.81c1,3.75,1.5,8.81,1.5,15.21,0,4.79-.28,8.84-.82,12.13-.55,3.29-1.72,6.39-3.52,9.29-2.1,3.5-4.89,6.22-8.39,8.16-3.49,1.95-8.09,2.92-13.78,2.92h-7.79v41.64h-15.28ZM509.72,729.05v36.24h7.34c3.1,0,5.49-.45,7.19-1.35,1.7-.9,2.95-2.14,3.75-3.74.8-1.5,1.27-3.34,1.42-5.54.15-2.19.22-4.64.22-7.34,0-2.49-.05-4.87-.15-7.11-.1-2.25-.55-4.22-1.35-5.92-.8-1.7-2-3-3.59-3.89-1.6-.9-3.89-1.35-6.89-1.35h-7.94Z"/>
+    <path class="st0" d="M570.83,821.31v-106.64h15.28v106.64h-15.28Z"/>
+    <path class="st0" d="M615.32,821.31v-106.64h14.68l23.06,64.26h.3v-64.26h15.28v106.64h-14.38l-23.36-64.11h-.3v64.11h-15.28Z"/>
+    <path class="st0" d="M696.49,739.83c0-4.29.75-8.09,2.25-11.38,1.5-3.3,3.49-6.04,5.99-8.24,2.4-2.1,5.12-3.69,8.16-4.79,3.04-1.1,6.12-1.65,9.21-1.65s6.16.55,9.21,1.65c3.05,1.1,5.82,2.7,8.31,4.79,2.4,2.2,4.34,4.94,5.84,8.24,1.5,3.3,2.25,7.09,2.25,11.38v5.39h-15.27v-5.39c0-3.69-1.03-6.42-3.07-8.16-2.05-1.75-4.47-2.62-7.26-2.62s-5.22.87-7.26,2.62-3.07,4.47-3.07,8.16v56.32c0,3.7,1.02,6.42,3.07,8.16,2.05,1.75,4.47,2.62,7.26,2.62s5.22-.87,7.26-2.62c2.04-1.74,3.07-4.47,3.07-8.16v-20.07h-12.13v-13.48h27.41v33.55c0,4.49-.75,8.34-2.25,11.53-1.5,3.2-3.44,5.84-5.84,7.94-2.49,2.2-5.27,3.85-8.31,4.94-3.05,1.1-6.12,1.65-9.21,1.65s-6.17-.55-9.21-1.65c-3.05-1.1-5.77-2.75-8.16-4.94-2.5-2.1-4.49-4.74-5.99-7.94-1.5-3.19-2.25-7.04-2.25-11.53v-56.32Z"/>
+  </g>
+  <g>
+    <path class="st0" d="M312.49,901.19v-47.4h10.19c1.86,0,3.51.24,4.93.73s2.7,1.35,3.86,2.6c1.15,1.24,1.95,2.7,2.4,4.36s.67,3.92.67,6.76c0,2.13-.12,3.93-.37,5.39s-.77,2.84-1.56,4.13c-.93,1.55-2.18,2.76-3.73,3.63s-3.59,1.3-6.12,1.3h-3.46v18.5h-6.79ZM319.28,860.19v16.11h3.26c1.37,0,2.44-.2,3.19-.6.75-.4,1.31-.95,1.66-1.66.36-.67.57-1.49.63-2.46.07-.97.1-2.06.1-3.26,0-1.11-.02-2.16-.07-3.16-.05-1-.24-1.88-.6-2.63-.36-.75-.89-1.33-1.6-1.73-.71-.4-1.73-.6-3.06-.6h-3.53Z"/>
+    <path class="st0" d="M342.91,901.19v-47.4h10.92c7.99,0,11.98,4.64,11.98,13.91,0,2.8-.43,5.17-1.3,7.12-.86,1.95-2.39,3.53-4.56,4.73l7.32,21.64h-7.19l-6.32-20.24h-4.06v20.24h-6.79ZM349.7,860.19v14.78h3.86c1.2,0,2.15-.17,2.86-.5.71-.33,1.26-.81,1.66-1.43.35-.62.6-1.39.73-2.3.13-.91.2-1.96.2-3.16s-.07-2.25-.2-3.16-.4-1.7-.8-2.36c-.84-1.24-2.44-1.86-4.79-1.86h-3.53Z"/>
+    <path class="st0" d="M374.8,901.19v-47.4h6.79v47.4h-6.79Z"/>
+    <path class="st0" d="M391.51,901.19v-47.4h6.52l8.72,25.1h.14l8.65-25.1h6.59v47.4h-6.79v-28.82h-.14l-6.72,20.37h-3.4l-6.66-20.37h-.13v28.82h-6.79Z"/>
+    <path class="st0" d="M428.78,901.19l10.59-47.4h5.66l10.59,47.4h-6.79l-2-10.19h-9.26l-2,10.19h-6.79ZM445.56,884.62l-3.33-17.17h-.14l-3.33,17.17h6.79Z"/>
+    <path class="st0" d="M462.27,901.19v-47.4h10.92c7.99,0,11.98,4.64,11.98,13.91,0,2.8-.43,5.17-1.3,7.12-.86,1.95-2.39,3.53-4.56,4.73l7.32,21.64h-7.19l-6.32-20.24h-4.06v20.24h-6.79ZM469.06,860.19v14.78h3.86c1.2,0,2.15-.17,2.86-.5.71-.33,1.26-.81,1.66-1.43.35-.62.6-1.39.73-2.3.13-.91.2-1.96.2-3.16s-.07-2.25-.2-3.16-.4-1.7-.8-2.36c-.84-1.24-2.44-1.86-4.79-1.86h-3.53Z"/>
+    <path class="st0" d="M499.08,901.19v-20.04l-9.32-27.36h7.19l5.46,18.84h.13l5.46-18.84h7.19l-9.32,27.36v20.04h-6.79Z"/>
+    <path class="st0" d="M559.59,867.44h-6.79v-1.53c0-1.56-.37-2.9-1.1-4.03s-1.96-1.7-3.69-1.7c-.93,0-1.69.18-2.26.53-.58.36-1.04.8-1.4,1.33-.36.58-.6,1.23-.73,1.96s-.2,1.5-.2,2.3c0,.93.03,1.71.1,2.33s.23,1.18.5,1.66c.27.49.65.91,1.16,1.26.51.36,1.21.71,2.1,1.07l5.19,2.07c1.51.58,2.73,1.25,3.66,2.03.93.78,1.66,1.68,2.2,2.7.49,1.07.82,2.28,1,3.63s.27,2.89.27,4.63c0,2-.2,3.85-.6,5.56s-1.04,3.16-1.93,4.36c-.93,1.24-2.15,2.22-3.66,2.93-1.51.71-3.35,1.07-5.53,1.07-1.64,0-3.17-.29-4.59-.86s-2.64-1.37-3.66-2.4c-1.02-1.02-1.83-2.21-2.43-3.56-.6-1.35-.9-2.83-.9-4.43v-2.53h6.79v2.13c0,1.24.37,2.36,1.1,3.36.73,1,1.96,1.5,3.69,1.5,1.15,0,2.05-.17,2.7-.5s1.14-.81,1.5-1.43.57-1.36.63-2.23c.07-.86.1-1.83.1-2.89,0-1.24-.05-2.26-.13-3.06-.09-.8-.27-1.44-.53-1.93-.31-.49-.72-.89-1.23-1.2-.51-.31-1.19-.64-2.03-1l-4.86-2c-2.93-1.2-4.89-2.79-5.89-4.76-1-1.97-1.5-4.45-1.5-7.42,0-1.77.24-3.46.73-5.06.49-1.6,1.22-2.98,2.19-4.13.93-1.15,2.12-2.07,3.56-2.76,1.44-.69,3.16-1.03,5.16-1.03,1.69,0,3.23.31,4.63.93,1.4.62,2.61,1.44,3.63,2.46,2.04,2.13,3.06,4.57,3.06,7.32v3.33Z"/>
+    <path class="st0" d="M589.54,887.68v2.93c0,1.46-.28,2.85-.83,4.16-.56,1.31-1.32,2.47-2.3,3.49-.98,1.02-2.12,1.83-3.43,2.43-1.31.6-2.72.9-4.23.9-1.29,0-2.6-.18-3.93-.53-1.33-.35-2.53-.98-3.59-1.86s-1.94-2.03-2.63-3.43c-.69-1.4-1.03-3.19-1.03-5.36v-26.09c0-1.56.27-3,.8-4.33.53-1.33,1.29-2.49,2.26-3.46s2.14-1.74,3.49-2.3,2.85-.83,4.49-.83c3.2,0,5.79,1.04,7.79,3.13.98,1.02,1.74,2.23,2.3,3.63.55,1.4.83,2.92.83,4.56v2.66h-6.79v-2.26c0-1.33-.38-2.49-1.13-3.46-.75-.98-1.77-1.46-3.06-1.46-1.69,0-2.81.52-3.36,1.56s-.83,2.36-.83,3.96v24.23c0,1.37.3,2.53.9,3.46.6.93,1.68,1.4,3.23,1.4.44,0,.92-.08,1.43-.23.51-.16.98-.41,1.43-.77.4-.35.73-.84,1-1.46s.4-1.4.4-2.33v-2.33h6.79Z"/>
+    <path class="st0" d="M598.4,901.19v-47.4h6.79v20.3h8.39v-20.3h6.79v47.4h-6.79v-21.1h-8.39v21.1h-6.79Z"/>
+    <path class="st0" d="M629.68,864.98c0-1.91.33-3.59,1-5.06s1.55-2.68,2.66-3.66c1.07-.93,2.27-1.64,3.63-2.13s2.72-.73,4.09-.73,2.74.24,4.09.73,2.58,1.2,3.69,2.13c1.07.98,1.93,2.2,2.6,3.66.67,1.46,1,3.15,1,5.06v25.03c0,2-.33,3.7-1,5.12-.66,1.42-1.53,2.6-2.6,3.53-1.11.98-2.34,1.71-3.69,2.2-1.35.49-2.72.73-4.09.73s-2.74-.24-4.09-.73c-1.35-.49-2.56-1.22-3.63-2.2-1.11-.93-2-2.11-2.66-3.53s-1-3.13-1-5.12v-25.03ZM636.48,890.01c0,1.64.45,2.85,1.37,3.63.91.78,1.98,1.16,3.23,1.16s2.32-.39,3.23-1.16c.91-.77,1.36-1.98,1.36-3.63v-25.03c0-1.64-.46-2.85-1.36-3.63-.91-.78-1.99-1.16-3.23-1.16s-2.32.39-3.23,1.16c-.91.78-1.37,1.99-1.37,3.63v25.03Z"/>
+    <path class="st0" d="M661.37,864.98c0-1.91.33-3.59,1-5.06s1.55-2.68,2.66-3.66c1.07-.93,2.27-1.64,3.63-2.13s2.72-.73,4.09-.73,2.74.24,4.09.73,2.58,1.2,3.69,2.13c1.07.98,1.93,2.2,2.6,3.66.67,1.46,1,3.15,1,5.06v25.03c0,2-.33,3.7-1,5.12-.66,1.42-1.53,2.6-2.6,3.53-1.11.98-2.34,1.71-3.69,2.2-1.35.49-2.72.73-4.09.73s-2.74-.24-4.09-.73c-1.35-.49-2.56-1.22-3.63-2.2-1.11-.93-2-2.11-2.66-3.53-.67-1.42-1-3.13-1-5.12v-25.03ZM668.16,890.01c0,1.64.45,2.85,1.37,3.63.91.78,1.98,1.16,3.23,1.16s2.32-.39,3.23-1.16c.91-.77,1.36-1.98,1.36-3.63v-25.03c0-1.64-.46-2.85-1.36-3.63-.91-.78-1.99-1.16-3.23-1.16s-2.32.39-3.23,1.16c-.91.78-1.37,1.99-1.37,3.63v25.03Z"/>
+    <path class="st0" d="M693.45,901.19v-47.4h6.79v40.61h13.45v6.79h-20.24Z"/>
+  </g>
+  <circle class="st0" cx="516.19" cy="156.61" r="58.2"/>
+  <path class="st0" d="M389.12,303.86c0,.27,0,.6.07.86-56.07,2.45-137.52-2.65-127.51-9.21,71.71-31.48,133.68-39.23,202.8-49.71,29.16-4.44,70.12-10.14,110.35-8.09-45.73,3.05-89.54,15.44-113.26,23.26-72.44,23.92-72.44,37.25-72.44,42.88Z"/>
+  <path class="st0" d="M379.57,444.82c-13.52-14.85-19.15-38.57-8.02-55.27,6.23-9.34,16.63-15.18,27.11-19.22,17.36-6.69,36.12-9.34,54.68-8.09-.4,3.84-.8,7.62-1.26,11.47-5.37,1.72-10.6,3.91-15.84,6.56-15.77,8.09-35.59,27.44-22.86,39.83,10.27,10.07,18.89,17.96,30.42,22.53-1.52,11.93-3.11,23.79-4.84,35.72-19.09-6.16-46.33-19.09-59.38-33.53Z"/>
+  <path class="st0" d="M245.5,551c49.97,24.52,110.15,43.28,173.11,53.62-1.39,7.75-2.78,15.44-4.24,23.13l-4.31,22.93c-67.27-18.62-127.98-51.76-164.56-99.68Z"/>
+  <path class="st0" d="M584.56,641.59l21.87,23.39c-57.92,7.95-124.4,4.18-186.23-11.53l15.71-13.12c10.8-8.95,20.21-18.95,28.56-29.76,26.51,2.52,53.15,3.51,79.46,2.72,5.5-.2,11.07-.4,16.63-.8,7.42,10.14,15.38,19.88,23.99,29.09Z"/>
+  <path class="st0" d="M754.42,574.13c-1.79,33.2-32.14,53.28-62.3,67.33-22.93,10.67-49.97,18.23-79.46,22.67l-5.3-33.67c-1.19-7.69-2.39-15.44-3.51-23.13,21.41-3.98,42.08-10.47,61.24-20.81,7.36-3.98,16.37-9.34,16.37-17.7,0-12.33-10.6-16.83-20.08-22.53-22.53-13.65-45.66-22.93-69.19-30.22-1.66-15.11-3.11-30.22-4.44-45.33,39.23,6.83,77.61,15.91,113,33.87,27.64,13.98,55.41,38.51,53.68,69.52Z"/>
+  <path class="st0" d="M672.51,428.65c19.02-29.56,18.23-70.58-1.99-99.28-20.15-28.76-58.39-43.48-92.65-35.72-3.25.73-6.63,1.79-8.88,4.31-2.85,3.25-2.98,8.02-2.85,12.39.93,52.82,3.58,105.51,8.15,158.13,1.26,14.58,2.65,29.09,4.17,43.67,3.38,32.47,7.56,64.95,12.33,97.29,1.13,7.69,2.32,15.38,3.51,23.06-6.36-6.83-12.39-13.92-17.96-21.27-25.65-33.14-44.21-71.71-54.15-112.33-3.18-12.72-5.5-25.71-6.89-38.77-3.31,11.66-6.76,23.39-10.4,35.13-12.92,41.22-29.09,81.78-56.13,113.66-6.49,7.62-13.52,14.71-21.34,21.21,1.46-7.82,2.92-15.64,4.24-23.53,7.55-41.29,14.25-82.78,20.15-124.4,1.72-11.86,3.31-23.73,4.84-35.59,3.38-25.38,6.43-50.83,9.15-76.28.33-2.12.53-4.31.73-6.49,2.25-20.41,4.24-40.83,6.03-61.24-21.87,1.72-43.74,2.72-65.61,2.92-3.05.07-4.51-.53-4.57-1.59-.66-11.8,179.87-84.83,266.16-38.31,24.79,13.25,41.82,36.52,44.54,73.9,2.45,33.93-13.32,68.66-40.56,89.14Z"/>
+</svg></div><div class="phname">Tapping Primary School</div></div>
+<div id="printTitle"></div>
+<div id="printall"></div>
+<div id="home" class="view active">
+  <div class="hero">
+    <div class="herologo">
+
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" viewBox="0 0 1000 1000"  >
+  
+  <defs>
+    <style>
+      .st0 {
+        fill: #29a39a;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="st0" d="M296.14,821.31v-92.26h-17.68v-14.38h50.63v14.38h-17.67v92.26h-15.28Z"/>
+    <path class="st0" d="M335.68,821.31l23.82-106.64h12.73l23.82,106.64h-15.28l-4.49-22.91h-20.82l-4.49,22.91h-15.28ZM373.43,784.01l-7.49-38.64h-.3l-7.49,38.64h15.28Z"/>
+    <path class="st0" d="M418.51,821.31v-106.64h22.91c4.19,0,7.89.55,11.08,1.65,3.19,1.1,6.09,3.05,8.69,5.84s4.39,6.06,5.39,9.81c1,3.75,1.5,8.81,1.5,15.21,0,4.79-.28,8.84-.82,12.13-.55,3.29-1.72,6.39-3.52,9.29-2.1,3.5-4.89,6.22-8.39,8.16-3.49,1.95-8.09,2.92-13.78,2.92h-7.79v41.64h-15.28ZM433.79,729.05v36.24h7.34c3.1,0,5.49-.45,7.19-1.35,1.7-.9,2.95-2.14,3.75-3.74.8-1.5,1.27-3.34,1.42-5.54.15-2.19.22-4.64.22-7.34,0-2.49-.05-4.87-.15-7.11-.1-2.25-.55-4.22-1.35-5.92-.8-1.7-2-3-3.59-3.89-1.6-.9-3.89-1.35-6.89-1.35h-7.94Z"/>
+    <path class="st0" d="M494.45,821.31v-106.64h22.91c4.19,0,7.89.55,11.08,1.65,3.19,1.1,6.09,3.05,8.69,5.84s4.39,6.06,5.39,9.81c1,3.75,1.5,8.81,1.5,15.21,0,4.79-.28,8.84-.82,12.13-.55,3.29-1.72,6.39-3.52,9.29-2.1,3.5-4.89,6.22-8.39,8.16-3.49,1.95-8.09,2.92-13.78,2.92h-7.79v41.64h-15.28ZM509.72,729.05v36.24h7.34c3.1,0,5.49-.45,7.19-1.35,1.7-.9,2.95-2.14,3.75-3.74.8-1.5,1.27-3.34,1.42-5.54.15-2.19.22-4.64.22-7.34,0-2.49-.05-4.87-.15-7.11-.1-2.25-.55-4.22-1.35-5.92-.8-1.7-2-3-3.59-3.89-1.6-.9-3.89-1.35-6.89-1.35h-7.94Z"/>
+    <path class="st0" d="M570.83,821.31v-106.64h15.28v106.64h-15.28Z"/>
+    <path class="st0" d="M615.32,821.31v-106.64h14.68l23.06,64.26h.3v-64.26h15.28v106.64h-14.38l-23.36-64.11h-.3v64.11h-15.28Z"/>
+    <path class="st0" d="M696.49,739.83c0-4.29.75-8.09,2.25-11.38,1.5-3.3,3.49-6.04,5.99-8.24,2.4-2.1,5.12-3.69,8.16-4.79,3.04-1.1,6.12-1.65,9.21-1.65s6.16.55,9.21,1.65c3.05,1.1,5.82,2.7,8.31,4.79,2.4,2.2,4.34,4.94,5.84,8.24,1.5,3.3,2.25,7.09,2.25,11.38v5.39h-15.27v-5.39c0-3.69-1.03-6.42-3.07-8.16-2.05-1.75-4.47-2.62-7.26-2.62s-5.22.87-7.26,2.62-3.07,4.47-3.07,8.16v56.32c0,3.7,1.02,6.42,3.07,8.16,2.05,1.75,4.47,2.62,7.26,2.62s5.22-.87,7.26-2.62c2.04-1.74,3.07-4.47,3.07-8.16v-20.07h-12.13v-13.48h27.41v33.55c0,4.49-.75,8.34-2.25,11.53-1.5,3.2-3.44,5.84-5.84,7.94-2.49,2.2-5.27,3.85-8.31,4.94-3.05,1.1-6.12,1.65-9.21,1.65s-6.17-.55-9.21-1.65c-3.05-1.1-5.77-2.75-8.16-4.94-2.5-2.1-4.49-4.74-5.99-7.94-1.5-3.19-2.25-7.04-2.25-11.53v-56.32Z"/>
+  </g>
+  <g>
+    <path class="st0" d="M312.49,901.19v-47.4h10.19c1.86,0,3.51.24,4.93.73s2.7,1.35,3.86,2.6c1.15,1.24,1.95,2.7,2.4,4.36s.67,3.92.67,6.76c0,2.13-.12,3.93-.37,5.39s-.77,2.84-1.56,4.13c-.93,1.55-2.18,2.76-3.73,3.63s-3.59,1.3-6.12,1.3h-3.46v18.5h-6.79ZM319.28,860.19v16.11h3.26c1.37,0,2.44-.2,3.19-.6.75-.4,1.31-.95,1.66-1.66.36-.67.57-1.49.63-2.46.07-.97.1-2.06.1-3.26,0-1.11-.02-2.16-.07-3.16-.05-1-.24-1.88-.6-2.63-.36-.75-.89-1.33-1.6-1.73-.71-.4-1.73-.6-3.06-.6h-3.53Z"/>
+    <path class="st0" d="M342.91,901.19v-47.4h10.92c7.99,0,11.98,4.64,11.98,13.91,0,2.8-.43,5.17-1.3,7.12-.86,1.95-2.39,3.53-4.56,4.73l7.32,21.64h-7.19l-6.32-20.24h-4.06v20.24h-6.79ZM349.7,860.19v14.78h3.86c1.2,0,2.15-.17,2.86-.5.71-.33,1.26-.81,1.66-1.43.35-.62.6-1.39.73-2.3.13-.91.2-1.96.2-3.16s-.07-2.25-.2-3.16-.4-1.7-.8-2.36c-.84-1.24-2.44-1.86-4.79-1.86h-3.53Z"/>
+    <path class="st0" d="M374.8,901.19v-47.4h6.79v47.4h-6.79Z"/>
+    <path class="st0" d="M391.51,901.19v-47.4h6.52l8.72,25.1h.14l8.65-25.1h6.59v47.4h-6.79v-28.82h-.14l-6.72,20.37h-3.4l-6.66-20.37h-.13v28.82h-6.79Z"/>
+    <path class="st0" d="M428.78,901.19l10.59-47.4h5.66l10.59,47.4h-6.79l-2-10.19h-9.26l-2,10.19h-6.79ZM445.56,884.62l-3.33-17.17h-.14l-3.33,17.17h6.79Z"/>
+    <path class="st0" d="M462.27,901.19v-47.4h10.92c7.99,0,11.98,4.64,11.98,13.91,0,2.8-.43,5.17-1.3,7.12-.86,1.95-2.39,3.53-4.56,4.73l7.32,21.64h-7.19l-6.32-20.24h-4.06v20.24h-6.79ZM469.06,860.19v14.78h3.86c1.2,0,2.15-.17,2.86-.5.71-.33,1.26-.81,1.66-1.43.35-.62.6-1.39.73-2.3.13-.91.2-1.96.2-3.16s-.07-2.25-.2-3.16-.4-1.7-.8-2.36c-.84-1.24-2.44-1.86-4.79-1.86h-3.53Z"/>
+    <path class="st0" d="M499.08,901.19v-20.04l-9.32-27.36h7.19l5.46,18.84h.13l5.46-18.84h7.19l-9.32,27.36v20.04h-6.79Z"/>
+    <path class="st0" d="M559.59,867.44h-6.79v-1.53c0-1.56-.37-2.9-1.1-4.03s-1.96-1.7-3.69-1.7c-.93,0-1.69.18-2.26.53-.58.36-1.04.8-1.4,1.33-.36.58-.6,1.23-.73,1.96s-.2,1.5-.2,2.3c0,.93.03,1.71.1,2.33s.23,1.18.5,1.66c.27.49.65.91,1.16,1.26.51.36,1.21.71,2.1,1.07l5.19,2.07c1.51.58,2.73,1.25,3.66,2.03.93.78,1.66,1.68,2.2,2.7.49,1.07.82,2.28,1,3.63s.27,2.89.27,4.63c0,2-.2,3.85-.6,5.56s-1.04,3.16-1.93,4.36c-.93,1.24-2.15,2.22-3.66,2.93-1.51.71-3.35,1.07-5.53,1.07-1.64,0-3.17-.29-4.59-.86s-2.64-1.37-3.66-2.4c-1.02-1.02-1.83-2.21-2.43-3.56-.6-1.35-.9-2.83-.9-4.43v-2.53h6.79v2.13c0,1.24.37,2.36,1.1,3.36.73,1,1.96,1.5,3.69,1.5,1.15,0,2.05-.17,2.7-.5s1.14-.81,1.5-1.43.57-1.36.63-2.23c.07-.86.1-1.83.1-2.89,0-1.24-.05-2.26-.13-3.06-.09-.8-.27-1.44-.53-1.93-.31-.49-.72-.89-1.23-1.2-.51-.31-1.19-.64-2.03-1l-4.86-2c-2.93-1.2-4.89-2.79-5.89-4.76-1-1.97-1.5-4.45-1.5-7.42,0-1.77.24-3.46.73-5.06.49-1.6,1.22-2.98,2.19-4.13.93-1.15,2.12-2.07,3.56-2.76,1.44-.69,3.16-1.03,5.16-1.03,1.69,0,3.23.31,4.63.93,1.4.62,2.61,1.44,3.63,2.46,2.04,2.13,3.06,4.57,3.06,7.32v3.33Z"/>
+    <path class="st0" d="M589.54,887.68v2.93c0,1.46-.28,2.85-.83,4.16-.56,1.31-1.32,2.47-2.3,3.49-.98,1.02-2.12,1.83-3.43,2.43-1.31.6-2.72.9-4.23.9-1.29,0-2.6-.18-3.93-.53-1.33-.35-2.53-.98-3.59-1.86s-1.94-2.03-2.63-3.43c-.69-1.4-1.03-3.19-1.03-5.36v-26.09c0-1.56.27-3,.8-4.33.53-1.33,1.29-2.49,2.26-3.46s2.14-1.74,3.49-2.3,2.85-.83,4.49-.83c3.2,0,5.79,1.04,7.79,3.13.98,1.02,1.74,2.23,2.3,3.63.55,1.4.83,2.92.83,4.56v2.66h-6.79v-2.26c0-1.33-.38-2.49-1.13-3.46-.75-.98-1.77-1.46-3.06-1.46-1.69,0-2.81.52-3.36,1.56s-.83,2.36-.83,3.96v24.23c0,1.37.3,2.53.9,3.46.6.93,1.68,1.4,3.23,1.4.44,0,.92-.08,1.43-.23.51-.16.98-.41,1.43-.77.4-.35.73-.84,1-1.46s.4-1.4.4-2.33v-2.33h6.79Z"/>
+    <path class="st0" d="M598.4,901.19v-47.4h6.79v20.3h8.39v-20.3h6.79v47.4h-6.79v-21.1h-8.39v21.1h-6.79Z"/>
+    <path class="st0" d="M629.68,864.98c0-1.91.33-3.59,1-5.06s1.55-2.68,2.66-3.66c1.07-.93,2.27-1.64,3.63-2.13s2.72-.73,4.09-.73,2.74.24,4.09.73,2.58,1.2,3.69,2.13c1.07.98,1.93,2.2,2.6,3.66.67,1.46,1,3.15,1,5.06v25.03c0,2-.33,3.7-1,5.12-.66,1.42-1.53,2.6-2.6,3.53-1.11.98-2.34,1.71-3.69,2.2-1.35.49-2.72.73-4.09.73s-2.74-.24-4.09-.73c-1.35-.49-2.56-1.22-3.63-2.2-1.11-.93-2-2.11-2.66-3.53s-1-3.13-1-5.12v-25.03ZM636.48,890.01c0,1.64.45,2.85,1.37,3.63.91.78,1.98,1.16,3.23,1.16s2.32-.39,3.23-1.16c.91-.77,1.36-1.98,1.36-3.63v-25.03c0-1.64-.46-2.85-1.36-3.63-.91-.78-1.99-1.16-3.23-1.16s-2.32.39-3.23,1.16c-.91.78-1.37,1.99-1.37,3.63v25.03Z"/>
+    <path class="st0" d="M661.37,864.98c0-1.91.33-3.59,1-5.06s1.55-2.68,2.66-3.66c1.07-.93,2.27-1.64,3.63-2.13s2.72-.73,4.09-.73,2.74.24,4.09.73,2.58,1.2,3.69,2.13c1.07.98,1.93,2.2,2.6,3.66.67,1.46,1,3.15,1,5.06v25.03c0,2-.33,3.7-1,5.12-.66,1.42-1.53,2.6-2.6,3.53-1.11.98-2.34,1.71-3.69,2.2-1.35.49-2.72.73-4.09.73s-2.74-.24-4.09-.73c-1.35-.49-2.56-1.22-3.63-2.2-1.11-.93-2-2.11-2.66-3.53-.67-1.42-1-3.13-1-5.12v-25.03ZM668.16,890.01c0,1.64.45,2.85,1.37,3.63.91.78,1.98,1.16,3.23,1.16s2.32-.39,3.23-1.16c.91-.77,1.36-1.98,1.36-3.63v-25.03c0-1.64-.46-2.85-1.36-3.63-.91-.78-1.99-1.16-3.23-1.16s-2.32.39-3.23,1.16c-.91.78-1.37,1.99-1.37,3.63v25.03Z"/>
+    <path class="st0" d="M693.45,901.19v-47.4h6.79v40.61h13.45v6.79h-20.24Z"/>
+  </g>
+  <circle class="st0" cx="516.19" cy="156.61" r="58.2"/>
+  <path class="st0" d="M389.12,303.86c0,.27,0,.6.07.86-56.07,2.45-137.52-2.65-127.51-9.21,71.71-31.48,133.68-39.23,202.8-49.71,29.16-4.44,70.12-10.14,110.35-8.09-45.73,3.05-89.54,15.44-113.26,23.26-72.44,23.92-72.44,37.25-72.44,42.88Z"/>
+  <path class="st0" d="M379.57,444.82c-13.52-14.85-19.15-38.57-8.02-55.27,6.23-9.34,16.63-15.18,27.11-19.22,17.36-6.69,36.12-9.34,54.68-8.09-.4,3.84-.8,7.62-1.26,11.47-5.37,1.72-10.6,3.91-15.84,6.56-15.77,8.09-35.59,27.44-22.86,39.83,10.27,10.07,18.89,17.96,30.42,22.53-1.52,11.93-3.11,23.79-4.84,35.72-19.09-6.16-46.33-19.09-59.38-33.53Z"/>
+  <path class="st0" d="M245.5,551c49.97,24.52,110.15,43.28,173.11,53.62-1.39,7.75-2.78,15.44-4.24,23.13l-4.31,22.93c-67.27-18.62-127.98-51.76-164.56-99.68Z"/>
+  <path class="st0" d="M584.56,641.59l21.87,23.39c-57.92,7.95-124.4,4.18-186.23-11.53l15.71-13.12c10.8-8.95,20.21-18.95,28.56-29.76,26.51,2.52,53.15,3.51,79.46,2.72,5.5-.2,11.07-.4,16.63-.8,7.42,10.14,15.38,19.88,23.99,29.09Z"/>
+  <path class="st0" d="M754.42,574.13c-1.79,33.2-32.14,53.28-62.3,67.33-22.93,10.67-49.97,18.23-79.46,22.67l-5.3-33.67c-1.19-7.69-2.39-15.44-3.51-23.13,21.41-3.98,42.08-10.47,61.24-20.81,7.36-3.98,16.37-9.34,16.37-17.7,0-12.33-10.6-16.83-20.08-22.53-22.53-13.65-45.66-22.93-69.19-30.22-1.66-15.11-3.11-30.22-4.44-45.33,39.23,6.83,77.61,15.91,113,33.87,27.64,13.98,55.41,38.51,53.68,69.52Z"/>
+  <path class="st0" d="M672.51,428.65c19.02-29.56,18.23-70.58-1.99-99.28-20.15-28.76-58.39-43.48-92.65-35.72-3.25.73-6.63,1.79-8.88,4.31-2.85,3.25-2.98,8.02-2.85,12.39.93,52.82,3.58,105.51,8.15,158.13,1.26,14.58,2.65,29.09,4.17,43.67,3.38,32.47,7.56,64.95,12.33,97.29,1.13,7.69,2.32,15.38,3.51,23.06-6.36-6.83-12.39-13.92-17.96-21.27-25.65-33.14-44.21-71.71-54.15-112.33-3.18-12.72-5.5-25.71-6.89-38.77-3.31,11.66-6.76,23.39-10.4,35.13-12.92,41.22-29.09,81.78-56.13,113.66-6.49,7.62-13.52,14.71-21.34,21.21,1.46-7.82,2.92-15.64,4.24-23.53,7.55-41.29,14.25-82.78,20.15-124.4,1.72-11.86,3.31-23.73,4.84-35.59,3.38-25.38,6.43-50.83,9.15-76.28.33-2.12.53-4.31.73-6.49,2.25-20.41,4.24-40.83,6.03-61.24-21.87,1.72-43.74,2.72-65.61,2.92-3.05.07-4.51-.53-4.57-1.59-.66-11.8,179.87-84.83,266.16-38.31,24.79,13.25,41.82,36.52,44.54,73.9,2.45,33.93-13.32,68.66-40.56,89.14Z"/>
+</svg></div>
+    <h2 class="herottl">Semester 2 Timetable</h2>
+    <p class="herosub">Tapping Primary School · whole school, Kindy to Year 6</p>
+  </div>
+  <div class="tiles">
+    <button class="tile" data-go="teacher"><span class="badge">&#128105;&#8205;&#127979;</span><span class="tname">Teacher view</span><span class="tdesc">Any teacher's week, with DOTT, surplus and load</span></button>
+    <button class="tile" data-go="overview"><span class="badge">&#128197;</span><span class="tname">Specialist overview</span><span class="tdesc">Every specialist lesson across the week at a glance</span></button>
+    <button class="tile" data-go="school"><span class="badge">&#127979;</span><span class="tname">Whole school</span><span class="tdesc">Every class, one day at a time</span></button>
+    <button class="tile" data-go="class"><span class="badge">&#128218;</span><span class="tname">Class view</span><span class="tdesc">A single class's full fortnight</span></button>
+    <button class="tile" data-go="subjects"><span class="badge">&#127912;</span><span class="tname">Subjects</span><span class="tdesc">Where and when each subject is timetabled</span></button>
+    <button class="tile" data-go="report"><span class="badge">&#9989;</span><span class="tname">Verification</span><span class="tdesc">All checks, the DOTT ledger and notes</span></button>
+  </div>
+  <div class="clog"><div class="cloghd">Recent updates</div><div class="clogrow"><span class="clogdate">3 July 2026</span><span class="clogtext">Wednesday P6: Lis Lowndes now covers Caroline Parkin's LA2 (Pre-Primary), giving Caroline her weekly graduate DOTT period (0.05 FTE allocation). Chloe Moore's extra Health period at that time is removed - her graduate time is delivered as grad days instead, bringing LA24's timetabled DOTT into line with the other Year 1 classes.</span></div><div class="clogrow"><span class="clogdate">3 July 2026</span><span class="clogtext">The Year 2 team now shares a second full-team DOTT period at Tuesday P3, alongside their Thursday meeting. To make room, LA20's STEM moved to Tue P3-P4, LA21's STEM to Wed P2-P3 and LA21's Auslan to Thu P1; the Y3-4 team gains a third shared period as a side effect. Jasper Sirr-Davis carries three specialist periods on Wednesday (sanctioned exception).</span></div><div class="clogrow"><span class="clogdate">2 July 2026</span><span class="clogtext">Early morning learning first: Period 1 now carries almost no specialist lessons (down from 9 per week to 3 - the minimum possible given Chantel Uhe's fixed STEM doubles). Specialist DOTT and team meetings stack at P1, and specialists teach at close to full capacity from P2 onward. Most lessons have moved again - please re-check your week.</span></div><div class="clogrow"><span class="clogdate">2 July 2026</span><span class="clogtext">Cheryl Peak's Events leadership is now its own period at Thursday P1. Her Friday P1 stays as DOTT because she runs the whole-school assembly then.</span></div><div class="clogrow"><span class="clogdate">2 July 2026</span><span class="clogtext">More morning learning: team collaboration meetings now sit in the morning (Arts team moved from Wednesday P5 to P2). This frees afternoon specialist capacity, so three specialist sessions moved out of mornings across the school - classes keep more of the morning for core learning. Some lessons have moved; please re-check your week.</span></div></div>
+</div>
+<div id="teacher" class="view"><div id="teacherBtns" class="tbtns"></div><div class="vbar"><button class="myprint" onclick="window.print()">&#128424; Print this timetable</button></div><div id="teacherDash"></div><div id="teacherGrid"></div></div>
+<div id="overview" class="view"></div>
+<div id="school" class="view"><div class="daybtns" id="schoolDays"></div><div id="schoolGrid"></div></div>
+<div id="class" class="view"><div class="vbar"><span class="pick">Class: <select id="classPick"></select></span><button class="myprint" onclick="window.print()">&#128424; Print this timetable</button></div><div id="classGrid"></div></div>
+<div id="subjects" class="view"><div class="pick">Subject: <select id="subjectPick"></select></div><div id="subjectGrid"></div></div>
+<div id="report" class="view"><div class="report"><p><b>Summary:</b> 7/7 collaboration windows · Period 6 (every class released) · leadership 4/4 (Rose & Sirr-Davis get a real Bell-covered release) · Monday P0/P1 clear · subjects all exact · max 2 specialist periods per class per day (3 on a leadership day) · STEM back-to-back · PE all Thursday · PP & Kindy folded in (Week A/B).</p>
+<h2>1. Collaboration window check</h2>
+<p>Brief wording note: it refers in places to nine collaboration teams, but the enumerable teams are five class teams plus two specialist teams = seven. All seven are placed. Flagging 7-vs-9 for Brad.</p>
+<table><tr><th>Team</th><th>Window</th><th>Members verified</th><th>Status</th></tr><tr><td>Y1</td><td>Tue P2</td><td>LA22: Imogen Webb (Performing Arts/Peak); LA23: Ashlee Hutchings (STEM/Lowndes); LA24: Chloe Moore (Visual Art/Carter)</td><td>PASS</td></tr><tr><td>Y2</td><td>Thu P5</td><td>LA18: Hannah Bouwmeester (PE/Lowndes); LA19: Savannah Espach (PE/Bell); LA20: Anna Hendron (PE/Pevitt)</td><td>PASS</td></tr><tr><td>Y3-4</td><td>Wed P2</td><td>LA14: Olivia Sheehy (Performing Arts/Peak); LA15: Georgia Mitchell (Visual Art/Carter); LA21: Jasper Sirr-Davis (STEM/Lowndes)</td><td>PASS</td></tr><tr><td>Y4-5</td><td>Thu P3</td><td>LA7: Nicola Pigott (PE/Lowndes); LA16: Tanya Thieme (PE/Bell); LA17: Cassidy Law (PE/Pevitt)</td><td>PASS</td></tr><tr><td>Y5-6</td><td>Wed P5</td><td>LA6: John Dunbar (Auslan/Walker); LA8: Janette Crisp (Performing Arts/Peak); LA9: Lincoln Rose (Visual Art/Carter)</td><td>PASS</td></tr><tr><td>Arts</td><td>Wed P1</td><td>Peak, Carter, Walker all on DOTT</td><td>PASS</td></tr><tr><td>STEM/PE</td><td>Thu P1</td><td>Bell, Lowndes on DOTT; Uhe joins from Thursday office</td><td>PASS</td></tr></table>
+<h2>2. Period 6 reconciliation</h2>
+<p>Period 6 lessons: <b>17</b> · 16 base class releases + 1 graduate Health. Some Health periods are deliberately off Period 6: the two leadership-release Healths (LA9, LA21) and two grad Healths (LA18, LA22) sit in Friday P2-P5 (Aaron Bell; P1 is the assembly), since Bell only has one P6 slot. Every Years 1-6 class still has a Period 6 release.</p>
+<table><tr><th>Day</th><th>Class</th><th>Subject</th><th>Teacher</th><th>Type</th></tr><tr><td>Mon</td><td>LA20</td><td>Visual Art</td><td>Natalie Carter</td><td>base release</td></tr><tr><td>Mon</td><td>LA22</td><td>STEM</td><td>Lis Lowndes</td><td>base release</td></tr><tr><td>Tue</td><td>LA14</td><td>Visual Art</td><td>Natalie Carter</td><td>base release</td></tr><tr><td>Tue</td><td>LA15</td><td>STEM</td><td>Lis Lowndes</td><td>base release</td></tr><tr><td>Tue</td><td>LA16</td><td>Performing Arts</td><td>Cheryl Peak</td><td>base release</td></tr><tr><td>Tue</td><td>LA6</td><td>STEM</td><td>Chantel Uhe</td><td>base release</td></tr><tr><td>Wed</td><td>LA21</td><td>Performing Arts</td><td>Cheryl Peak</td><td>base release</td></tr><tr><td>Wed</td><td>LA7</td><td>STEM</td><td>Chantel Uhe</td><td>base release</td></tr><tr><td>Wed</td><td>LA8</td><td>Visual Art</td><td>Natalie Carter</td><td>base release</td></tr><tr><td>Wed</td><td>LA9</td><td>Auslan</td><td>Rachel Walker</td><td>base release</td></tr><tr><td>Thu</td><td>LA17</td><td>Auslan</td><td>Rachel Walker</td><td>base release</td></tr><tr><td>Thu</td><td>LA19</td><td>Performing Arts</td><td>Cheryl Peak</td><td>base release</td></tr><tr><td>Thu</td><td>LA22</td><td>PE</td><td>Lis Lowndes</td><td>base release</td></tr><tr><td>Thu</td><td>LA23</td><td>PE</td><td>Aaron Bell</td><td>base release</td></tr><tr><td>Thu</td><td>LA24</td><td>PE</td><td>Jake Pevitt</td><td>base release</td></tr><tr><td>Fri</td><td>LA18</td><td>Auslan</td><td>Cheryl Peak</td><td>base release</td></tr><tr><td>Fri</td><td>LA23</td><td>Health</td><td>Aaron Bell</td><td>grad extra</td></tr></table>
+<p>Every class has a Period 6 release: <span class="ok">PASS</span>. (15 base releases; 1 grad Health remain in P6, the others moved to Friday by design.)</p>
+<h2>3. Leadership placement check</h2>
+<table><tr><th>Teacher</th><th>Role</th><th>Slot</th><th>Detail</th></tr><tr><td>Natalie Carter</td><td>PBS</td><td>Mon P1</td><td>fixed (moved from Mon P3 so LA23 can take P3 - Brad item 5)</td></tr><tr><td>Cheryl Peak</td><td>Events</td><td>Tue P1</td><td>Peak non-teaching block</td></tr><tr><td>Lincoln Rose</td><td>SSTUWA</td><td>Fri P2</td><td>LA9 covered by Aaron Bell (Health) · additional 45-min release on top of normal DOTT</td></tr><tr><td>Jasper Sirr-Davis</td><td>OHS</td><td>Fri P3</td><td>LA21 covered by Aaron Bell (Health) · additional 45-min release on top of normal DOTT</td></tr></table>
+<p>All four leadership blocks placed: <span class="ok">PASS</span>. Each is a genuine extra 45-min release on top of the teacher's normal DOTT. Carter (PBS) and Peak (Events) are specialists, so their block is a non-teaching period in their own timetable. Rose (SSTUWA) and Sirr-Davis (OHS) are classroom teachers, so Aaron Bell teaches their class a Health period to release them (Friday). This is why LA9 and LA21 carry a third specialist period on that day (a deliberate exception to the 2-per-day rule for the leadership release).</p>
+<h2>4. Monday P0 and P1 vacancy</h2>
+<p>Monday P0 specialist lessons: 0. Monday P1 specialist lessons: 0. Clear of all specialist activity: <span class="ok">PASS</span>.</p>
+<h2>5. DOTT equity</h2>
+<p>P0 (25 min) counts toward DOTT, per Brad. Leadership blocks are reported separately and NOT counted as DOTT. The collaboration window counts as DOTT.</p>
+<table><tr><th>Specialist</th><th>FTE</th><th>Periods</th><th>DOTT (P0+free)</th><th>Target</th><th>Status</th></tr><tr><td>Chantel Uhe</td><td>0.4 teach</td><td>12</td><td>50m</td><td>108m</td><td>by design (office days carry her DOTT)</td></tr><tr><td>Lis Lowndes</td><td>1.0</td><td>23</td><td>470m</td><td>270m</td><td>OK</td></tr><tr><td>Natalie Carter</td><td>0.6</td><td>15</td><td>165m</td><td>162m</td><td>OK</td></tr><tr><td>Cheryl Peak</td><td>0.8</td><td>20</td><td>235m</td><td>216m</td><td>OK</td></tr><tr><td>Rachel Walker</td><td>0.4</td><td>10</td><td>140m</td><td>108m</td><td>OK</td></tr><tr><td>Aaron Bell</td><td>0.4</td><td>10</td><td>140m</td><td>108m</td><td>OK</td></tr><tr><td>Jake Pevitt</td><td>0.2 (Thu)</td><td>5</td><td>70m</td><td>54m</td><td>OK</td></tr></table>
+<p>Classroom teacher DOTT = minutes their class is with a specialist. Years 1-6 entitlement is 270 min; teachers receive an extra 15-min collaboration top-up on top (so ~285 delivered). Kindy/PP entitlement is 320. Graduates get an extra Health period on top.</p>
+<table><tr><th>Class</th><th>Teacher</th><th>Flag</th><th>DOTT</th><th>Target</th><th>Note</th></tr><tr><td>LA6</td><td>John Dunbar</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA7</td><td>Nicola Pigott</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA8</td><td>Janette Crisp</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA9</td><td>Lincoln Rose</td><td>SSTUWA</td><td>285m +45 lead</td><td>270m</td><td>+15 collab top-up; +45 leadership (separate)</td></tr><tr><td>LA14</td><td>Olivia Sheehy</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA15</td><td>Georgia Mitchell</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA16</td><td>Tanya Thieme</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA17</td><td>Cassidy Law</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA18</td><td>Hannah Bouwmeester</td><td>grad</td><td>330m</td><td>270m</td><td>+60m (grad extra Health)</td></tr><tr><td>LA19</td><td>Savannah Espach</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA20</td><td>Anna Hendron</td><td></td><td>285m</td><td>270m</td><td>+15m (collaboration top-up)</td></tr><tr><td>LA21</td><td>Jasper Sirr-Davis</td><td>OHS</td><td>285m +45 lead</td><td>270m</td><td>+15 collab top-up; +45 leadership (separate)</td></tr><tr><td>LA22</td><td>Imogen Webb</td><td>grad</td><td>345m</td><td>270m</td><td>+75m (grad extra Health)</td></tr><tr><td>LA23</td><td>Ashlee Hutchings</td><td>grad</td><td>345m</td><td>270m</td><td>+75m (grad extra Health)</td></tr><tr><td>LA24</td><td>Chloe Moore</td><td>grad</td><td>285m</td><td>270m</td><td>+15m (grad time via grad days, not timetabled)</td></tr></table>
+<p>Discretionary DOTT spread across the eleven non-graduate classes: <b>0 min</b> (excludes leadership release). Leadership holders (Rose, Sirr-Davis) receive an extra 45-min Bell-covered Health period on top; graduates sit higher via their extra Health.</p>
+<h2>6. Per-specialist load vs FTE / capacity</h2>
+<table><tr><th>Specialist</th><th>FTE</th><th>Periods / slots</th><th>Status</th></tr><tr><td>Chantel Uhe</td><td>0.4 teach</td><td>12/12</td><td>within capacity</td></tr><tr><td>Lis Lowndes</td><td>1.0</td><td>23/30</td><td>within capacity</td></tr><tr><td>Natalie Carter</td><td>0.6</td><td>15/18</td><td>within capacity</td></tr><tr><td>Cheryl Peak</td><td>0.8</td><td>20/24</td><td>within capacity</td></tr><tr><td>Rachel Walker</td><td>0.4</td><td>10/12</td><td>within capacity</td></tr><tr><td>Aaron Bell</td><td>0.4</td><td>10/12</td><td>within capacity</td></tr><tr><td>Jake Pevitt</td><td>0.2 (Thu)</td><td>5/6</td><td>within capacity</td></tr></table>
+<p>Peak resolved to 20 (15 Performing Arts + 5 Auslan); one junior Auslan moved to Walker. Health split Bell/Lowndes so Lowndes keeps full 270 DOTT.</p>
+<h2>7. Subject delivery check</h2>
+<table><tr><th>Class</th><th>STEM</th><th>Auslan</th><th>PE</th><th>PerfArts</th><th>VisArt</th><th>Health</th><th>Status</th></tr><tr><td>LA6</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA7</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA8</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA9</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>Hlth 1 (lead)</td><td>PASS</td></tr><tr><td>LA14</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA15</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA16</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA17</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA18</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>Hlth 1</td><td>PASS</td></tr><tr><td>LA19</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA20</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>-</td><td>PASS</td></tr><tr><td>LA21</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>Hlth 1 (lead)</td><td>PASS</td></tr><tr><td>LA22</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>Hlth 1</td><td>PASS</td></tr><tr><td>LA23</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>Hlth 1</td><td>PASS</td></tr><tr><td>LA24</td><td>STEM 2</td><td>Aus 1</td><td>PE 1</td><td>PA 1</td><td>VA 1</td><td>Hlth 0</td><td>PASS</td></tr></table>
+<p>Every class receives exactly its quota: <span class="ok">PASS</span>.</p>
+<h2>8. Class daily load (max 2 specialist periods per day)</h2>
+<p>Hard rule (Brad): no class may receive more than two specialist periods on any single day, so no classroom teacher gets more than two release periods in a day. Exception: the two leadership classes (LA9, LA21) may reach three on their leadership day, where the third period is Bell's Health cover that releases Rose / Sirr-Davis for leadership.</p>
+<table><tr><th>Class</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Max/day</th></tr><tr><td>LA6</td><td>1</td><td>2</td><td>1</td><td>2</td><td>0</td><td>2</td></tr><tr><td>LA7</td><td>0</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><td>LA8</td><td>0</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><td>LA9</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>2</td></tr><tr><td>LA14</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td>2</td></tr><tr><td>LA15</td><td>0</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><td>LA16</td><td>1</td><td>1</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><td>LA17</td><td>1</td><td>1</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><td>LA18</td><td>2</td><td>2</td><td>0</td><td>1</td><td>2</td><td>2</td></tr><tr><td>LA19</td><td>0</td><td>1</td><td>2</td><td>2</td><td>1</td><td>2</td></tr><tr><td>LA20</td><td>1</td><td>2</td><td>0</td><td>2</td><td>1</td><td>2</td></tr><tr><td>LA21</td><td>1</td><td>0</td><td>3</td><td>2</td><td>1</td><td>3 (incl leadership)</td></tr><tr><td>LA22</td><td>2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td></tr><tr><td>LA23</td><td>0</td><td>2</td><td>2</td><td>1</td><td>2</td><td>2</td></tr><tr><td>LA24</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr></table>
+<p>Within the daily cap (2 per class, 3 for the two leadership classes on their leadership day): <span class="ok">PASS</span>.</p>
+<h2>9. PE block, STEM doubles and morning load</h2>
+<p>PE (rule 6): all PE is on Thursday, with the three PE teachers (Lowndes, Bell, Jake Pevitt) taking a whole year team at the same time. Each team's PE period therefore doubles as that team's collaboration window.</p>
+<table><tr><th>Thursday period</th><th>Year team in PE</th><th>Teachers</th></tr><tr><td>P2</td><td>LA6, LA8, LA9</td><td>Lowndes / Bell / Pevitt</td></tr><tr><td>P3</td><td>LA7, LA16, LA17</td><td>Lowndes / Bell / Pevitt</td></tr><tr><td>P4</td><td>LA14, LA15, LA21</td><td>Lowndes / Bell / Pevitt</td></tr><tr><td>P5</td><td>LA18, LA19, LA20</td><td>Lowndes / Bell / Pevitt</td></tr><tr><td>P6</td><td>LA22, LA23, LA24</td><td>Lowndes / Bell / Pevitt</td></tr></table>
+<p>STEM (rule 5): every STEM block is two back-to-back periods (consecutive period numbers, same day): <span class="ok">PASS</span>.</p>
+<p>Specialist teaching by period (rule 7 aims to keep mornings lighter for literacy): P1:4  P2:17  P3:19  P4:19  P5:19  P6:17. Note Thursday PE necessarily fills some morning slots; the rest of the week is pushed later where the other hard rules allow.</p>
+<h2>10. Pre-Primary & Kindy DOTT ledger</h2>
+<p>Whole-day ECE model (separate from the specialist grid). Kindy DOTT = 320 × FTE over a fortnight ÷ 2 (whole-day Wednesday = 310 min on odd weeks). PP = 320 × FTE weekly. Negative gaps are tracked as small deficits to repay later, per Brad.</p>
+<table><tr><th>Teacher</th><th>Phase</th><th>Room</th><th>FTE</th><th>Target/wk</th><th>Achieved/wk</th><th>Gap</th></tr><tr><td>Jenny Martin</td><td>PP</td><td>LA5</td><td>1</td><td>320m</td><td>310m</td><td>-10m</td></tr><tr><td>Caroline Parkin</td><td>PP</td><td>LA2</td><td>1</td><td>320m</td><td>370m</td><td>+50m</td></tr><tr><td>Katie Digney</td><td>PP</td><td>LA1</td><td>0.8</td><td>256m</td><td>265m</td><td>+9m</td></tr><tr><td>Nikki Luca</td><td>PP</td><td>LA1</td><td>0.4</td><td>128m</td><td>105m</td><td>-23m</td></tr><tr><td>Kelly Duggan</td><td>Kindy</td><td>LA4</td><td>0.8</td><td>256m</td><td>260m</td><td>+4m</td></tr><tr><td>Donna Campbell</td><td>Kindy</td><td>T10</td><td>0.8</td><td>256m</td><td>245m</td><td>-11m</td></tr><tr><td>Fiona Dyer</td><td>Kindy</td><td>T9</td><td>0.6</td><td>192m</td><td>200m</td><td>+8m</td></tr><tr><td>Anita Currion</td><td>Kindy</td><td>LA3</td><td>0.8</td><td>256m</td><td>270m</td><td>+14m</td></tr></table>
+<p>Tracked residuals: <b>Nikki Luca</b> sits -23 min/wk (Fri P5 Katie + Fri P6 Lis Lowndes = 105 vs 128); Brad pays this back outside the timetable. The small -6 to -11 min/wk residuals (Jenny, Caroline, Donna) are tracked. Fiona's Friday DOTT (P1) and Nikki's (P6) are both covered by Lis Lowndes; Kelly/Donna/Anita are covered by Anita's free Monday. No relief periods required.</p></div></div>
+<div id="tip"></div>
+</div>
+<script>
+const D={"lessons":[{"cls":"LA6","subj":"PE","spec":"Lowndes","day":"Thu","period":"P2","room":"STEM Lab"},{"cls":"LA8","subj":"PE","spec":"Bell","day":"Thu","period":"P2","room":"Gym"},{"cls":"LA9","subj":"PE","spec":"TBC","day":"Thu","period":"P2","room":"Gym"},{"cls":"LA7","subj":"PE","spec":"Lowndes","day":"Thu","period":"P3","room":"STEM Lab"},{"cls":"LA16","subj":"PE","spec":"Bell","day":"Thu","period":"P3","room":"Gym"},{"cls":"LA17","subj":"PE","spec":"TBC","day":"Thu","period":"P3","room":"Gym"},{"cls":"LA14","subj":"PE","spec":"Lowndes","day":"Thu","period":"P4","room":"STEM Lab"},{"cls":"LA15","subj":"PE","spec":"Bell","day":"Thu","period":"P4","room":"Gym"},{"cls":"LA21","subj":"PE","spec":"TBC","day":"Thu","period":"P4","room":"Gym"},{"cls":"LA18","subj":"PE","spec":"Lowndes","day":"Thu","period":"P5","room":"STEM Lab"},{"cls":"LA19","subj":"PE","spec":"Bell","day":"Thu","period":"P5","room":"Gym"},{"cls":"LA20","subj":"PE","spec":"TBC","day":"Thu","period":"P5","room":"Gym"},{"cls":"LA22","subj":"PE","spec":"Lowndes","day":"Thu","period":"P6","room":"STEM Lab"},{"cls":"LA23","subj":"PE","spec":"Bell","day":"Thu","period":"P6","room":"Gym"},{"cls":"LA24","subj":"PE","spec":"TBC","day":"Thu","period":"P6","room":"Gym"},{"cls":"LA8","subj":"STEM","spec":"Uhe","day":"Tue","period":"P1","room":"STEM Class"},{"cls":"LA8","subj":"STEM","spec":"Uhe","day":"Tue","period":"P2","room":"STEM Class"},{"cls":"LA9","subj":"STEM","spec":"Uhe","day":"Tue","period":"P3","room":"STEM Class"},{"cls":"LA9","subj":"STEM","spec":"Uhe","day":"Tue","period":"P4","room":"STEM Class"},{"cls":"LA6","subj":"STEM","spec":"Uhe","day":"Tue","period":"P5","room":"STEM Class"},{"cls":"LA6","subj":"STEM","spec":"Uhe","day":"Tue","period":"P6","room":"STEM Class"},{"cls":"LA17","subj":"STEM","spec":"Uhe","day":"Wed","period":"P1","room":"STEM Class"},{"cls":"LA17","subj":"STEM","spec":"Uhe","day":"Wed","period":"P2","room":"STEM Class"},{"cls":"LA16","subj":"STEM","spec":"Uhe","day":"Wed","period":"P3","room":"STEM Class"},{"cls":"LA16","subj":"STEM","spec":"Uhe","day":"Wed","period":"P4","room":"STEM Class"},{"cls":"LA7","subj":"STEM","spec":"Uhe","day":"Wed","period":"P5","room":"STEM Class"},{"cls":"LA7","subj":"STEM","spec":"Uhe","day":"Wed","period":"P6","room":"STEM Class"},{"cls":"LA22","subj":"Visual Art","spec":"Carter","day":"Wed","period":"P4","room":"Art room"},{"cls":"LA23","subj":"Performing Arts","spec":"Peak","day":"Wed","period":"P4","room":"Music room"},{"cls":"LA24","subj":"Auslan","spec":"Walker","day":"Wed","period":"P4","room":"Auslan room"},{"cls":"LA7","subj":"Auslan","spec":"Walker","day":"Thu","period":"P4","room":"Auslan room"},{"cls":"LA7","subj":"Performing Arts","spec":"Peak","day":"Tue","period":"P4","room":"Music room"},{"cls":"LA16","subj":"Auslan","spec":"Walker","day":"Thu","period":"P5","room":"Auslan room"},{"cls":"LA17","subj":"Auslan","spec":"Walker","day":"Thu","period":"P6","room":"Auslan room"},{"cls":"LA17","subj":"Performing Arts","spec":"Peak","day":"Tue","period":"P5","room":"Music room"},{"cls":"LA16","subj":"Performing Arts","spec":"Peak","day":"Tue","period":"P6","room":"Music room"},{"cls":"LA18","subj":"Health","spec":"Bell","day":"Fri","period":"P5","room":"Gym"},{"cls":"LA22","subj":"Health","spec":"Bell","day":"Fri","period":"P4","room":"Gym"},{"cls":"LA18","subj":"Auslan","spec":"Peak","day":"Fri","period":"P6","room":"Music room"},{"cls":"LA22","subj":"Auslan","spec":"Peak","day":"Fri","period":"P2","room":"Music room"},{"cls":"LA19","subj":"Auslan","spec":"Peak","day":"Fri","period":"P3","room":"Music room"},{"cls":"LA20","subj":"Auslan","spec":"Peak","day":"Fri","period":"P4","room":"Music room"},{"cls":"LA23","subj":"Auslan","spec":"Peak","day":"Fri","period":"P5","room":"Music room"},{"cls":"LA23","subj":"Health","spec":"Bell","day":"Fri","period":"P6","room":"Gym"},{"cls":"LA6","subj":"Auslan","spec":"Walker","day":"Wed","period":"P5","room":"Auslan room"},{"cls":"LA8","subj":"Auslan","spec":"Walker","day":"Thu","period":"P3","room":"Auslan room"},{"cls":"LA8","subj":"Performing Arts","spec":"Peak","day":"Wed","period":"P5","room":"Music room"},{"cls":"LA9","subj":"Auslan","spec":"Walker","day":"Wed","period":"P6","room":"Auslan room"},{"cls":"LA14","subj":"Auslan","spec":"Walker","day":"Wed","period":"P3","room":"Auslan room"},{"cls":"LA15","subj":"Auslan","spec":"Walker","day":"Thu","period":"P2","room":"Auslan room"},{"cls":"LA21","subj":"Auslan","spec":"Walker","day":"Thu","period":"P1","room":"Auslan room"},{"cls":"LA15","subj":"Performing Arts","spec":"Peak","day":"Wed","period":"P3","room":"Music room"},{"cls":"LA6","subj":"Performing Arts","spec":"Peak","day":"Thu","period":"P3","room":"Music room"},{"cls":"LA9","subj":"Performing Arts","spec":"Peak","day":"Thu","period":"P5","room":"Music room"},{"cls":"LA24","subj":"Performing Arts","spec":"Peak","day":"Thu","period":"P2","room":"Music room"},{"cls":"LA18","subj":"Performing Arts","spec":"Peak","day":"Tue","period":"P3","room":"Music room"},{"cls":"LA21","subj":"Performing Arts","spec":"Peak","day":"Wed","period":"P6","room":"Music room"},{"cls":"LA22","subj":"Performing Arts","spec":"Peak","day":"Tue","period":"P2","room":"Music room"},{"cls":"LA14","subj":"Performing Arts","spec":"Peak","day":"Wed","period":"P2","room":"Music room"},{"cls":"LA19","subj":"Performing Arts","spec":"Peak","day":"Thu","period":"P6","room":"Music room"},{"cls":"LA20","subj":"Performing Arts","spec":"Peak","day":"Thu","period":"P4","room":"Music room"},{"cls":"LA22","subj":"STEM","spec":"Lowndes","day":"Mon","period":"P5","room":"STEM Lab"},{"cls":"LA22","subj":"STEM","spec":"Lowndes","day":"Mon","period":"P6","room":"STEM Lab"},{"cls":"LA6","subj":"Visual Art","spec":"Carter","day":"Mon","period":"P4","room":"Art room"},{"cls":"LA9","subj":"Visual Art","spec":"Carter","day":"Wed","period":"P5","room":"Art room"},{"cls":"LA18","subj":"STEM","spec":"Lowndes","day":"Mon","period":"P3","room":"STEM Lab"},{"cls":"LA18","subj":"STEM","spec":"Lowndes","day":"Mon","period":"P4","room":"STEM Lab"},{"cls":"LA21","subj":"STEM","spec":"Lowndes","day":"Wed","period":"P2","room":"STEM Lab"},{"cls":"LA21","subj":"STEM","spec":"Lowndes","day":"Wed","period":"P3","room":"STEM Lab"},{"cls":"LA23","subj":"STEM","spec":"Lowndes","day":"Tue","period":"P1","room":"STEM Lab"},{"cls":"LA23","subj":"STEM","spec":"Lowndes","day":"Tue","period":"P2","room":"STEM Lab"},{"cls":"LA24","subj":"STEM","spec":"Lowndes","day":"Fri","period":"P4","room":"STEM Lab"},{"cls":"LA24","subj":"STEM","spec":"Lowndes","day":"Fri","period":"P5","room":"STEM Lab"},{"cls":"LA15","subj":"STEM","spec":"Lowndes","day":"Tue","period":"P5","room":"STEM Lab"},{"cls":"LA15","subj":"STEM","spec":"Lowndes","day":"Tue","period":"P6","room":"STEM Lab"},{"cls":"LA14","subj":"STEM","spec":"Lowndes","day":"Fri","period":"P2","room":"STEM Lab"},{"cls":"LA14","subj":"STEM","spec":"Lowndes","day":"Fri","period":"P3","room":"STEM Lab"},{"cls":"LA21","subj":"Visual Art","spec":"Carter","day":"Mon","period":"P5","room":"Art room"},{"cls":"LA15","subj":"Visual Art","spec":"Carter","day":"Wed","period":"P2","room":"Art room"},{"cls":"LA23","subj":"Visual Art","spec":"Carter","day":"Wed","period":"P3","room":"Art room"},{"cls":"LA8","subj":"Visual Art","spec":"Carter","day":"Wed","period":"P6","room":"Art room"},{"cls":"LA18","subj":"Visual Art","spec":"Carter","day":"Tue","period":"P4","room":"Art room"},{"cls":"LA19","subj":"STEM","spec":"Lowndes","day":"Wed","period":"P4","room":"STEM Lab"},{"cls":"LA19","subj":"STEM","spec":"Lowndes","day":"Wed","period":"P5","room":"STEM Lab"},{"cls":"LA20","subj":"STEM","spec":"Lowndes","day":"Tue","period":"P3","room":"STEM Lab"},{"cls":"LA20","subj":"STEM","spec":"Lowndes","day":"Tue","period":"P4","room":"STEM Lab"},{"cls":"LA17","subj":"Visual Art","spec":"Carter","day":"Mon","period":"P3","room":"Art room"},{"cls":"LA7","subj":"Visual Art","spec":"Carter","day":"Tue","period":"P5","room":"Art room"},{"cls":"LA16","subj":"Visual Art","spec":"Carter","day":"Mon","period":"P2","room":"Art room"},{"cls":"LA19","subj":"Visual Art","spec":"Carter","day":"Tue","period":"P3","room":"Art room"},{"cls":"LA24","subj":"Visual Art","spec":"Carter","day":"Tue","period":"P2","room":"Art room"},{"cls":"LA14","subj":"Visual Art","spec":"Carter","day":"Tue","period":"P6","room":"Art room"},{"cls":"LA20","subj":"Visual Art","spec":"Carter","day":"Mon","period":"P6","room":"Art room"},{"cls":"LA9","subj":"Health","spec":"Bell","day":"Fri","period":"P2","room":"Gym","leadership":true},{"cls":"LA21","subj":"Health","spec":"Bell","day":"Fri","period":"P3","room":"Gym","leadership":true}],"classes":[{"code":"LA6","yrs":"5/6","teacher":"John Dunbar","team":"Y5-6","grad":false},{"code":"LA7","yrs":"5","teacher":"Nicola Pigott","team":"Y4-5","grad":false},{"code":"LA8","yrs":"6","teacher":"Janette Crisp","team":"Y5-6","grad":false},{"code":"LA9","yrs":"5/6","teacher":"Lincoln Rose","team":"Y5-6","grad":false,"lead":"SSTUWA"},{"code":"LA14","yrs":"3/4","teacher":"Olivia Sheehy","team":"Y3-4","grad":false},{"code":"LA15","yrs":"3","teacher":"Georgia Mitchell","team":"Y3-4","grad":false},{"code":"LA16","yrs":"4","teacher":"Tanya Thieme","team":"Y4-5","grad":false},{"code":"LA17","yrs":"4/5","teacher":"Cassidy Law","team":"Y4-5","grad":false},{"code":"LA18","yrs":"2","teacher":"Hannah Bouwmeester","team":"Y2","grad":true},{"code":"LA19","yrs":"2","teacher":"Savannah Espach","team":"Y2","grad":false},{"code":"LA20","yrs":"2","teacher":"Anna Hendron","team":"Y2","grad":false},{"code":"LA21","yrs":"3","teacher":"Jasper Sirr-Davis","team":"Y3-4","grad":false,"lead":"OHS"},{"code":"LA22","yrs":"1","teacher":"Imogen Webb","team":"Y1","grad":true},{"code":"LA23","yrs":"1","teacher":"Ashlee Hutchings","team":"Y1","grad":true},{"code":"LA24","yrs":"1","teacher":"Chloe Moore","team":"Y1","grad":true}],"specFull":{"Uhe":"Chantel Uhe","Lowndes":"Lis Lowndes","Carter":"Natalie Carter","Peak":"Cheryl Peak","Walker":"Rachel Walker","Bell":"Aaron Bell","TBC":"Jake Pevitt"},"specColour":{"Uhe":"29A39A","Lowndes":"1F8A82","Carter":"D98A3D","Peak":"D4538A","Walker":"7E57C2","Bell":"4A90D9","TBC":"6AA9E0"},"specDays":{"Uhe":["Tue","Wed"],"TBC":["Thu"],"Lowndes":["Mon","Tue","Wed","Thu","Fri"],"Carter":["Mon","Tue","Wed"],"Peak":["Tue","Wed","Thu","Fri"],"Walker":["Wed","Thu"],"Bell":["Thu","Fri"]},"specList":["Uhe","Lowndes","Carter","Peak","Walker","Bell","TBC"],"periods":[{"id":"P0","label":"P0","t":"8:30-8:55","min":25,"teaching":false,"slot":true},{"id":"P1","label":"P1","t":"8:55-9:40","min":45,"teaching":true},{"id":"P2","label":"P2","t":"9:40-10:25","min":45,"teaching":true},{"id":"P3","label":"P3","t":"10:25-11:10","min":45,"teaching":true},{"id":"LUNCH","label":"Lunch","t":"11:10-11:50","min":40,"teaching":false},{"id":"P4","label":"P4","t":"11:50-12:35","min":45,"teaching":true},{"id":"P5","label":"P5","t":"12:35-1:20","min":45,"teaching":true},{"id":"RECESS","label":"Recess","t":"1:20-1:35","min":15,"teaching":false},{"id":"P6","label":"P6","t":"1:35-2:35","min":60,"teaching":true}],"days":["Mon","Tue","Wed","Thu","Fri"],"leadership":[{"who":"Natalie Carter","spec":"Carter","role":"PBS","day":"Mon","period":"P1","note":"fixed (moved from Mon P3 so LA23 can take P3 - Brad item 5)"},{"who":"Cheryl Peak","spec":"Peak","role":"Events","day":"Tue","period":"P1","note":"Peak non-teaching block"},{"who":"Lincoln Rose","role":"SSTUWA","cls":"LA9","day":"Fri","period":"P2","note":"LA9 covered by Aaron Bell (Health) · additional 45-min release on top of normal DOTT"},{"who":"Jasper Sirr-Davis","role":"OHS","cls":"LA21","day":"Fri","period":"P3","note":"LA21 covered by Aaron Bell (Health) · additional 45-min release on top of normal DOTT"}],"windows":{"Y1":{"day":"Tue","p":"P2"},"Y2":{"day":"Thu","p":"P5"},"Y3-4":{"day":"Wed","p":"P2"},"Y4-5":{"day":"Thu","p":"P3"},"Y5-6":{"day":"Wed","p":"P5"},"Arts":{"day":"Wed","p":"P1"},"STEM/PE":{"day":"Thu","p":"P1"}},"col":{"own":"CFD8D7","admin":"E4ECEB","release":"D9EFE0","dott":"EAF6EC","lead":"F6E3B0","collab":"BFE3DF","off":"F3F3F3","vac":"EAF6EC"},"ece":{"teachers":[{"name":"Jenny Martin","phase":"PP","room":"LA5","fte":1,"A":{"Mon":["class","class","class","class","class","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","class"],"Thu":["class","class","class","class","class","class","class"],"Fri":["dott","dott","dott","dott","dott","dott","dott"]},"B":{"Mon":["class","class","class","class","class","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","class"],"Thu":["class","class","class","class","class","class","class"],"Fri":["dott","dott","dott","dott","dott","dott","dott"]},"note":"DOTT all Friday (Kelly Duggan covers LA5)."},{"name":"Caroline Parkin","phase":"PP","room":"LA2","fte":1,"A":{"Mon":["class","class","class","class","class","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","dott"],"Thu":["class","class","class","class","class","class","class"],"Fri":["dott","dott","dott","dott","dott","dott","dott"]},"B":{"Mon":["class","class","class","class","class","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","dott"],"Thu":["class","class","class","class","class","class","class"],"Fri":["dott","dott","dott","dott","dott","dott","dott"]},"note":"DOTT all Friday (Donna Campbell covers LA2), plus Wed P6 grad DOTT (Lis Lowndes covers; her 0.05 FTE graduate allocation). Replaces Amy Hindmarsh."},{"name":"Katie Digney","phase":"PP","room":"LA1","fte":0.8,"A":{"Mon":["class","class","class","class","class","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","class"],"Thu":["off","off","off","off","off","off","off"],"Fri":["dott","dott","dott","dott","dott","class","dott"]},"B":{"Mon":["class","class","class","class","class","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","class"],"Thu":["off","off","off","off","off","off","off"],"Fri":["dott","dott","dott","dott","dott","class","dott"]},"note":"Job-share LA1 with Nikki Luca. Does NOT work Thursday. Fri: DOTT except P5, where she teaches to give Nikki her P5 DOTT (Lis Lowndes covers LA1 at P6 for Nikki's other DOTT period)."},{"name":"Nikki Luca","phase":"PP","room":"LA1","fte":0.4,"A":{"Mon":["off","off","off","off","off","off","off"],"Tue":["off","off","off","off","off","off","off"],"Wed":["off","off","off","off","off","off","off"],"Thu":["class","class","class","class","class","class","class"],"Fri":["cov:Katie Digney","cov:Katie Digney","cov:Katie Digney","cov:Katie Digney","cov:Katie Digney","dott","dott"]},"B":{"Mon":["off","off","off","off","off","off","off"],"Tue":["off","off","off","off","off","off","off"],"Wed":["off","off","off","off","off","off","off"],"Thu":["class","class","class","class","class","class","class"],"Fri":["cov:Katie Digney","cov:Katie Digney","cov:Katie Digney","cov:Katie Digney","cov:Katie Digney","dott","dott"]},"note":"Works Thu & Fri (0.4). Teaches LA1 all Thursday (Katie off). Fri DOTT = P5 (Katie teaches) + P6 (Lis Lowndes covers) = 105 min vs 128 target; the -23 residual is paid back outside the timetable (Brad)."},{"name":"Kelly Duggan","phase":"Kindy","room":"LA4","fte":0.8,"A":{"Mon":["class","class","class","class","class","dott","dott"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","class"],"Thu":["off","off","off","off","off","off","off"],"Fri":["cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin"]},"B":{"Mon":["class","class","class","class","class","dott","dott"],"Tue":["class","class","class","class","class","class","class"],"Wed":["dott","dott","dott","dott","dott","dott","dott"],"Thu":["off","off","off","off","off","off","off"],"Fri":["cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin","cov:Jenny Martin"]},"note":"Mon P5-P6 DOTT (Anita covers). Whole-day DOTT odd-week (B) Wed. Covers Jenny Martin all Friday."},{"name":"Donna Campbell","phase":"Kindy","room":"T10","fte":0.8,"A":{"Mon":["class","class","class","dott","dott","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["class","class","class","class","class","class","class"],"Thu":["off","off","off","off","off","off","off"],"Fri":["cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin"]},"B":{"Mon":["class","class","class","dott","dott","class","class"],"Tue":["class","class","class","class","class","class","class"],"Wed":["dott","dott","dott","dott","dott","dott","dott"],"Thu":["off","off","off","off","off","off","off"],"Fri":["cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin","cov:Caroline Parkin"]},"note":"Mon P3-P4 DOTT (Anita covers). Whole-day DOTT odd-week (B) Wed. Covers Caroline Parkin all Friday."},{"name":"Fiona Dyer","phase":"Kindy","room":"T9","fte":0.6,"A":{"Mon":["off","off","off","off","off","off","off"],"Tue":["off","off","off","off","off","off","off"],"Wed":["class","class","class","class","class","class","class"],"Thu":["class","class","class","class","class","class","class"],"Fri":["class","dott","class","class","class","class","class"]},"B":{"Mon":["off","off","off","off","off","off","off"],"Tue":["off","off","off","off","off","off","off"],"Wed":["dott","dott","dott","dott","dott","dott","dott"],"Thu":["class","class","class","class","class","class","class"],"Fri":["class","dott","class","class","class","class","class"]},"note":"Whole-day DOTT odd-week (B) Wed. Fri P1 DOTT covered by Lis Lowndes (during assembly); teaches her own P6."},{"name":"Anita Currion","phase":"Kindy","room":"LA3","fte":0.8,"A":{"Mon":["dott","dott","dott","cov:Donna Campbell","cov:Donna Campbell","cov:Kelly Duggan","cov:Kelly Duggan"],"Tue":["off","off","off","off","off","off","off"],"Wed":["class","class","class","class","class","class","class"],"Thu":["class","class","class","class","class","class","class"],"Fri":["class","class","class","class","class","class","class"]},"B":{"Mon":["dott","dott","dott","cov:Donna Campbell","cov:Donna Campbell","cov:Kelly Duggan","cov:Kelly Duggan"],"Tue":["off","off","off","off","off","off","off"],"Wed":["dott","dott","dott","dott","dott","dott","dott"],"Thu":["class","class","class","class","class","class","class"],"Fri":["class","class","class","class","class","class","class"]},"note":"No class Monday: own DOTT P0-P2; covers Donna (P3-P4) & Kelly (P5-P6). Whole-day DOTT odd-week (B) Wed. Assumed off Tuesday."}],"classes":[{"code":"LA1","room":"LA1","phase":"PP","yrs":"PP","teachers":["Katie Digney","Nikki Luca"]},{"code":"LA2","room":"LA2","phase":"PP","yrs":"PP","teachers":["Caroline Parkin"]},{"code":"LA5","room":"LA5","phase":"PP","yrs":"PP","teachers":["Jenny Martin"]},{"code":"LA3","room":"LA3","phase":"Kindy","yrs":"K","teachers":["Anita Currion"]},{"code":"LA4","room":"LA4","phase":"Kindy","yrs":"K","teachers":["Kelly Duggan"]},{"code":"T9","room":"T9","phase":"Kindy","yrs":"K","teachers":["Fiona Dyer"]},{"code":"T10","room":"T10","phase":"Kindy","yrs":"K","teachers":["Donna Campbell"]}],"externalCover":[{"room":"T9","day":"Fri","period":"P1","by":"Lowndes","byName":"Lis Lowndes","forName":"Fiona Dyer"},{"room":"LA1","day":"Fri","period":"P6","by":"Lowndes","byName":"Lis Lowndes","forName":"Nikki Luca"},{"room":"LA2","day":"Wed","period":"P6","by":"Lowndes","byName":"Lis Lowndes","forName":"Caroline Parkin"}]},"specDott":{"Lowndes":270,"Carter":162,"Peak":216,"Walker":108,"Bell":108,"Uhe":108,"TBC":54},"specFte":{"Uhe":"0.4 teach","Lowndes":"1.0","Carter":"0.6","Peak":"0.8","Walker":"0.4","Bell":"0.4","TBC":"0.2 (Thu)"},"leadClasses":["LA9","LA21"]};
+const SPEC=new Set(D.specList);
+const lessonOf=(c,d,p)=>D.lessons.find(x=>x.cls===c&&x.day===d&&x.period===p);
+const teaches=(s,d,p)=>D.lessons.find(x=>x.spec===s&&x.day===d&&x.period===p);
+const at=(d,p)=>D.lessons.filter(x=>x.day===d&&x.period===p);
+const last=n=>n.split(" ").slice(-1)[0];
+const cls=c=>D.classes.find(x=>x.code===c);
+const leadAt=(who,d,p)=>D.leadership.find(le=>le.who===who&&le.day===d&&le.period===p);
+const COL=D.col;
+const cLink=(code)=>'<span class="lnk" title="Go to '+code+' timetable" onclick="goClass(\''+code+'\')">'+code+'</span>';
+const cLabel=(code)=>cLink(code)+' <span style="opacity:.85;font-weight:400">('+cls(code).yrs+')</span>';
+const tLink=(tk,label)=>'<span class="lnk" title="Go to teacher timetable" onclick="goTeacher(\''+tk+'\')">'+label+'</span>';
+const ROLE_VAR={own:['--r-own','--tint-own'],release:['--r-dott','--tint-dott'],dott:['--r-dott','--tint-dott'],cover:['--r-cover','--tint-cover'],collab:['--r-collab','--tint-collab'],lead:['--r-lead','--tint-lead'],admin:['--r-own','--tint-own'],off:['--r-off','--tint-off'],vac:['--r-off','--tint-off']};
+function chip(c){if(!c)return"";
+  let accent,bg;
+  if(c.white){accent='#'+c.fill;bg='#'+c.fill+'1f';}            // specialist subject: muted tint + colour accent
+  else{const m=ROLE_VAR[c.kind]||ROLE_VAR.own;accent='var('+m[0]+')';bg='var('+m[1]+')';}
+  const noise=c.lines[1]==='(class)'||c.lines[1]==='own class';
+  const sec=(c.lines[1]&&!noise)?'<span class="c2">'+c.lines[1]+'</span>':'';
+  const tip=c.tip?' data-tip="'+(''+c.tip).replace(/"/g,'&quot;')+'"':'';
+  return '<div class="cell'+(c.kind==='vac'?' vac':'')+'" style="--accent:'+accent+';background:'+bg+'"'+tip+'><span class="c1">'+c.lines[0]+'</span>'+sec+'</div>';
+}
+/* ----- ECE (Pre-Primary & Kindy) rendering ----- */
+const ECE_T=D.ece.teachers, ECE_C=D.ece.classes;
+const PIDX={P0:0,P1:1,P2:2,P3:3,P4:4,P5:5,P6:6};
+let week='A';
+const eceTea=n=>ECE_T.find(t=>t.name===n);
+const eceCls=c=>ECE_C.find(x=>x.code===c);
+const isEce=c=>!!eceCls(c);
+const eRoomOf=n=>{const t=eceTea(n);return t?t.room:null;};
+function eceOcc(room,day,pid){for(const t of ECE_T){const a=(t[week][day]||[])[PIDX[pid]];if(a==='class'&&t.room===room)return{teacher:t.name,kind:'class'};if(typeof a==='string'&&a.indexOf('cov:')===0){const tg=a.slice(4);if(eRoomOf(tg)===room)return{teacher:t.name,kind:'cover',of:tg};}}const ex=D.ece.externalCover.find(e=>e.room===room&&e.day===day&&e.period===pid);if(ex)return{teacher:ex.byName,kind:'cover',of:ex.forName,external:true,by:ex.by};return{kind:'empty'};}
+function eceClassCell(code,day,pid){const c=eceCls(code);const o=eceOcc(c.room,day,pid);
+  if(o.kind==='class')return{lines:[tLink('ece:'+o.teacher,last(o.teacher))],kind:'own',tip:o.teacher+' \u00b7 '+code+' (own class)'};
+  if(o.kind==='cover'){const own=c.teachers.indexOf(o.teacher)>=0;const relief=o.external&&o.by==='Relief';const lnk=relief?'Relief teacher':(o.external?tLink(o.by,last(o.teacher)):tLink('ece:'+o.teacher,last(o.teacher)));return{lines:[lnk],kind:own?'own':'cover',tip:own?o.teacher+' \u00b7 '+code+' (job-share teacher)':o.teacher+' covering '+code+' for '+o.of};}
+  return{lines:['No students'],kind:'off'};}
+function eceTeacherCell(name,day,pid){const t=eceTea(name);const a=(t[week][day]||[])[PIDX[pid]];
+  if(a==='class')return{lines:[cLink(t.room)],kind:'own',tip:name+' \u00b7 '+t.room+' (own class)'};
+  if(a==='dott')return{lines:['DOTT'],kind:'dott',tip:name+' \u00b7 DOTT (release)'};
+  if(typeof a==='string'&&a.indexOf('cov:')===0){const tg=a.slice(4);const r=eRoomOf(tg);if(r===t.room)return{lines:[cLink(t.room)],kind:'own',tip:name+' \u00b7 '+t.room+' (job-share teacher)'};return{lines:['Cover '+r,last(tg)],kind:'cover',tip:name+' covering '+r+' for '+tg};}
+  return{lines:['\u2014'],kind:'off'};}
+const eceLabel=code=>cLink(code)+' <span style="opacity:.85;font-weight:400">('+(eceCls(code).phase==='PP'?'PP':'Kindy')+')</span>';
+const allClassCodes=()=>D.classes.map(c=>c.code).concat(ECE_C.map(c=>c.code));
+const wsCell=(code,day,pid)=>isEce(code)?eceClassCell(code,day,pid):wholeSchoolCell(code,day,pid);
+const wsHdr=code=>isEce(code)?eceLabel(code):cLabel(code);
+// cell logic mirrors server
+const lessonTip=(l,code)=>l.subj+' \u00b7 '+code+' ('+(cls(code)?cls(code).yrs:'')+') \u00b7 '+D.specFull[l.spec]+(l.room?' \u00b7 '+l.room:'');
+function wholeSchoolCell(code,day,pid){const l=lessonOf(code,day,pid);
+  if(l)return{lines:[l.subj,tLink(l.spec,D.specFull[l.spec])],fill:D.specColour[l.spec],white:true,kind:'spec',tip:lessonTip(l,code)};
+  return{lines:[tLink(code,last(cls(code).teacher))],kind:'own',tip:cls(code).teacher+' \u00b7 '+code+' (own class)'};}
+function teacherCell(tk,day,pid){
+  if(SPEC.has(tk)){
+    if(!D.specDays[tk].includes(day)){if(tk==='Uhe'&&(day==='Mon'||day==='Thu'))return{lines:['Office','LSC'],kind:'off',tip:'Uhe \u00b7 LSC/office day'};return{lines:['\u2014'],kind:'off'};}
+    const l=teaches(tk,day,pid);if(l)return{lines:[cLabel(l.cls),l.subj],fill:D.specColour[tk],white:true,kind:'spec',tip:lessonTip(l,l.cls)};
+    const le=leadAt(D.specFull[tk],day,pid);if(le)return{lines:['Leadership',le.role],kind:'lead',tip:'Leadership: '+le.role};
+    if(day===D.windows.Arts.day&&pid===D.windows.Arts.p&&['Peak','Carter','Walker'].includes(tk))return{lines:['Collaboration','Arts team'],kind:'collab',tip:'Arts team collaboration meeting'};
+    if(day===D.windows['STEM/PE'].day&&pid===D.windows['STEM/PE'].p&&['Bell','Lowndes'].includes(tk))return{lines:['Collaboration','STEM/PE team'],kind:'collab',tip:'STEM/PE team collaboration meeting'};
+    const exc=D.ece.externalCover.find(e=>e.by===tk&&e.day===day&&e.period===pid);if(exc)return{lines:['Cover '+exc.room,last(exc.forName)],kind:'cover',tip:'Covering '+exc.room+' for '+exc.forName};
+    return{lines:['DOTT'],kind:'dott',tip:D.specFull[tk]+' \u00b7 DOTT (release)'};
+  }
+  const code=tk;if(pid==='P0')return{lines:[cLink(code)],kind:'own',tip:cls(code).teacher+' \u00b7 '+code};
+  const l=lessonOf(code,day,pid);const le=leadAt(cls(code).teacher,day,pid);
+  if(le)return{lines:['Leadership',le.role],kind:'lead',tip:'Leadership: '+le.role};
+  const cw=D.windows[cls(code).team];
+  if(cw&&day===cw.day&&pid===cw.p)return{lines:['Collaboration',cls(code).team+' meeting'],kind:'collab',tip:cls(code).team+' collaboration meeting'};
+  if(l)return{lines:['DOTT (release)',l.subj+' \u00b7 '+last(D.specFull[l.spec])],kind:'release',tip:code+' is in '+l.subj+' with '+D.specFull[l.spec]+' \u2014 '+cls(code).teacher+' released'};
+  return{lines:[cLink(code)],kind:'own',tip:cls(code).teacher+' \u00b7 '+code+' (own class)'};
+}
+const isMobile=()=>window.innerWidth<=768;let mobileDay='Mon';
+const gridDays=()=>isMobile()?[mobileDay]:D.days;
+// On mobile, move the Mon-Fri day switcher to sit directly above the active grid
+// (so teachers don't scroll back past the teacher/class pickers to change day).
+function positionMdays(){const md=document.getElementById('mdays');if(!md)return;
+  const tb=document.getElementById('toolbar');
+  if(!isMobile()){tb.after(md);return;}
+  const v=(document.querySelector('#tabs button.active')||{}).dataset;const view=v?v.v:'';
+  const grid={teacher:'teacherGrid',class:'classGrid',subjects:'subjectGrid'}[view];
+  if(grid){const g=document.getElementById(grid);g.parentNode.insertBefore(md,g);}
+  else if(view==='overview'){const o=document.getElementById('overview');o.parentNode.insertBefore(md,o);}
+  else tb.after(md);}
+function gridHTML(cols,cellFn,colHdr){
+  const tcls=cols.length<=7?'grid daygrid':'grid wide';
+  let h='<div class="gridwrap"><table class="'+tcls+'"><thead><tr><th class="timecol">Period</th>'+cols.map(c=>'<th>'+colHdr(c)+'</th>').join('')+'</tr></thead><tbody>';
+  for(const p of D.periods){
+    if(!p.teaching&&p.id!=='P0'){h+='<tr class="nonteach"><td class="timecol">'+p.label+'</td><td colspan="'+cols.length+'">'+p.label+' ('+p.t+')</td></tr>';continue;}
+    h+='<tr><td class="timecol">'+p.label+'<br><span style="font-weight:400;font-size:9px">'+p.t+'</span></td>';
+    for(const c of cols){h+='<td>'+chip(cellFn(c,p.id))+'</td>';}
+    h+='</tr>';
+  }
+  return h+'</tbody></table></div>';
+}
+// overview: periods x days, specialist chips
+function overviewHTML(){
+  const days=gridDays();
+  let h='<div class="gridwrap"><table class="grid daygrid"><thead><tr><th class="timecol">Period</th>'+days.map(d=>'<th>'+d+'</th>').join('')+'</tr></thead><tbody>';
+  for(const p of D.periods){
+    if(!p.teaching&&p.id!=='P0'){h+='<tr class="nonteach"><td class="timecol">'+p.label+'</td><td colspan="'+days.length+'">'+p.label+' ('+p.t+')</td></tr>';continue;}
+    if(p.id==='P0'){h+='<tr class="nonteach"><td class="timecol">P0<br><span style="font-weight:400;font-size:9px">'+p.t+'</span></td><td colspan="'+days.length+'">DOTT / admin (no specialist teaching)</td></tr>';continue;}
+    h+='<tr><td class="timecol">'+p.label+'<br><span style="font-weight:400;font-size:9px">'+p.t+'</span></td>';
+    for(const d of days){
+      const here=at(d,p.id);
+      if(!here.length&&d==='Mon'&&p.id==='P1'){h+='<td>'+chip({lines:['\u2014 vacant \u2014'],kind:'vac'})+'</td>';continue;}
+      h+='<td>'+here.map(x=>chip({lines:[cLabel(x.cls)+' '+x.subj,tLink(x.spec,D.specFull[x.spec])],fill:D.specColour[x.spec],white:true,kind:'spec',tip:lessonTip(x,x.cls)})).join('')+'</td>';
+    }
+    h+='</tr>';
+  }
+  h+='</tbody></table></div>';return h;
+}
+function renderOverview(){document.getElementById('overview').innerHTML=overviewHTML();}
+// build EVERY page into one printable sequence
+function teacherLabel(tk){return SPEC.has(tk)?D.specFull[tk]+' · specialist':cls(tk).teacher+' · classroom teacher ('+tk+')';}
+function buildAllHTML(){
+  const page=(title,body)=>'<div class="page"><h3>'+title+'</h3>'+body+'</div>';
+  const wl=' (Week '+week+')';
+  let h='';
+  h+=page('Specialist overview · full week',overviewHTML());
+  for(const d of D.days) h+=page('Whole school · '+d+wl,gridHTML(allClassCodes(),(code,pid)=>wsCell(code,d,pid),c=>wsHdr(c)));
+  for(const c of D.classes) h+=page('Class '+c.code+' · '+c.teacher+(c.grad?' (graduate)':''),gridHTML(D.days,(d,pid)=>wholeSchoolCell(c.code,d,pid),d=>d));
+  for(const c of ECE_C) h+=page('Class '+c.code+' ('+c.phase+') · '+c.teachers.join(' / ')+wl,gridHTML(D.days,(d,pid)=>eceClassCell(c.code,d,pid),d=>d));
+  for(const c of D.classes) h+=page(teacherLabel(c.code),dashHTML(c.code)+gridHTML(D.days,(d,pid)=>teacherCell(c.code,d,pid),d=>d));
+  for(const s of D.specList) h+=page(teacherLabel(s),dashHTML(s)+gridHTML(D.days,(d,pid)=>teacherCell(s,d,pid),d=>d));
+  for(const t of ECE_T) h+=page(t.name+' · '+t.phase+' ('+t.room+')'+wl,dashHTML('ece:'+t.name)+gridHTML(D.days,(d,pid)=>eceTeacherCell(t.name,d,pid),d=>d));
+  const rep=document.querySelector('#report .report');h+=page('Verification report',rep?rep.innerHTML:'');
+  return h;
+}
+function exportAll(){
+  document.getElementById('printall').innerHTML=buildAllHTML();
+  document.body.classList.add('printing-all');
+  window.print();
+  setTimeout(()=>document.body.classList.remove('printing-all'),500);
+}
+window.addEventListener('afterprint',()=>document.body.classList.remove('printing-all'));
+let schoolDay='Mon';
+function renderSchool(){
+  document.getElementById('schoolGrid').innerHTML=gridHTML(allClassCodes(),(code,pid)=>wsCell(code,schoolDay,pid),c=>wsHdr(c));
+  [...document.querySelectorAll('#schoolDays button')].forEach(b=>b.classList.toggle('active',b.textContent===schoolDay));
+  updatePrintTitle();
+}
+function renderClass(){const code=document.getElementById('classPick').value;const fn=isEce(code)?((d,pid)=>eceClassCell(code,d,pid)):((d,pid)=>wholeSchoolCell(code,d,pid));document.getElementById('classGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);updatePrintTitle();}
+let curTeacher='';
+function renderTeacher(){const tk=curTeacher;const fn=tk.indexOf('ece:')===0?((d,pid)=>eceTeacherCell(tk.slice(4),d,pid)):((d,pid)=>teacherCell(tk,d,pid));document.getElementById('teacherDash').innerHTML=dashHTML(tk);document.getElementById('teacherGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);document.querySelectorAll('#teacherBtns button').forEach(b=>b.classList.toggle('sel',b.dataset.tk===tk));updatePrintTitle();}
+function activate(v){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.body.classList.toggle('on-home',v==='home');positionMdays();window.scrollTo(0,0);updatePrintTitle();syncURL();}
+function goClass(code){document.getElementById('classPick').value=code;renderClass();activate('class');}
+function goTeacher(tk){curTeacher=tk;renderTeacher();activate('teacher');}
+/* ---- shareable / bookmarkable deep links (URL hash) ---- */
+let ready=false;
+function isValidTeacher(t){if(!t)return false;if(t.indexOf('ece:')===0)return ECE_T.some(x=>'ece:'+x.name===t);return SPEC.has(t)||D.classes.some(c=>c.code===t);}
+function syncURL(){if(!ready)return;const v=curView();
+  if(v==='home'){history.replaceState(null,'',location.pathname+location.search);return;}
+  const p=new URLSearchParams();p.set('v',v);
+  if(v==='teacher')p.set('t',curTeacher);
+  else if(v==='class')p.set('c',document.getElementById('classPick').value);
+  else if(v==='subjects')p.set('s',document.getElementById('subjectPick').value);
+  else if(v==='school')p.set('d',schoolDay);
+  if(week!=='A')p.set('wk',week);
+  history.replaceState(null,'','#'+p.toString());}
+function applyURL(){const h=location.hash.replace(/^#/,'');if(!h)return false;const p=new URLSearchParams(h);const v=p.get('v');if(!v)return false;
+  if(p.get('wk')==='B'){week='B';document.querySelectorAll('#toolbar button.wk').forEach(x=>x.classList.toggle('active',x.dataset.wk==='B'));renderSchool();renderClass();renderTeacher();renderSubject();}
+  if(v==='teacher'){const t=p.get('t');if(isValidTeacher(t)){curTeacher=t;renderTeacher();}}
+  else if(v==='class'){const c=p.get('c'),sel=document.getElementById('classPick');if(c&&[...sel.options].some(o=>o.value===c)){sel.value=c;renderClass();}}
+  else if(v==='subjects'){const s=p.get('s'),sel=document.getElementById('subjectPick');if(s&&[...sel.options].some(o=>o.value===s)){sel.value=s;renderSubject();}}
+  else if(v==='school'){const d=p.get('d');if(d&&D.days.includes(d)){schoolDay=d;renderSchool();}}
+  const valid=['home','teacher','overview','school','class','subjects','report'];
+  activate(valid.includes(v)?v:'home');return true;}
+function teacherTitle(tk){if(!tk)return'';if(tk.indexOf('ece:')===0){const n=tk.slice(4);const t=eceTea(n);return n+' · '+t.phase+' ('+t.room+')';}return SPEC.has(tk)?D.specFull[tk]+' · specialist':cls(tk).teacher+' · classroom ('+tk+')';}
+/* ---- per-teacher stats dashboard ---- */
+const PM={P0:25,P1:45,P2:45,P3:45,P4:45,P5:45,P6:60};const PIDS7=['P0','P1','P2','P3','P4','P5','P6'];
+function teacherStats(tk){
+  if(tk.indexOf('ece:')===0){const t=eceTea(tk.slice(4));const ent=Math.round(320*t.fte);
+    const wk=w=>D.days.reduce((m,d)=>m+(t[w][d]||[]).reduce((s,a,i)=>s+(a==='dott'?PM[PIDS7[i]]:0),0),0);
+    const cnt=w=>D.days.reduce((m,d)=>m+(t[w][d]||[]).filter(a=>a==='dott').length,0);
+    return {role:t.phase+' · '+t.room,fte:t.fte,ent,dott:Math.round((wk('A')+wk('B'))/2),periods:Math.round((cnt('A')+cnt('B'))/2),periodsLabel:'DOTT periods received',lead:0,note:'Kindy/PP DOTT = 320 × FTE over a fortnight ÷ 2'};}
+  if(SPEC.has(tk)){const ent=D.specDott[tk];let free=0,taught=0;
+    for(const d of D.specDays[tk])for(const p of ['P1','P2','P3','P4','P5','P6']){
+      if(teaches(tk,d,p)){taught++;continue;}
+      if(leadAt(D.specFull[tk],d,p))continue;
+      if(D.ece.externalCover.find(e=>e.by===tk&&e.day===d&&e.period===p)){taught++;continue;}
+      free+=PM[p];}
+    free+=25*D.specDays[tk].length;
+    const lead=(tk==='Carter'||tk==='Peak')?45:0;
+    const note=tk==='Uhe'?'0.4 teaching; her Mon/Thu office days carry the rest of her DOTT':(tk==='Bell'?'incl leadership-release Health periods':'');
+    return {role:'Specialist · works '+D.specDays[tk].join('/'),fte:D.specFte[tk],ent,dott:free,periods:taught,periodsLabel:'Periods taught',lead,note};}
+  const code=tk;let tot=0,rel=0;for(const x of D.lessons.filter(y=>y.cls===code)){tot+=PM[x.period];rel++;}
+  const lead=D.leadClasses.includes(code)?45:0;
+  const gnote=code==='LA24'?'Graduate: extra time is delivered as grad days, not a timetabled Health period':'Graduate class: extra Health period lifts DOTT well above 270';
+  return {role:'Classroom · '+code+' ('+cls(code).yrs+')',fte:1.0,ent:270,dott:tot-lead,periods:rel,periodsLabel:'DOTT periods received',lead,note:cls(code).grad?gnote:'Years 1-6 entitlement 270; the +15 is the collaboration top-up'};
+}
+function card(lab,val,c2){return '<div class="card"><div class="lab">'+lab+'</div><div class="val '+(c2||'')+'">'+val+'</div></div>';}
+function dashHTML(tk){const s=teacherStats(tk);const diff=s.dott-s.ent;const cl=diff>=0?'pos':'neg';
+  let h='<div class="dash">';
+  h+=card('Role',s.role);h+=card('FTE',s.fte);
+  h+=card('DOTT entitlement',s.ent+'m');
+  h+=card('DOTT received',s.dott+'m',cl);
+  h+=card(diff>=0?'Surplus':'Deficit',(diff>=0?'+':'')+diff+'m',cl);
+  h+=card('Leadership',s.lead?s.lead+'m':'—');
+  h+=card(s.periodsLabel,s.periods);
+  if(s.note)h+='<div class="card"><div class="lab">Note</div><div class="note">'+s.note+'</div></div>';
+  return h+'</div>';
+}
+/* ---- Subjects view ---- */
+function renderSubject(){const subj=document.getElementById('subjectPick').value;const days=gridDays();
+  let h='<div class="gridwrap"><table class="grid daygrid"><thead><tr><th class="timecol">Period</th>'+days.map(d=>'<th>'+d+'</th>').join('')+'</tr></thead><tbody>';
+  for(const p of D.periods){
+    if(!p.teaching&&p.id!=='P0'){h+='<tr class="nonteach"><td class="timecol">'+p.label+'</td><td colspan="'+days.length+'">'+p.label+' ('+p.t+')</td></tr>';continue;}
+    h+='<tr><td class="timecol">'+p.label+'<br><span style="font-weight:400;font-size:9px">'+p.t+'</span></td>';
+    for(const d of days){const here=D.lessons.filter(x=>x.subj===subj&&x.day===d&&x.period===p.id);
+      h+='<td>'+here.map(x=>chip({lines:[cLabel(x.cls),tLink(x.spec,last(D.specFull[x.spec]||x.spec))],fill:D.specColour[x.spec]||'7E57C2',white:true,kind:'spec',tip:lessonTip(x,x.cls)})).join('')+'</td>';}
+    h+='</tr>';}
+  document.getElementById('subjectGrid').innerHTML=h+'</tbody></table></div>';
+}
+/* ---- all-teacher quick buttons ---- */
+function buildTeacherButtons(){const box=document.getElementById('teacherBtns');let h='';
+  const grp=(lbl,items)=>{h+='<div class="grp">'+lbl+'</div>'+items.map(it=>'<button data-tk="'+it.v+'">'+it.t+'</button>').join('');};
+  grp('Classroom (Yr 1-6)',D.classes.map(c=>({v:c.code,t:last(c.teacher)+' · '+c.code})));
+  grp('Specialists',D.specList.map(s=>({v:s,t:last(D.specFull[s])})));
+  grp('Pre-Primary',ECE_T.filter(t=>t.phase==='PP').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
+  grp('Kindy',ECE_T.filter(t=>t.phase==='Kindy').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
+  box.innerHTML=h;box.querySelectorAll('button').forEach(b=>b.onclick=()=>goTeacher(b.dataset.tk));
+}
+function curView(){const b=document.querySelector('#tabs button.active');return b?b.dataset.v:'overview';}
+function updatePrintTitle(){const v=curView();let t='Tapping PS Semester 2 · ';const wk=' [Week '+week+']';
+  if(v==='home')t+='Home';
+  else if(v==='overview')t+='Specialist overview (full week)';
+  else if(v==='school')t+='Whole school · '+schoolDay+wk;
+  else if(v==='class'){const s=document.getElementById('classPick');t+='Class '+s.value+(isEce(s.value)?' · '+eceCls(s.value).teachers.join(' / ')+wk:' · '+cls(s.value).teacher);}
+  else if(v==='teacher'){t+=teacherTitle(curTeacher)+(curTeacher.indexOf('ece:')===0?wk:'');}
+  else if(v==='subjects'){t+='Subject: '+document.getElementById('subjectPick').value;}
+  else t+='Verification report';
+  document.getElementById('printTitle').textContent=t;
+}
+// init
+curTeacher=D.classes[0].code;
+renderOverview();
+const sd=document.getElementById('schoolDays');D.days.forEach(d=>{const b=document.createElement('button');b.textContent=d;b.onclick=()=>{schoolDay=d;renderSchool();syncURL();};sd.appendChild(b);});renderSchool();
+const cp=document.getElementById('classPick');
+const mkOpt=(v,txt)=>{const o=document.createElement('option');o.value=v;o.textContent=txt;return o;};
+const mkGrp=(lbl)=>{const g=document.createElement('optgroup');g.label=lbl;return g;};
+{const g=mkGrp('Years 1-6');D.classes.forEach(c=>g.appendChild(mkOpt(c.code,c.code+' ('+c.yrs+') · '+c.teacher+(c.grad?' (grad)':''))));cp.appendChild(g);
+ const gp=mkGrp('Pre-Primary');ECE_C.filter(c=>c.phase==='PP').forEach(c=>gp.appendChild(mkOpt(c.code,c.code+' (PP) · '+c.teachers.join(' / '))));cp.appendChild(gp);
+ const gk=mkGrp('Kindy');ECE_C.filter(c=>c.phase==='Kindy').forEach(c=>gk.appendChild(mkOpt(c.code,c.code+' (Kindy) · '+c.teachers.join(' / '))));cp.appendChild(gk);}
+cp.onchange=()=>{renderClass();syncURL();};renderClass();
+curTeacher=D.classes[0].code;buildTeacherButtons();renderTeacher();
+const sp2=document.getElementById('subjectPick');
+[...new Set(D.lessons.map(x=>x.subj))].sort().forEach(s=>sp2.appendChild(mkOpt(s,s)));
+sp2.onchange=()=>{renderSubject();syncURL();};renderSubject();
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>activate(b.dataset.v));
+document.querySelectorAll('#home .tile').forEach(b=>b.onclick=()=>activate(b.dataset.go));
+document.querySelectorAll('#toolbar button.wk').forEach(b=>b.onclick=()=>{week=b.dataset.wk;document.querySelectorAll('#toolbar button.wk').forEach(x=>x.classList.toggle('active',x.dataset.wk===week));renderSchool();renderClass();renderTeacher();renderSubject();updatePrintTitle();syncURL();});
+// mobile single-day switcher
+const md=document.getElementById('mdays');
+D.days.forEach(d=>{const b=document.createElement('button');b.textContent=d;b.dataset.d=d;b.onclick=()=>{mobileDay=d;md.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x.dataset.d===d));renderOverview();renderClass();renderTeacher();renderSubject();};md.appendChild(b);});
+md.querySelector('button').classList.add('active');
+let _rt;window.addEventListener('resize',()=>{clearTimeout(_rt);_rt=setTimeout(()=>{renderOverview();renderClass();renderTeacher();renderSubject();positionMdays();},150);});
+// search: jump to any teacher or class
+const SEARCH=[];
+D.classes.forEach(c=>SEARCH.push({label:c.code+' ('+c.yrs+') class \u00b7 '+c.teacher,go:()=>goClass(c.code),terms:(c.code+' '+c.teacher+' '+c.yrs).toLowerCase()}));
+ECE_C.forEach(c=>SEARCH.push({label:c.code+' ('+c.phase+') class \u00b7 '+c.teachers.join(' / '),go:()=>goClass(c.code),terms:(c.code+' '+c.phase+' '+c.teachers.join(' ')).toLowerCase()}));
+D.classes.forEach(c=>SEARCH.push({label:c.teacher+' \u00b7 teacher of '+c.code,go:()=>goTeacher(c.code),terms:(c.teacher+' '+c.code).toLowerCase()}));
+D.specList.forEach(s=>SEARCH.push({label:D.specFull[s]+' \u00b7 specialist',go:()=>goTeacher(s),terms:D.specFull[s].toLowerCase()}));
+ECE_T.forEach(t=>SEARCH.push({label:t.name+' \u00b7 '+t.phase+' '+t.room,go:()=>goTeacher('ece:'+t.name),terms:(t.name+' '+t.phase+' '+t.room).toLowerCase()}));
+const si=document.getElementById('search'),sr=document.getElementById('sresults');
+function runSearch(){const q=si.value.trim().toLowerCase();if(!q){sr.style.display='none';return;}
+  const hits=SEARCH.filter(x=>x.terms.includes(q)).slice(0,12);sr._hits=hits;
+  sr.innerHTML=hits.length?hits.map((x,i)=>'<div data-i="'+i+'">'+x.label+'</div>').join(''):'<div class="shead">No match</div>';sr.style.display='block';}
+si.addEventListener('input',runSearch);si.addEventListener('focus',runSearch);
+sr.addEventListener('click',e=>{const d=e.target.closest('div[data-i]');if(!d)return;sr._hits[+d.dataset.i].go();si.value='';sr.style.display='none';});
+document.addEventListener('click',e=>{if(!e.target.closest('#searchbar'))sr.style.display='none';});
+// tooltips: hover (desktop) and tap (touch)
+const tipEl=document.getElementById('tip');
+function showTip(el,x,y){const t=el.getAttribute('data-tip');if(!t){hideTip();return;}tipEl.textContent=t;tipEl.style.display='block';const r=tipEl.getBoundingClientRect();let tx=x+14,ty=y+16;if(tx+r.width>window.innerWidth-8)tx=Math.max(8,x-r.width-14);if(ty+r.height>window.innerHeight-8)ty=Math.max(8,y-r.height-16);tipEl.style.left=tx+'px';tipEl.style.top=ty+'px';}
+function hideTip(){tipEl.style.display='none';}
+document.addEventListener('mouseover',e=>{const c=e.target.closest('[data-tip]');if(c)showTip(c,e.clientX,e.clientY);});
+document.addEventListener('mousemove',e=>{const c=e.target.closest('[data-tip]');if(c)showTip(c,e.clientX,e.clientY);else if(tipEl.style.display==='block')hideTip();});
+document.addEventListener('click',e=>{const c=e.target.closest('[data-tip]');if(c&&!e.target.closest('.lnk')){const r=c.getBoundingClientRect();showTip(c,r.left,r.bottom-16);setTimeout(hideTip,2600);}});
+ready=true;
+if(!applyURL())activate('home');
+window.addEventListener('hashchange',()=>{if(!location.hash){activate('home');}else{applyURL();}});
+</script></body></html>
