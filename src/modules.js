@@ -15,8 +15,9 @@ export const MODULES = [
     key: 'dott',
     name: 'DOTT Tracker',
     description:
-      'DOTT and leadership time tracking, shared live across the admin team.',
+      'Every teacher\'s DOTT baseline straight from the timetable, plus the lost-and-gained ledger.',
     status: 'building',
+    href: '#/dott',
   },
   {
     key: 'ea',

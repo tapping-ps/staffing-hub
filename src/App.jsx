@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { MODULES, STATUS_LABELS } from './modules.js'
+import DottModule from './modules/dott/DottModule.jsx'
 import './App.css'
 
 function ModuleTile({ module }) {
@@ -24,6 +26,17 @@ function ModuleTile({ module }) {
 }
 
 export default function App() {
+  const [route, setRoute] = useState(window.location.hash)
+  useEffect(() => {
+    const onHash = () => setRoute(window.location.hash)
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+
+  if (route.startsWith('#/dott')) {
+    return <DottModule onHome={() => (window.location.hash = '')} />
+  }
+
   return (
     <div className="hub">
       <header className="hub-header">

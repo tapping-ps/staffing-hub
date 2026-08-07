@@ -1005,3 +1005,71 @@ function eceTeacherCellX(name, day, pid, week) {
   console.log("Wrote: Tapping_S2_Specialist_Timetable.html (tabs: Specialist overview · Whole school · Class · Teacher · Verification)");
   console.log("Wrote: Tapping_S2_Verification_Report.md");
 })();
+
+/* =====================================================================
+   HUB ADDITION (Staffing Hub, 2026-08-07): machine-readable DOTT baseline.
+   Same data, same rules as the dashboards/verification above — one
+   calculator, two outputs. The hub's DOTT tracker reads this file, so a
+   timetable change flows into the tracker at the next rebuild.
+   ===================================================================== */
+(function writeDottBaseline() {
+  const staff = [];
+  // Classroom teachers (Years 1-6): DOTT = minutes their class is with a
+  // specialist; the 45-min leadership Health (LA9/LA21) is reported
+  // separately, matching the verification report.
+  for (const c of CLASSES) {
+    const total = forClass(c.code).reduce((a, x) => a + PMIN[x.period], 0);
+    const lead = LEAD_CLASSES.includes(c.code) ? 45 : 0;
+    staff.push({
+      key: c.code, name: c.teacher, group: "classroom",
+      label: `Classroom · ${c.code} (${c.yrs})`, fte: 1.0,
+      entitlement: 270, weeklyDott: total - lead, lead,
+      grad: !!c.grad,
+      note: c.code === "LA24"
+        ? "Graduate: extra time delivered as grad days, not a timetabled Health period"
+        : c.grad ? "Graduate class: extra Health period lifts DOTT above 270"
+        : lead ? "+15 collab top-up; +45 leadership (separate)"
+        : "Includes the 15-min collaboration top-up",
+    });
+  }
+  // Specialists: free periods on working days (excluding taught periods,
+  // leadership blocks and external ECE covers) + P0 each working day.
+  for (const sp of SPEC_LIST) {
+    let free = 0;
+    for (const d of SPEC_DAYS[sp]) for (const p of TEACH) {
+      if (teaches(sp, d, p)) continue;
+      if (leadAt(SPECIALIST_FULL[sp], d, p)) continue;
+      if (ECE.externalCover.find(e => e.by === sp && e.day === d && e.period === p)) continue;
+      free += PMIN[p];
+    }
+    free += 25 * SPEC_DAYS[sp].length;
+    staff.push({
+      key: "spec:" + sp, name: SPECIALIST_FULL[sp], group: "specialist",
+      label: "Specialist · works " + SPEC_DAYS[sp].join("/"),
+      fte: parseFloat(SPEC_FTE[sp]) || 1.0, fteLabel: SPEC_FTE[sp],
+      entitlement: SPEC_DOTT[sp], weeklyDott: free,
+      lead: (sp === "Carter" || sp === "Peak") ? 45 : 0,
+      note: sp === "Uhe" ? "0.4 teaching; her Mon/Thu office days carry the rest of her DOTT"
+        : sp === "Bell" ? "Includes leadership-release Health periods" : "",
+    });
+  }
+  // Kindy / Pre-Primary: the ECE ledger (fortnight-average weekly DOTT).
+  for (const r of ECE.ledger()) {
+    staff.push({
+      key: "ece:" + r.name, name: r.name, group: "ece",
+      label: `${r.phase} · ${r.room}`, fte: r.fte,
+      entitlement: r.target, weeklyDott: r.weekly, lead: 0,
+      note: r.note || "",
+    });
+  }
+  const out = {
+    meta: {
+      source: "solution.json + ece-data.js via build-outputs.js",
+      timetableGenerated: SOL.meta.generated,
+      baselineBuilt: new Date().toISOString().slice(0, 10),
+    },
+    staff,
+  };
+  fs.writeFileSync(path.join(__dirname, "dott-baseline.json"), JSON.stringify(out, null, 2));
+  console.log("Wrote: dott-baseline.json (" + staff.length + " staff)");
+})();

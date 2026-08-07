@@ -22,7 +22,13 @@ republish (steps below). Never edit the original from this repo.
   1. `cd timetable && npm install && node build-outputs.js`
   2. Copy the freshly written `timetable/index.html` over
      `public/timetable/index.html`
-  3. From the repo root: `npm run build`, then commit (including `docs/`)
+  3. Copy `timetable/dott-baseline.json` over `public/dott-baseline.json`
+     (build-outputs.js regenerates it; the DOTT tracker reads it, which is
+     how timetable changes flow into the tracker)
+  4. If teachers were added/renamed: `node scripts/gen-staff-sync.mjs`
+     from the repo root, then paste `supabase/002-staff-sync.sql` into the
+     Supabase SQL Editor and Run (safe to re-run, upserts by hub_key)
+  5. From the repo root: `npm run build`, then commit (including `docs/`)
      and push. Pages redeploys automatically.
   Note: `build-outputs.js` stamps "Last updated" with the build date.
 - `index.html` / `Tapping_S2_Specialist_Timetable.html` / `.xlsx` /
