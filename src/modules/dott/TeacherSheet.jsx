@@ -159,6 +159,75 @@ function DayEditor({ row, term, date, existing, onDone }) {
   )
 }
 
+function CarryCard({ row, reload }) {
+  const { tier } = useAuth()
+  const [editing, setEditing] = useState(false)
+  const [minutes, setMinutes] = useState(row.carry ?? 0)
+  const [note, setNote] = useState(row.carryNote ?? '')
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState(null)
+  const carry = row.carry ?? 0
+
+  async function save(e) {
+    e.preventDefault()
+    setBusy(true)
+    setError(null)
+    const { error: err } = await supabase
+      .from('staff')
+      .update({ carry_minutes: Number(minutes) || 0, carry_note: note.trim() || null })
+      .eq('id', row.dbId)
+    setBusy(false)
+    if (err) setError(err.message)
+    else {
+      setEditing(false)
+      reload()
+    }
+  }
+
+  return (
+    <div className="card">
+      <span className="lab">Carried in (pre-hub)</span>
+      {!editing && (
+        <>
+          <span className={`val ${carry > 0 ? 'pos' : carry < 0 ? 'neg' : ''}`}>{fmt(carry)}</span>
+          {row.carryNote && <span className="carry-note">{row.carryNote}</span>}
+          {tier === 'master' && row.dbId && (
+            <button className="btn-link" onClick={() => setEditing(true)}>
+              {carry !== 0 || row.carryNote ? 'Edit' : 'Set carry-in'}
+            </button>
+          )}
+        </>
+      )}
+      {editing && (
+        <form className="carry-form" onSubmit={save}>
+          <input
+            type="number"
+            step="1"
+            value={minutes}
+            onChange={(e) => setMinutes(e.target.value)}
+            title="Minutes: positive = surplus, negative = deficit"
+          />
+          <input
+            type="text"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="e.g. carried from Terms 1-3 2026"
+          />
+          {error && <span className="dott-error">{error}</span>}
+          <div className="entry-actions">
+            <button className="btn-primary" type="submit" disabled={busy}>
+              {busy ? 'Saving…' : 'Save'}
+            </button>
+            <button className="btn-link" type="button" onClick={() => setEditing(false)}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
+    </div>
+  )
+}
+
 export default function TeacherSheet({ row, term, entries, canEdit, reload }) {
   const [editingDate, setEditingDate] = useState(null)
   const { session } = useAuth()
@@ -166,6 +235,7 @@ export default function TeacherSheet({ row, term, entries, canEdit, reload }) {
   const agreed = agreedTotal(row)
   const above = aboveAgreed(row)
   const adjust = entries.reduce((a, e) => a + Number(e.minutes), 0)
+  const carry = row.carry ?? 0
 
   const byDate = Object.fromEntries(entries.map((e) => [e.date, e]))
   const today = isoDate(new Date())
@@ -176,7 +246,7 @@ export default function TeacherSheet({ row, term, entries, canEdit, reload }) {
     const now = new Date()
     if (now >= start) weeksElapsed = Math.min(term.week_count, Math.floor((now - start) / 86400000 / 7) + 1)
   }
-  const balance = term ? above * weeksElapsed + adjust : null
+  const balance = term ? carry + above * weeksElapsed + adjust : null
 
   return (
     <div className="sheet">
@@ -222,6 +292,7 @@ export default function TeacherSheet({ row, term, entries, canEdit, reload }) {
         </div>
         {term && (
           <>
+            <CarryCard row={row} reload={reload} />
             <div className="card">
               <span className="lab">Adjustments this term</span>
               <span className={`val ${adjust > 0 ? 'pos' : adjust < 0 ? 'neg' : ''}`}>{fmt(adjust)}</span>

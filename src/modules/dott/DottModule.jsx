@@ -137,7 +137,8 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
   const above = aboveAgreed(row)
   const adjust = entries.reduce((a, e) => a + Number(e.minutes), 0)
   const weeks = weeksElapsed(term)
-  const balance = term ? above * weeks + adjust : null
+  const carry = row.carry ?? 0
+  const balance = term ? carry + above * weeks + adjust : null
 
   async function remove(entry) {
     await supabase.from('dott_entries').delete().eq('id', entry.id)
@@ -196,6 +197,12 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
           <td colSpan={term ? 9 : 7}>
             <div className="detail">
               {row.note && <p className="detail-note">{row.note}</p>}
+              {carry !== 0 && (
+                <p className="detail-note">
+                  Carried in from previous terms: <strong className={carry > 0 ? 'pos' : 'neg'}>{fmt(carry)}</strong>
+                  {row.carryNote ? ` (${row.carryNote})` : ''}
+                </p>
+              )}
               {row.lead > 0 && (
                 <p className="detail-note">Leadership release: {row.lead}m per week, tracked separately from DOTT.</p>
               )}
@@ -359,7 +366,7 @@ export default function DottModule({ onHome }) {
       return
     }
     Promise.all([
-      supabase.from('staff').select('id, hub_key, full_name').eq('active', true),
+      supabase.from('staff').select('*').eq('active', true),
       supabase.from('terms').select('*').order('year').order('term_number'),
     ]).then(([staffRes, termRes]) => {
       setRegistry(staffRes.data ?? [])
@@ -387,7 +394,12 @@ export default function DottModule({ onHome }) {
   const rows = useMemo(() => {
     if (!baseline) return []
     const byKey = Object.fromEntries(registry.map((s) => [s.hub_key, s]))
-    return baseline.staff.map((s) => ({ ...s, dbId: byKey[s.key]?.id ?? null }))
+    return baseline.staff.map((s) => ({
+      ...s,
+      dbId: byKey[s.key]?.id ?? null,
+      carry: Number(byKey[s.key]?.carry_minutes ?? 0),
+      carryNote: byKey[s.key]?.carry_note ?? null,
+    }))
   }, [baseline, registry])
 
   const entriesByStaff = useMemo(() => {
@@ -412,11 +424,13 @@ export default function DottModule({ onHome }) {
           const adjust = r.dbId
             ? (entriesByStaff[r.dbId] ?? []).reduce((a, e) => a + Number(e.minutes), 0)
             : 0
-          const value = showTermMeasure ? above * weeks + adjust : above
+          const carry = r.carry ?? 0
+          const value = showTermMeasure ? carry + above * weeks + adjust : above
           const agreed = agreedTotal(r)
           const title =
             `${r.name} · entitlement ${r.entitlement}m · timetabled ${r.weeklyDott}m` +
             (agreed ? ` · agreed extras +${agreed}m` : '') +
+            (showTermMeasure && carry !== 0 ? ` · carried in ${fmt(carry)}` : '') +
             (showTermMeasure
               ? ` · adjustments ${fmt(adjust)} · balance ${fmt(value)}`
               : ` · above agreed ${fmt(above)}`)
@@ -579,7 +593,9 @@ export default function DottModule({ onHome }) {
         session, and the graduate allocation is protected. They are shown as sub-numbers, not surplus.
         Above agreed is what a teacher truly runs over or under each week once the agreed package is
         honoured. Adjustments are DOTT lost (negative) or gained (positive) recorded by key holders. Term
-        balance = above agreed × weeks so far + adjustments. Leadership time (SSTUWA, OHS, PBS, Events) is
+        balance = carried-in balance + above agreed × weeks so far + adjustments (carry-in covers surplus or
+        deficit from terms before the hub went live; masters set it on each teacher's sheet). Leadership
+        time (SSTUWA, OHS, PBS, Events) is
         its own column: a separate release on top of DOTT, never counted in the DOTT figures or balances.
       </p>
       )}

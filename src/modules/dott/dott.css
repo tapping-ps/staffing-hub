@@ -700,6 +700,27 @@ td.num {
   color: var(--color-text);
 }
 
+.carry-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.carry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.carry-form input {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+}
+
 .card-balance {
   border-color: var(--color-border-strong);
   background: var(--color-surface-raised);
