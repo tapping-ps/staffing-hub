@@ -35,9 +35,9 @@ export const MODULES = [
   },
   {
     key: 'relief',
-    name: 'Relief Days',
+    name: 'Relief Planner',
     description:
-      'Mark an absence, see affected classes, DOTT and duties, and confirm coverage.',
+      'Plan leave in advance and record the relief teacher beside each absence; full coverage management to follow.',
     status: 'planned',
   },
 ]
