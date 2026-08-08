@@ -147,6 +147,22 @@
   cursor: default;
 }
 
+.today-cover .chip-clickable {
+  cursor: pointer;
+}
+
+.today-cover .chip-clickable:hover {
+  border-color: var(--color-teal-bright);
+  box-shadow: var(--shadow-sm);
+}
+
+.collapse-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
 .today-slots {
   margin-top: var(--space-3);
   border-top: 1px dashed var(--color-border);

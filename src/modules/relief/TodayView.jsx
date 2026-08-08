@@ -113,6 +113,7 @@ export default function TodayView({ initialDate, registry, reliefTeachers, terms
   const [entries, setEntries] = useState([])
   const [termEntries, setTermEntries] = useState([])
   const [editor, setEditor] = useState(null)
+  const [collapseArm, setCollapseArm] = useState(null)
   const [busyKey, setBusyKey] = useState(null)
   const [error, setError] = useState(null)
   const [reloadFlag, setReloadFlag] = useState(0)
@@ -264,6 +265,37 @@ export default function TodayView({ initialDate, registry, reliefTeachers, terms
     }
   }
 
+  // No relief found: the whole specialist programme is cut for the day and
+  // every affected class teacher loses that DOTT, tracked in one click.
+  async function collapseProgramme(absence, slots) {
+    setBusyKey('collapse' + absence.id)
+    setError(null)
+    const absentName = staffById[absence.staff_id]?.full_name ?? 'specialist'
+    const missing = []
+    try {
+      for (const slot of slots) {
+        const t = staffByName[slot.teacher]
+        if (!t) {
+          missing.push(slot.teacher)
+          continue
+        }
+        await writeLedger(
+          t.id,
+          -slot.min,
+          `${slot.p} ${slot.subj} lost - ${lastName(absentName)} away, programme collapsed`,
+          absence.id,
+        )
+      }
+      if (missing.length) setError(`Not in the staff registry (record by hand): ${missing.join(', ')}`)
+      setCollapseArm(null)
+      reload()
+    } catch (err) {
+      setError(String(err.message ?? err))
+    } finally {
+      setBusyKey(null)
+    }
+  }
+
   const linkedEntries = (absenceId) => entries.filter((e) => e.absence_id === absenceId)
 
   return (
@@ -320,13 +352,19 @@ export default function TodayView({ initialDate, registry, reliefTeachers, terms
                   </span>
                 </div>
                 <div className="today-cover">
-                  <span className={`abs-chip chip-${a.cover}`}>
+                  <button
+                    className={`abs-chip chip-${a.cover} ${canEdit ? 'chip-clickable' : ''}`}
+                    title={canEdit ? 'Change the cover for this absence' : undefined}
+                    onClick={() => canEdit && setEditor({ date, existing: a })}
+                  >
                     {a.cover === 'relief'
                       ? (reliefById[a.relief_teacher_id]?.full_name ?? 'Relief')
                       : a.cover === 'internal'
                         ? `Internal${a.cover_note ? ': ' + a.cover_note : ''}`
-                        : COVER_LABELS[a.cover]}
-                  </span>
+                        : a.cover === 'tbc' && canEdit
+                          ? 'TBC · arrange cover'
+                          : COVER_LABELS[a.cover]}
+                  </button>
                   {canEdit && (
                     <button className="btn-link" onClick={() => setEditor({ date, existing: a })}>
                       Edit
@@ -373,6 +411,30 @@ export default function TodayView({ initialDate, registry, reliefTeachers, terms
                       ? 'Relief is taking their timetable - these lessons run as normal:'
                       : "Lessons that won't run - record DOTT lost where the class teacher keeps their class:"}
                   </span>
+                  {canEdit && a.cover !== 'relief' && slots.length > 1 && (
+                    <div className="collapse-bar">
+                      {collapseArm !== a.id ? (
+                        <button className="btn-secondary" onClick={() => setCollapseArm(a.id)}>
+                          Collapse the specialist programme (all {slots.length} lessons)
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            className="btn-primary"
+                            disabled={busyKey === 'collapse' + a.id}
+                            onClick={() => collapseProgramme(a, slots)}
+                          >
+                            {busyKey === 'collapse' + a.id
+                              ? 'Recording…'
+                              : `Confirm: record DOTT lost for ${slots.length} teachers`}
+                          </button>
+                          <button className="btn-link" onClick={() => setCollapseArm(null)}>
+                            Cancel
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )}
                   {slots.map((slot) => {
                     const rowKey = a.id + slot.p
                     return (
