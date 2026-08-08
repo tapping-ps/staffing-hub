@@ -38,7 +38,8 @@ export const MODULES = [
     name: 'Relief Planner',
     description:
       'Plan leave in advance and record the relief teacher beside each absence; full coverage management to follow.',
-    status: 'planned',
+    status: 'building',
+    href: '#/relief',
   },
 ]
 

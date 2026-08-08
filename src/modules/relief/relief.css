@@ -1,0 +1,74 @@
+.relief-cal td {
+  min-width: 118px;
+  vertical-align: top;
+}
+
+.relief-day {
+  height: 64px;
+}
+
+.rday-tbc {
+  background: #fdf8ec;
+}
+
+.rday-ok {
+  background: #f0faf4;
+}
+
+.relief-tbc-flag {
+  color: #8a6d1a;
+}
+
+.abs-chip {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.78rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  padding: 3px 6px;
+  margin-top: 3px;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.abs-chip:hover {
+  border-color: var(--color-teal-bright);
+}
+
+.abs-name {
+  font-weight: 600;
+  display: block;
+}
+
+.abs-cover {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+}
+
+.chip-tbc {
+  border-color: #e3cd8a;
+  background: #fdf8ec;
+}
+
+.chip-tbc .abs-cover {
+  color: #8a6d1a;
+  font-weight: 700;
+}
+
+.chip-relief {
+  border-color: #85c9a0;
+  background: #f0faf4;
+}
+
+.chip-internal {
+  border-color: var(--color-teal-light);
+  background: #f0f7f6;
+}
+
+.chip-none {
+  opacity: 0.8;
+}

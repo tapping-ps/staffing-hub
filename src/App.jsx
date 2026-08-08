@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { MODULES, STATUS_LABELS } from './modules.js'
 import DottModule from './modules/dott/DottModule.jsx'
+import ReliefModule from './modules/relief/ReliefModule.jsx'
 import './App.css'
 
 function ModuleTile({ module }) {
@@ -35,6 +36,9 @@ export default function App() {
 
   if (route.startsWith('#/dott')) {
     return <DottModule onHome={() => (window.location.hash = '')} />
+  }
+  if (route.startsWith('#/relief')) {
+    return <ReliefModule onHome={() => (window.location.hash = '')} />
   }
 
   return (
