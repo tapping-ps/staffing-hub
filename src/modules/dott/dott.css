@@ -465,6 +465,48 @@ td.num {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.chart-name:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+.chart-name-spacer {
+  display: block;
+}
+
+.chart-val-inside {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.chart-hint {
+  margin-top: var(--space-3);
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.staff-name-btn {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.staff-name-btn:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
 }
 
 .chart-track {
@@ -547,6 +589,151 @@ td.num {
   .chart-axis {
     grid-template-columns: 100px 1fr;
   }
+}
+
+/* ---- individual teacher term sheet ---- */
+.sheet {
+  margin-top: var(--space-4);
+}
+
+.sheet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.sheet-head h3 {
+  font-size: 1.5rem;
+  color: var(--color-teal-dark);
+}
+
+.sheet-role {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.sheet-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.sheet-cards .card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.sheet-cards .lab {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+  margin-bottom: 2px;
+}
+
+.sheet-cards .val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.card-balance {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
+}
+
+.sheet-calhead {
+  font-size: 0.95rem;
+  color: var(--color-teal-dark);
+  margin-bottom: var(--space-3);
+}
+
+.sheet-cal td,
+.sheet-cal th {
+  border-right: 1px solid var(--color-border);
+}
+
+.sheet-cal td:last-child,
+.sheet-cal th:last-child {
+  border-right: none;
+}
+
+.sheet-week {
+  font-weight: 700;
+  color: var(--color-text-light);
+  white-space: nowrap;
+  width: 44px;
+}
+
+.sheet-day {
+  min-width: 96px;
+  vertical-align: top;
+}
+
+.day-editable {
+  cursor: pointer;
+}
+
+.day-editable:hover {
+  outline: 2px solid var(--color-teal-bright);
+  outline-offset: -2px;
+}
+
+.day-date {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+}
+
+.day-val {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.day-gain .day-val {
+  color: #1a7a44;
+}
+
+.day-loss .day-val {
+  color: #c0392b;
+}
+
+.day-gain {
+  background: #f0faf4;
+}
+
+.day-loss {
+  background: #fdf2f1;
+}
+
+.day-today {
+  outline: 2px solid var(--color-teal-bright);
+  outline-offset: -2px;
+}
+
+.day-note {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-editor strong {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--color-teal-dark);
 }
 
 .dott-foot {

@@ -3,6 +3,7 @@ import { supabase } from '../../lib/supabase.js'
 import { useAuth } from '../../context/AuthContext.jsx'
 import SignInPanel from './SignInPanel.jsx'
 import DottChart from './DottChart.jsx'
+import TeacherSheet from './TeacherSheet.jsx'
 import './dott.css'
 
 const PERIOD_MINUTES = { P0: 25, P1: 45, P2: 45, P3: 45, P4: 45, P5: 45, P6: 60 }
@@ -147,7 +148,16 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
     <>
       <tr className={open ? 'row-open' : ''} onClick={() => setOpen(!open)}>
         <td>
-          <span className="staff-name">{row.name}</span>
+          <button
+            className="staff-name-btn"
+            title={`Open ${row.name}'s term sheet`}
+            onClick={(e) => {
+              e.stopPropagation()
+              window.location.hash = '#/dott/t/' + encodeURIComponent(row.key)
+            }}
+          >
+            {row.name}
+          </button>
           <span className="staff-label">{row.label}</span>
         </td>
         <td className="num">{row.fteLabel ?? row.fte.toFixed(1)}</td>
@@ -322,6 +332,8 @@ function TermForm({ onSaved }) {
 /* ---------- the module ---------- */
 export default function DottModule({ onHome }) {
   const { session, tier, ready, signOut } = useAuth()
+  const hash = window.location.hash
+  const teacherKey = hash.startsWith('#/dott/t/') ? decodeURIComponent(hash.slice('#/dott/t/'.length)) : null
   const [baseline, setBaseline] = useState(null)
   const [baselineError, setBaselineError] = useState(null)
   const [registry, setRegistry] = useState([])
@@ -454,7 +466,28 @@ export default function DottModule({ onHome }) {
         </div>
       )}
 
-      {session && (
+      {teacherKey && baseline && (
+        <>
+          <button className="btn-link" onClick={() => (window.location.hash = '#/dott')}>
+            ← All staff
+          </button>
+          {(() => {
+            const sheetRow = rows.find((r) => r.key === teacherKey)
+            if (!sheetRow) return <p className="dott-error">No teacher found for this link.</p>
+            return (
+              <TeacherSheet
+                row={sheetRow}
+                term={session ? term : null}
+                entries={sheetRow.dbId ? (entriesByStaff[sheetRow.dbId] ?? []) : []}
+                canEdit={canEdit}
+                reload={reload}
+              />
+            )
+          })()}
+        </>
+      )}
+
+      {!teacherKey && session && (
         <div className="term-bar">
           {terms.length > 0 ? (
             <label>
@@ -479,15 +512,16 @@ export default function DottModule({ onHome }) {
         </div>
       )}
 
-      {session && registry.length === 0 && (
+      {!teacherKey && session && registry.length === 0 && (
         <p className="dott-error">
           The staff registry is empty. A master key holder needs to run <code>supabase/002-staff-sync.sql</code> once.
         </p>
       )}
 
-      {baseline && (
+      {!teacherKey && baseline && (
         <DottChart
           groups={chartGroups}
+          onSelect={(key) => (window.location.hash = '#/dott/t/' + encodeURIComponent(key))}
           measureLabel={
             showTermMeasure
               ? `${term.year} Term ${term.term_number} balance to week ${weeksElapsed(term)} (minutes)`
@@ -496,7 +530,8 @@ export default function DottModule({ onHome }) {
         />
       )}
 
-      {baseline &&
+      {!teacherKey &&
+        baseline &&
         groups.map((g) => (
           <section key={g} className="dott-group">
             <h3>{GROUP_LABELS[g]}</h3>
@@ -538,6 +573,7 @@ export default function DottModule({ onHome }) {
           </section>
         ))}
 
+      {!teacherKey && (
       <p className="dott-foot">
         Agreed extras are negotiated, spoken-for time: the 15-minute collaboration top-up buys the co-lab
         session, and the graduate allocation is protected. They are shown as sub-numbers, not surplus.
@@ -546,6 +582,7 @@ export default function DottModule({ onHome }) {
         balance = above agreed × weeks so far + adjustments. Leadership time (SSTUWA, OHS, PBS, Events) is
         its own column: a separate release on top of DOTT, never counted in the DOTT figures or balances.
       </p>
+      )}
     </div>
   )
 }
