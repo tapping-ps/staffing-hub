@@ -27,9 +27,16 @@ function weekNumber(term, dateISO) {
   return Math.floor((d - start) / 86400000 / 7) + 1
 }
 
-export default function TodayView({ registry, reliefTeachers, terms, canEdit, onBackToCalendar, refreshOuter }) {
+export default function TodayView({ initialDate, registry, reliefTeachers, terms, canEdit, onBackToCalendar, refreshOuter }) {
   const { session } = useAuth()
-  const [date, setDate] = useState(isoDate(new Date()))
+  const [date, setDateState] = useState(initialDate ?? isoDate(new Date()))
+  const setDate = (d) => {
+    setDateState(d)
+    window.history.replaceState(null, '', '#/relief/day/' + d)
+  }
+  useEffect(() => {
+    if (initialDate && initialDate !== date) setDateState(initialDate)
+  }, [initialDate]) // eslint-disable-line react-hooks/exhaustive-deps
   const [baseline, setBaseline] = useState(null)
   const [absences, setAbsences] = useState([])
   const [entries, setEntries] = useState([])

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../../lib/supabase.js'
 import { useAuth } from '../../context/AuthContext.jsx'
 import SignInPanel from '../dott/SignInPanel.jsx'
-import AbsenceEditor from './AbsenceEditor.jsx'
 import TodayView from './TodayView.jsx'
 import '../dott/dott.css'
 import './relief.css'
@@ -31,13 +30,14 @@ const COVER_LABELS = { tbc: 'TBC', relief: 'Relief', internal: 'Internal', none:
 
 export default function ReliefModule({ onHome }) {
   const { session, tier, ready, signOut } = useAuth()
-  const dayView = window.location.hash.startsWith('#/relief/day')
+  const dayMatch = window.location.hash.match(/^#\/relief\/day(?:\/(\d{4}-\d{2}-\d{2}))?/)
+  const dayView = !!dayMatch
+  const dayViewDate = dayMatch?.[1] ?? null
   const [registry, setRegistry] = useState([])
   const [terms, setTerms] = useState([])
   const [termId, setTermId] = useState(null)
   const [reliefTeachers, setReliefTeachers] = useState([])
   const [absences, setAbsences] = useState([])
-  const [editor, setEditor] = useState(null) // { date, existing }
   const [reloadFlag, setReloadFlag] = useState(0)
 
   const canEdit = tier === 'master' || tier === 'minor'
@@ -147,6 +147,7 @@ export default function ReliefModule({ onHome }) {
 
       {session && dayView && (
         <TodayView
+          initialDate={dayViewDate}
           registry={registry}
           reliefTeachers={reliefTeachers}
           terms={terms}
@@ -211,26 +212,20 @@ export default function ReliefModule({ onHome }) {
                         const anyTbc = list.some((a) => a.cover === 'tbc')
                         const classes = [
                           'relief-day',
+                          'day-editable',
                           list.length ? (anyTbc ? 'rday-tbc' : 'rday-ok') : '',
                           iso === today ? 'day-today' : '',
-                          canEdit ? 'day-editable' : '',
                         ].join(' ')
+                        const openDay = () => (window.location.hash = '#/relief/day/' + iso)
                         return (
-                          <td
-                            key={iso}
-                            className={classes}
-                            onClick={() => canEdit && setEditor({ date: iso, existing: null })}
-                          >
+                          <td key={iso} className={classes} onClick={openDay} title="Open this day's sheet">
                             <span className="day-date">{d.getDate()}</span>
                             {list.map((a) => (
                               <button
                                 key={a.id}
                                 className={`abs-chip chip-${a.cover}`}
                                 title={chipTitle(a)}
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  if (canEdit) setEditor({ date: iso, existing: a })
-                                }}
+                                onClick={openDay}
                               >
                                 <span className="abs-name">
                                   {lastName(staffById[a.staff_id]?.full_name ?? '?')}
@@ -250,32 +245,11 @@ export default function ReliefModule({ onHome }) {
           )}
 
           <p className="dott-foot">
-            Click a day to record an absence (ranges skip weekends automatically); click an entry to change
-            its cover, annotate it or remove it. Amber means someone still needs cover arranged. Payment and
-            HRMIS tracking stay outside this tool deliberately.
+            The colours are the to-do list: amber days still have cover to arrange, green days are resolved.
+            Click any day to open its full sheet - every absence, cover, DOTT redistribution and note for
+            that day in one place, where you record and change everything. Payment and HRMIS tracking stay
+            outside this tool deliberately.
           </p>
-
-          {editor && (
-            <div
-              className="modal-backdrop"
-              onClick={(e) => {
-                if (e.target === e.currentTarget) setEditor(null)
-              }}
-            >
-              <div className="modal">
-                <AbsenceEditor
-                  date={editor.date}
-                  existing={editor.existing}
-                  registry={registry}
-                  reliefTeachers={reliefTeachers}
-                  onDone={(changed) => {
-                    setEditor(null)
-                    if (changed) reload()
-                  }}
-                />
-              </div>
-            </div>
-          )}
         </>
       )}
     </div>
