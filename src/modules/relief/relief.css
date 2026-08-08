@@ -214,3 +214,70 @@
 .today-add {
   margin-top: var(--space-2);
 }
+
+/* ---- ranked DOTT allocator ---- */
+.alloc-list {
+  flex-basis: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  padding: var(--space-2) var(--space-3);
+  margin: 4px 0 6px;
+}
+
+.alloc-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 0.85rem;
+}
+
+.alloc-row:last-of-type {
+  border-bottom: none;
+}
+
+.alloc-name {
+  flex: 1;
+  font-weight: 600;
+  min-width: 150px;
+}
+
+.alloc-role {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+}
+
+.alloc-status {
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  min-width: 130px;
+}
+
+.score-1 .alloc-status,
+.score-2 .alloc-status,
+.score-3 .alloc-status {
+  color: #8a6d1a;
+}
+
+.alloc-balance {
+  font-weight: 700;
+  min-width: 52px;
+  text-align: right;
+}
+
+.alloc-foot {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+}
+
+.alloc-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+}

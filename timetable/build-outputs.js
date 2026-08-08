@@ -1073,17 +1073,30 @@ function eceTeacherCellX(name, day, pid, week) {
       free += PMIN[p];
     }
     free += 25 * SPEC_DAYS[sp].length;
-    // per-day lessons taught - if this specialist is absent, these classes
-    // lose their release and the class teacher loses that DOTT
+    // per-day lessons taught - if this specialist is absent WITHOUT relief,
+    // these classes lose their release (teacher loses DOTT). With relief
+    // covering, the lessons run and the specialist's own free/DOTT periods
+    // (freeDays) become allocatable to other staff instead.
     const days = {};
+    const freeDays = {};
     for (const d of SPEC_DAYS[sp]) {
       const taught = L.filter(x => x.spec === sp && x.day === d)
         .sort((a, b) => TEACH.indexOf(a.period) - TEACH.indexOf(b.period))
         .map(x => ({ p: x.period, min: PMIN[x.period], cls: x.cls, subj: x.subj, teacher: (C[x.cls] || {}).teacher || x.cls }));
       if (taught.length) days[d] = taught;
+      const frees = [{ p: "P0", min: 25 }];
+      for (const p of TEACH) {
+        if (teaches(sp, d, p)) continue;
+        if (leadAt(SPECIALIST_FULL[sp], d, p)) continue;
+        if (ECE.externalCover.find(e => e.by === sp && e.day === d && e.period === p)) continue;
+        frees.push({ p, min: PMIN[p] });
+      }
+      freeDays[d] = frees;
     }
     staff.push({
       days,
+      freeDays,
+      workDays: SPEC_DAYS[sp],
       key: "spec:" + sp, name: SPECIALIST_FULL[sp], group: "specialist",
       label: "Specialist · works " + SPEC_DAYS[sp].join("/"),
       fte: parseFloat(SPEC_FTE[sp]) || 1.0, fteLabel: SPEC_FTE[sp],
@@ -1100,14 +1113,18 @@ function eceTeacherCellX(name, day, pid, week) {
     // fortnightly DOTT periods per day, Week A and Week B separately
     const t = ECE.eceTeachers.find(x => x.name === r.name);
     const days = { A: {}, B: {} };
+    const offDays = { A: [], B: [] };
     for (const wk of ["A", "B"]) for (const d of ECE.DAYS) {
-      const dott = (t[wk][d] || [])
+      const acts = t[wk][d] || [];
+      if (acts.length && acts.every(a => a === "off")) offDays[wk].push(d);
+      const dott = acts
         .map((act, i) => (act === "dott" ? { p: ECE.PIDS[i], min: ECE.PMIN[ECE.PIDS[i]] } : null))
         .filter(Boolean);
       if (dott.length) days[wk][d] = dott;
     }
     staff.push({
       days,
+      offDays,
       key: "ece:" + r.name, name: r.name, group: "ece",
       label: `${r.phase} · ${r.room}`, fte: r.fte,
       entitlement: r.target, weeklyDott: r.weekly, lead: 0,

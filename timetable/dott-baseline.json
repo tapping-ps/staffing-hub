@@ -1109,6 +1109,24 @@
           }
         ]
       },
+      "freeDays": {
+        "Tue": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ]
+      },
+      "workDays": [
+        "Tue",
+        "Wed"
+      ],
       "key": "spec:Uhe",
       "name": "Chantel Uhe",
       "group": "specialist",
@@ -1296,6 +1314,61 @@
           }
         ]
       },
+      "freeDays": {
+        "Mon": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          },
+          {
+            "p": "P2",
+            "min": 45
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ]
+      },
+      "workDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
       "key": "spec:Lowndes",
       "name": "Lis Lowndes",
       "group": "specialist",
@@ -1423,6 +1496,39 @@
           }
         ]
       },
+      "freeDays": {
+        "Mon": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ]
+      },
+      "workDays": [
+        "Mon",
+        "Tue",
+        "Wed"
+      ],
       "key": "spec:Carter",
       "name": "Natalie Carter",
       "group": "specialist",
@@ -1587,6 +1693,50 @@
           }
         ]
       },
+      "freeDays": {
+        "Tue": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ]
+      },
+      "workDays": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
       "key": "spec:Peak",
       "name": "Cheryl Peak",
       "group": "specialist",
@@ -1677,6 +1827,32 @@
           }
         ]
       },
+      "freeDays": {
+        "Wed": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          },
+          {
+            "p": "P2",
+            "min": 45
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P0",
+            "min": 25
+          }
+        ]
+      },
+      "workDays": [
+        "Wed",
+        "Thu"
+      ],
       "key": "spec:Walker",
       "name": "Rachel Walker",
       "group": "specialist",
@@ -1767,6 +1943,32 @@
           }
         ]
       },
+      "freeDays": {
+        "Thu": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ]
+      },
+      "workDays": [
+        "Thu",
+        "Fri"
+      ],
       "key": "spec:Bell",
       "name": "Aaron Bell",
       "group": "specialist",
@@ -1820,6 +2022,21 @@
           }
         ]
       },
+      "freeDays": {
+        "Thu": [
+          {
+            "p": "P0",
+            "min": 25
+          },
+          {
+            "p": "P1",
+            "min": 45
+          }
+        ]
+      },
+      "workDays": [
+        "Thu"
+      ],
       "key": "spec:TBC",
       "name": "Jake Pevitt",
       "group": "specialist",
@@ -1899,6 +2116,10 @@
             }
           ]
         }
+      },
+      "offDays": {
+        "A": [],
+        "B": []
       },
       "key": "ece:Jenny Martin",
       "name": "Jenny Martin",
@@ -1990,6 +2211,10 @@
           ]
         }
       },
+      "offDays": {
+        "A": [],
+        "B": []
+      },
       "key": "ece:Caroline Parkin",
       "name": "Caroline Parkin",
       "group": "ece",
@@ -2060,6 +2285,14 @@
           ]
         }
       },
+      "offDays": {
+        "A": [
+          "Thu"
+        ],
+        "B": [
+          "Thu"
+        ]
+      },
       "key": "ece:Katie Digney",
       "name": "Katie Digney",
       "group": "ece",
@@ -2097,6 +2330,18 @@
             }
           ]
         }
+      },
+      "offDays": {
+        "A": [
+          "Mon",
+          "Tue",
+          "Wed"
+        ],
+        "B": [
+          "Mon",
+          "Tue",
+          "Wed"
+        ]
       },
       "key": "ece:Nikki Luca",
       "name": "Nikki Luca",
@@ -2166,6 +2411,14 @@
           ]
         }
       },
+      "offDays": {
+        "A": [
+          "Thu"
+        ],
+        "B": [
+          "Thu"
+        ]
+      },
       "key": "ece:Kelly Duggan",
       "name": "Kelly Duggan",
       "group": "ece",
@@ -2234,6 +2487,14 @@
           ]
         }
       },
+      "offDays": {
+        "A": [
+          "Thu"
+        ],
+        "B": [
+          "Thu"
+        ]
+      },
       "key": "ece:Donna Campbell",
       "name": "Donna Campbell",
       "group": "ece",
@@ -2293,6 +2554,16 @@
             }
           ]
         }
+      },
+      "offDays": {
+        "A": [
+          "Mon",
+          "Tue"
+        ],
+        "B": [
+          "Mon",
+          "Tue"
+        ]
       },
       "key": "ece:Fiona Dyer",
       "name": "Fiona Dyer",
@@ -2369,6 +2640,14 @@
             }
           ]
         }
+      },
+      "offDays": {
+        "A": [
+          "Tue"
+        ],
+        "B": [
+          "Tue"
+        ]
       },
       "key": "ece:Anita Currion",
       "name": "Anita Currion",
