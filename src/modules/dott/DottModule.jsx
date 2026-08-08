@@ -162,6 +162,15 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
               ))
             : '—'}
         </td>
+        <td className="num agreed-cell">
+          {row.lead > 0 ? (
+            <span>
+              {row.lead}m {row.leadRole ?? 'leadership'}
+            </span>
+          ) : (
+            '—'
+          )}
+        </td>
         <td className={`num strong ${above > 0 ? 'pos' : above < 0 ? 'neg' : 'zero'}`}>{fmt(above)}</td>
         {term && (
           <>
@@ -174,7 +183,7 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
       </tr>
       {open && (
         <tr className="detail-row">
-          <td colSpan={term ? 8 : 6}>
+          <td colSpan={term ? 9 : 7}>
             <div className="detail">
               {row.note && <p className="detail-note">{row.note}</p>}
               {row.lead > 0 && (
@@ -500,6 +509,7 @@ export default function DottModule({ onHome }) {
                     <th className="num">Entitlement</th>
                     <th className="num">Timetabled</th>
                     <th className="num">Agreed extras</th>
+                    <th className="num">Leadership</th>
                     <th className="num">Above agreed</th>
                     {term && session && (
                       <>
@@ -533,8 +543,8 @@ export default function DottModule({ onHome }) {
         session, and the graduate allocation is protected. They are shown as sub-numbers, not surplus.
         Above agreed is what a teacher truly runs over or under each week once the agreed package is
         honoured. Adjustments are DOTT lost (negative) or gained (positive) recorded by key holders. Term
-        balance = above agreed × weeks so far + adjustments. Leadership release time is shown in each
-        teacher's notes, never counted as DOTT.
+        balance = above agreed × weeks so far + adjustments. Leadership time (SSTUWA, OHS, PBS, Events) is
+        its own column: a separate release on top of DOTT, never counted in the DOTT figures or balances.
       </p>
     </div>
   )

@@ -14,6 +14,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -32,6 +33,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -50,6 +52,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -68,6 +71,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 45,
+      "leadRole": "SSTUWA",
       "agreedExtras": [
         {
           "label": "collab",
@@ -86,6 +90,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -104,6 +109,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -122,6 +128,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -140,6 +147,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -158,6 +166,7 @@
       "entitlement": 270,
       "weeklyDott": 330,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -180,6 +189,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -198,6 +208,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -216,6 +227,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 45,
+      "leadRole": "OHS",
       "agreedExtras": [
         {
           "label": "collab",
@@ -234,6 +246,7 @@
       "entitlement": 270,
       "weeklyDott": 345,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -256,6 +269,7 @@
       "entitlement": 270,
       "weeklyDott": 345,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -278,6 +292,7 @@
       "entitlement": 270,
       "weeklyDott": 285,
       "lead": 0,
+      "leadRole": null,
       "agreedExtras": [
         {
           "label": "collab",
@@ -298,6 +313,7 @@
       "weeklyDott": 50,
       "agreedExtras": [],
       "lead": 0,
+      "leadRole": null,
       "note": "0.4 teaching; her Mon/Thu office days carry the rest of her DOTT"
     },
     {
@@ -311,6 +327,7 @@
       "weeklyDott": 305,
       "agreedExtras": [],
       "lead": 0,
+      "leadRole": null,
       "note": ""
     },
     {
@@ -324,6 +341,7 @@
       "weeklyDott": 165,
       "agreedExtras": [],
       "lead": 45,
+      "leadRole": "PBS",
       "note": ""
     },
     {
@@ -337,6 +355,7 @@
       "weeklyDott": 235,
       "agreedExtras": [],
       "lead": 45,
+      "leadRole": "Events",
       "note": ""
     },
     {
@@ -350,6 +369,7 @@
       "weeklyDott": 140,
       "agreedExtras": [],
       "lead": 0,
+      "leadRole": null,
       "note": ""
     },
     {
@@ -363,6 +383,7 @@
       "weeklyDott": 140,
       "agreedExtras": [],
       "lead": 0,
+      "leadRole": null,
       "note": "Includes leadership-release Health periods"
     },
     {
@@ -376,6 +397,7 @@
       "weeklyDott": 70,
       "agreedExtras": [],
       "lead": 0,
+      "leadRole": null,
       "note": ""
     },
     {

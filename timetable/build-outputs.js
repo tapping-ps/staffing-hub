@@ -1031,6 +1031,7 @@ function eceTeacherCellX(name, day, pid, week) {
       key: c.code, name: c.teacher, group: "classroom",
       label: `Classroom · ${c.code} (${c.yrs})`, fte: 1.0,
       entitlement: 270, weeklyDott: dott, lead,
+      leadRole: c.lead || null,
       agreedExtras,
       grad: !!c.grad,
       note: c.code === "LA24"
@@ -1058,6 +1059,7 @@ function eceTeacherCellX(name, day, pid, week) {
       entitlement: SPEC_DOTT[sp], weeklyDott: free,
       agreedExtras: [],
       lead: (sp === "Carter" || sp === "Peak") ? 45 : 0,
+      leadRole: sp === "Carter" ? "PBS" : sp === "Peak" ? "Events" : null,
       note: sp === "Uhe" ? "0.4 teaching; her Mon/Thu office days carry the rest of her DOTT"
         : sp === "Bell" ? "Includes leadership-release Health periods" : "",
     });
