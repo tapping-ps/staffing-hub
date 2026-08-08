@@ -402,6 +402,153 @@ td.num {
   margin-top: var(--space-2);
 }
 
+.zero {
+  color: var(--color-text-light);
+}
+
+.agreed-cell span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ---- school-at-a-glance chart ---- */
+.dott-chart {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.chart-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.chart-head h3 {
+  font-size: 1.05rem;
+  color: var(--color-teal-dark);
+}
+
+.chart-measure {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+}
+
+.chart-row,
+.chart-axis {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.chart-row {
+  padding: 1px 0;
+}
+
+.chart-row:hover {
+  background: #f0f7f6;
+}
+
+.chart-name {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chart-track {
+  position: relative;
+  height: 16px;
+}
+
+.chart-zeroline {
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--color-border-strong);
+}
+
+.chart-bar {
+  position: absolute;
+  top: 2px;
+  height: 12px;
+}
+
+.chart-bar-pos {
+  background: #1a7a44;
+  border-radius: 0 4px 4px 0;
+}
+
+.chart-bar-neg {
+  background: #c0392b;
+  border-radius: 4px 0 0 4px;
+}
+
+.chart-zerodot {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+
+.chart-val {
+  position: absolute;
+  top: 0;
+  font-size: 0.72rem;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.chart-axis-track {
+  height: 18px;
+}
+
+.chart-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+  line-height: 18px;
+}
+
+.chart-group {
+  margin-top: var(--space-3);
+}
+
+.chart-grouplabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+  margin-bottom: 4px;
+}
+
+@media (max-width: 560px) {
+  .chart-row,
+  .chart-axis {
+    grid-template-columns: 100px 1fr;
+  }
+}
+
 .dott-foot {
   font-size: 0.85rem;
   color: var(--color-text-light);

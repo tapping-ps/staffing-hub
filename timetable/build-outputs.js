@@ -1020,16 +1020,24 @@ function eceTeacherCellX(name, day, pid, week) {
   for (const c of CLASSES) {
     const total = forClass(c.code).reduce((a, x) => a + PMIN[x.period], 0);
     const lead = LEAD_CLASSES.includes(c.code) ? 45 : 0;
+    const dott = total - lead;
+    // Agreed extras are negotiated, spoken-for time - NOT discretionary
+    // surplus (Brad, 2026-08-07): the 15-min collaboration top-up buys the
+    // co-lab session; the graduate allocation is protected. They are shown
+    // as sub-numbers; the true surplus is what sits ABOVE the agreed package.
+    const agreedExtras = [{ label: "collab", minutes: 15 }];
+    if (c.grad && dott - 285 > 0) agreedExtras.push({ label: "graduate", minutes: dott - 285 });
     staff.push({
       key: c.code, name: c.teacher, group: "classroom",
       label: `Classroom · ${c.code} (${c.yrs})`, fte: 1.0,
-      entitlement: 270, weeklyDott: total - lead, lead,
+      entitlement: 270, weeklyDott: dott, lead,
+      agreedExtras,
       grad: !!c.grad,
       note: c.code === "LA24"
         ? "Graduate: extra time delivered as grad days, not a timetabled Health period"
-        : c.grad ? "Graduate class: extra Health period lifts DOTT above 270"
-        : lead ? "+15 collab top-up; +45 leadership (separate)"
-        : "Includes the 15-min collaboration top-up",
+        : c.grad ? "Graduate class: protected extra Health period on top of the agreed package"
+        : lead ? "+15 collab top-up (agreed); +45 leadership (separate)"
+        : "The 15-min collaboration top-up is agreed time for co-lab sessions",
     });
   }
   // Specialists: free periods on working days (excluding taught periods,
@@ -1048,6 +1056,7 @@ function eceTeacherCellX(name, day, pid, week) {
       label: "Specialist · works " + SPEC_DAYS[sp].join("/"),
       fte: parseFloat(SPEC_FTE[sp]) || 1.0, fteLabel: SPEC_FTE[sp],
       entitlement: SPEC_DOTT[sp], weeklyDott: free,
+      agreedExtras: [],
       lead: (sp === "Carter" || sp === "Peak") ? 45 : 0,
       note: sp === "Uhe" ? "0.4 teaching; her Mon/Thu office days carry the rest of her DOTT"
         : sp === "Bell" ? "Includes leadership-release Health periods" : "",
@@ -1059,6 +1068,7 @@ function eceTeacherCellX(name, day, pid, week) {
       key: "ece:" + r.name, name: r.name, group: "ece",
       label: `${r.phase} · ${r.room}`, fte: r.fte,
       entitlement: r.target, weeklyDott: r.weekly, lead: 0,
+      agreedExtras: [],
       note: r.note || "",
     });
   }

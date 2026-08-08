@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../../lib/supabase.js'
 import { useAuth } from '../../context/AuthContext.jsx'
 import SignInPanel from './SignInPanel.jsx'
+import DottChart from './DottChart.jsx'
 import './dott.css'
 
 const PERIOD_MINUTES = { P0: 25, P1: 45, P2: 45, P3: 45, P4: 45, P5: 45, P6: 60 }
@@ -23,6 +24,8 @@ function weeksElapsed(term) {
 }
 
 const fmt = (m) => `${m >= 0 ? '+' : ''}${m}m`
+const agreedTotal = (row) => (row.agreedExtras ?? []).reduce((a, e) => a + e.minutes, 0)
+const aboveAgreed = (row) => row.weeklyDott - row.entitlement - agreedTotal(row)
 
 /* ---------- add / edit entry form ---------- */
 function EntryForm({ staffRow, term, onSaved, onCancel }) {
@@ -129,10 +132,11 @@ function EntryForm({ staffRow, term, onSaved, onCancel }) {
 function StaffRow({ row, term, entries, canEdit, onChanged }) {
   const [open, setOpen] = useState(false)
   const [adding, setAdding] = useState(false)
-  const weekly = row.weeklyDott - row.entitlement
+  const agreed = agreedTotal(row)
+  const above = aboveAgreed(row)
   const adjust = entries.reduce((a, e) => a + Number(e.minutes), 0)
   const weeks = weeksElapsed(term)
-  const balance = term ? weekly * weeks + adjust : null
+  const balance = term ? above * weeks + adjust : null
 
   async function remove(entry) {
     await supabase.from('dott_entries').delete().eq('id', entry.id)
@@ -149,7 +153,16 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
         <td className="num">{row.fteLabel ?? row.fte.toFixed(1)}</td>
         <td className="num">{row.entitlement}m</td>
         <td className="num">{row.weeklyDott}m</td>
-        <td className={`num ${weekly >= 0 ? 'pos' : 'neg'}`}>{fmt(weekly)}</td>
+        <td className="num agreed-cell">
+          {agreed > 0
+            ? (row.agreedExtras ?? []).map((e) => (
+                <span key={e.label}>
+                  +{e.minutes} {e.label}
+                </span>
+              ))
+            : '—'}
+        </td>
+        <td className={`num strong ${above > 0 ? 'pos' : above < 0 ? 'neg' : 'zero'}`}>{fmt(above)}</td>
         {term && (
           <>
             <td className={`num ${adjust > 0 ? 'pos' : adjust < 0 ? 'neg' : ''}`}>
@@ -161,7 +174,7 @@ function StaffRow({ row, term, entries, canEdit, onChanged }) {
       </tr>
       {open && (
         <tr className="detail-row">
-          <td colSpan={term ? 7 : 5}>
+          <td colSpan={term ? 8 : 6}>
             <div className="detail">
               {row.note && <p className="detail-note">{row.note}</p>}
               {row.lead > 0 && (
@@ -365,6 +378,33 @@ export default function DottModule({ onHome }) {
   const groups = ['classroom', 'specialist', 'ece']
   const reload = () => setReloadFlag((n) => n + 1)
 
+  const showTermMeasure = Boolean(session && term)
+  const chartGroups = useMemo(() => {
+    const weeks = weeksElapsed(term)
+    return groups.map((g) => ({
+      key: g,
+      label: GROUP_LABELS[g],
+      rows: rows
+        .filter((r) => r.group === g)
+        .map((r) => {
+          const above = aboveAgreed(r)
+          const adjust = r.dbId
+            ? (entriesByStaff[r.dbId] ?? []).reduce((a, e) => a + Number(e.minutes), 0)
+            : 0
+          const value = showTermMeasure ? above * weeks + adjust : above
+          const agreed = agreedTotal(r)
+          const title =
+            `${r.name} · entitlement ${r.entitlement}m · timetabled ${r.weeklyDott}m` +
+            (agreed ? ` · agreed extras +${agreed}m` : '') +
+            (showTermMeasure
+              ? ` · adjustments ${fmt(adjust)} · balance ${fmt(value)}`
+              : ` · above agreed ${fmt(above)}`)
+          return { key: r.key, name: r.name, value, title }
+        })
+        .sort((a, b) => a.value - b.value),
+    }))
+  }, [rows, entriesByStaff, showTermMeasure, term]) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="dott">
       <div className="dott-bar">
@@ -436,6 +476,17 @@ export default function DottModule({ onHome }) {
         </p>
       )}
 
+      {baseline && (
+        <DottChart
+          groups={chartGroups}
+          measureLabel={
+            showTermMeasure
+              ? `${term.year} Term ${term.term_number} balance to week ${weeksElapsed(term)} (minutes)`
+              : 'Weekly minutes above the agreed package'
+          }
+        />
+      )}
+
       {baseline &&
         groups.map((g) => (
           <section key={g} className="dott-group">
@@ -448,7 +499,8 @@ export default function DottModule({ onHome }) {
                     <th className="num">FTE</th>
                     <th className="num">Entitlement</th>
                     <th className="num">Timetabled</th>
-                    <th className="num">Weekly ±</th>
+                    <th className="num">Agreed extras</th>
+                    <th className="num">Above agreed</th>
                     {term && session && (
                       <>
                         <th className="num">Adjustments</th>
@@ -477,9 +529,12 @@ export default function DottModule({ onHome }) {
         ))}
 
       <p className="dott-foot">
-        Weekly ± is the structural surplus or deficit built into the timetable. Adjustments are DOTT lost
-        (negative) or gained (positive) recorded by key holders. Term balance = weekly ± × weeks so far +
-        adjustments. Leadership release time is shown in each teacher's notes, never counted as DOTT.
+        Agreed extras are negotiated, spoken-for time: the 15-minute collaboration top-up buys the co-lab
+        session, and the graduate allocation is protected. They are shown as sub-numbers, not surplus.
+        Above agreed is what a teacher truly runs over or under each week once the agreed package is
+        honoured. Adjustments are DOTT lost (negative) or gained (positive) recorded by key holders. Term
+        balance = above agreed × weeks so far + adjustments. Leadership release time is shown in each
+        teacher's notes, never counted as DOTT.
       </p>
     </div>
   )
