@@ -77,11 +77,18 @@ function DayEditor({ row, term, date, existing, onDone }) {
     else onDone()
   }
 
+  const prettyDate = new Date(date + 'T00:00:00').toLocaleDateString('en-AU', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  })
+
   return (
     <form className="entry-form day-editor" onSubmit={save}>
       <strong>
-        {existing ? 'Edit' : 'Record'} {date}
+        {row.name} · {prettyDate}
       </strong>
+      <span className="day-editor-sub">{existing ? 'Edit or annotate this entry' : 'Record lost or gained DOTT'}</span>
       <div className="entry-fields">
         <label>
           DOTT was
@@ -286,16 +293,25 @@ export default function TeacherSheet({ row, term, entries, canEdit, reload }) {
           )}
 
           {editingDate && (
-            <DayEditor
-              row={row}
-              term={term}
-              date={editingDate}
-              existing={byDate[editingDate] ?? null}
-              onDone={() => {
-                setEditingDate(null)
-                reload()
+            <div
+              className="modal-backdrop"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setEditingDate(null)
               }}
-            />
+            >
+              <div className="modal">
+                <DayEditor
+                  row={row}
+                  term={term}
+                  date={editingDate}
+                  existing={byDate[editingDate] ?? null}
+                  onDone={() => {
+                    setEditingDate(null)
+                    reload()
+                  }}
+                />
+              </div>
+            </div>
           )}
         </>
       )}
