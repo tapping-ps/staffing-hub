@@ -16,7 +16,7 @@ export const MODULES = [
     name: 'DOTT Tracker',
     description:
       'Every teacher\'s DOTT baseline straight from the timetable, plus the lost-and-gained ledger.',
-    status: 'building',
+    status: 'live',
     href: '#/dott',
   },
   {

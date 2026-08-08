@@ -1,0 +1,21 @@
+# Keeps the free-tier Supabase project awake: free projects pause after
+# about a week of no database activity, and school holidays are longer.
+# Twice a week, this makes one tiny real query (the publishable key is
+# already public in the site bundle; RLS returns no rows to it).
+name: Database keep-alive
+
+on:
+  schedule:
+    - cron: '0 22 * * 1,4' # Mon + Thu 22:00 UTC = Tue + Fri 6am AWST
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query the database
+        run: |
+          curl -fsS "https://imvazsaxcfckkobzfghb.supabase.co/rest/v1/staff?select=id&limit=1" \
+            -H "apikey: sb_publishable_9BauanbPzcN1FD1nxpfyZw_3XoDQMyN" \
+            -H "Authorization: Bearer sb_publishable_9BauanbPzcN1FD1nxpfyZw_3XoDQMyN" \
+            -o /dev/null -w "keep-alive ping: HTTP %{http_code}\n"
