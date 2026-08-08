@@ -71,13 +71,13 @@
   .cell{position:relative;border-radius:5px;border-left:4px solid var(--accent,var(--teal-300));padding:6px 9px 6px 10px;min-height:38px;display:flex;flex-direction:column;justify-content:center;gap:2px;text-align:left;}
   .cell .c1{font-weight:600;line-height:1.3;} .cell .c2{font-size:10.5px;color:var(--fg-secondary);line-height:1.3;}
   .cell.vac{justify-content:center;text-align:center;color:var(--fg-secondary);font-style:italic;border-left-color:transparent;background:var(--tint-off);}
-  /* teacher buttons */
-  .tbtns{margin:0 0 12px;border:1px solid var(--border-default);border-radius:8px;padding:8px 10px;background:#fff;}
-  .tbtns .grp{font-size:10px;color:var(--fg-secondary);margin:8px 0 4px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
-  .tbtns .grp:first-child{margin-top:0;}
-  .tbtns button{font:inherit;font-size:11px;margin:2px;padding:5px 10px;border:1px solid var(--border-default);background:#fff;border-radius:6px;cursor:pointer;color:var(--teal-700);}
-  .tbtns button:hover{background:var(--teal-50);}
-  .tbtns button.sel{background:var(--teal-700);color:#fff;border-color:var(--teal-700);font-weight:600;}
+  /* teacher picker bar (sticky: switch teachers without scrolling back up) */
+  .tbtns{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 12px;border:1px solid var(--border-default);border-radius:8px;padding:8px 10px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+  .tbtns .plab{font-size:10px;font-weight:700;color:var(--fg-secondary);text-transform:uppercase;letter-spacing:.04em;}
+  .tbtns select{font:inherit;font-size:13px;font-weight:600;padding:7px 10px;border:1px solid var(--border-default);border-radius:6px;background:#fff;color:var(--teal-700);flex:1;min-width:180px;max-width:360px;cursor:pointer;}
+  .tbtns .step{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--border-default);background:#fff;border-radius:6px;cursor:pointer;color:var(--teal-700);}
+  .tbtns .step:hover{background:var(--teal-50);}
+  @media print{.tbtns{display:none;}}
   /* dashboard */
   .dash{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 22px;}
   .dash .card{background:#fff;border:1px solid var(--border-default);border-radius:8px;padding:7px 13px;min-width:96px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
@@ -209,7 +209,7 @@
   <path class="st0" d="M584.56,641.59l21.87,23.39c-57.92,7.95-124.4,4.18-186.23-11.53l15.71-13.12c10.8-8.95,20.21-18.95,28.56-29.76,26.51,2.52,53.15,3.51,79.46,2.72,5.5-.2,11.07-.4,16.63-.8,7.42,10.14,15.38,19.88,23.99,29.09Z"/>
   <path class="st0" d="M754.42,574.13c-1.79,33.2-32.14,53.28-62.3,67.33-22.93,10.67-49.97,18.23-79.46,22.67l-5.3-33.67c-1.19-7.69-2.39-15.44-3.51-23.13,21.41-3.98,42.08-10.47,61.24-20.81,7.36-3.98,16.37-9.34,16.37-17.7,0-12.33-10.6-16.83-20.08-22.53-22.53-13.65-45.66-22.93-69.19-30.22-1.66-15.11-3.11-30.22-4.44-45.33,39.23,6.83,77.61,15.91,113,33.87,27.64,13.98,55.41,38.51,53.68,69.52Z"/>
   <path class="st0" d="M672.51,428.65c19.02-29.56,18.23-70.58-1.99-99.28-20.15-28.76-58.39-43.48-92.65-35.72-3.25.73-6.63,1.79-8.88,4.31-2.85,3.25-2.98,8.02-2.85,12.39.93,52.82,3.58,105.51,8.15,158.13,1.26,14.58,2.65,29.09,4.17,43.67,3.38,32.47,7.56,64.95,12.33,97.29,1.13,7.69,2.32,15.38,3.51,23.06-6.36-6.83-12.39-13.92-17.96-21.27-25.65-33.14-44.21-71.71-54.15-112.33-3.18-12.72-5.5-25.71-6.89-38.77-3.31,11.66-6.76,23.39-10.4,35.13-12.92,41.22-29.09,81.78-56.13,113.66-6.49,7.62-13.52,14.71-21.34,21.21,1.46-7.82,2.92-15.64,4.24-23.53,7.55-41.29,14.25-82.78,20.15-124.4,1.72-11.86,3.31-23.73,4.84-35.59,3.38-25.38,6.43-50.83,9.15-76.28.33-2.12.53-4.31.73-6.49,2.25-20.41,4.24-40.83,6.03-61.24-21.87,1.72-43.74,2.72-65.61,2.92-3.05.07-4.51-.53-4.57-1.59-.66-11.8,179.87-84.83,266.16-38.31,24.79,13.25,41.82,36.52,44.54,73.9,2.45,33.93-13.32,68.66-40.56,89.14Z"/>
-</svg></div><div class="ttl"><h1>Tapping Primary School: Semester 2 Timetable</h1><div class="sub">Whole school: Kindy, Pre-Primary and Years 1-6 · Last updated 27 July 2026</div></div></header>
+</svg></div><div class="ttl"><h1>Tapping Primary School: Semester 2 Timetable</h1><div class="sub">Whole school: Kindy, Pre-Primary and Years 1-6 · Last updated 8 August 2026</div></div></header>
 <div class="wrap">
 <nav class="tabs" id="tabs">
   <button data-v="home" class="active">Home</button>
@@ -515,8 +515,8 @@ function renderSchool(){
 }
 function renderClass(){const code=document.getElementById('classPick').value;const fn=isEce(code)?((d,pid)=>eceClassCell(code,d,pid)):((d,pid)=>wholeSchoolCell(code,d,pid));document.getElementById('classGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);updatePrintTitle();}
 let curTeacher='';
-function renderTeacher(){const tk=curTeacher;const fn=tk.indexOf('ece:')===0?((d,pid)=>eceTeacherCell(tk.slice(4),d,pid)):((d,pid)=>teacherCell(tk,d,pid));document.getElementById('teacherDash').innerHTML=dashHTML(tk);document.getElementById('teacherGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);document.querySelectorAll('#teacherBtns button').forEach(b=>b.classList.toggle('sel',b.dataset.tk===tk));updatePrintTitle();}
-function activate(v){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.body.classList.toggle('on-home',v==='home');positionMdays();window.scrollTo(0,0);updatePrintTitle();syncURL();}
+function renderTeacher(){const tk=curTeacher;if(!tk)return;const fn=tk.indexOf('ece:')===0?((d,pid)=>eceTeacherCell(tk.slice(4),d,pid)):((d,pid)=>teacherCell(tk,d,pid));document.getElementById('teacherDash').innerHTML=dashHTML(tk);document.getElementById('teacherGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);const tp=document.getElementById('teacherPick');if(tp&&tp.value!==tk)tp.value=tk;updatePrintTitle();}
+function activate(v){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.body.classList.toggle('on-home',v==='home');if(v==='teacher'&&!curTeacher&&TEACHER_ORDER.length){curTeacher=TEACHER_ORDER[0];renderTeacher();}positionMdays();window.scrollTo(0,0);updatePrintTitle();syncURL();}
 function goClass(code){document.getElementById('classPick').value=code;renderClass();activate('class');}
 function goTeacher(tk){curTeacher=tk;renderTeacher();activate('teacher');}
 /* ---- shareable / bookmarkable deep links (URL hash) ---- */
@@ -585,14 +585,25 @@ function renderSubject(){const subj=document.getElementById('subjectPick').value
     h+='</tr>';}
   document.getElementById('subjectGrid').innerHTML=h+'</tbody></table></div>';
 }
-/* ---- all-teacher quick buttons ---- */
-function buildTeacherButtons(){const box=document.getElementById('teacherBtns');let h='';
-  const grp=(lbl,items)=>{h+='<div class="grp">'+lbl+'</div>'+items.map(it=>'<button data-tk="'+it.v+'">'+it.t+'</button>').join('');};
-  grp('Classroom (Yr 1-6)',D.classes.map(c=>({v:c.code,t:last(c.teacher)+' · '+c.code})));
-  grp('Specialists',D.specList.map(s=>({v:s,t:last(D.specFull[s])})));
-  grp('Pre-Primary',ECE_T.filter(t=>t.phase==='PP').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
-  grp('Kindy',ECE_T.filter(t=>t.phase==='Kindy').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
-  box.innerHTML=h;box.querySelectorAll('button').forEach(b=>b.onclick=()=>goTeacher(b.dataset.tk));
+/* ---- sticky teacher picker: grouped dropdown + prev/next arrows ---- */
+let TEACHER_ORDER=[];
+function buildTeacherButtons(){const box=document.getElementById('teacherBtns');
+  const grp=(lbl,items)=>'<optgroup label="'+lbl+'">'+items.map(it=>'<option value="'+it.v+'">'+it.t+'</option>').join('')+'</optgroup>';
+  let h='<span class="plab">Teacher</span>';
+  h+='<button class="step" id="tPrev" title="Previous teacher">&#9664;</button>';
+  h+='<select id="teacherPick" title="Choose a teacher">';
+  h+=grp('Classroom (Yr 1-6)',D.classes.map(c=>({v:c.code,t:last(c.teacher)+' · '+c.code})));
+  h+=grp('Specialists',D.specList.map(s=>({v:s,t:last(D.specFull[s])})));
+  h+=grp('Pre-Primary',ECE_T.filter(t=>t.phase==='PP').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
+  h+=grp('Kindy',ECE_T.filter(t=>t.phase==='Kindy').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
+  h+='</select><button class="step" id="tNext" title="Next teacher">&#9654;</button>';
+  box.innerHTML=h;
+  const sel=document.getElementById('teacherPick');
+  TEACHER_ORDER=[].slice.call(sel.querySelectorAll('option')).map(o=>o.value);
+  sel.onchange=()=>goTeacher(sel.value);
+  const step=d=>{const i=TEACHER_ORDER.indexOf(curTeacher);goTeacher(TEACHER_ORDER[i<0?0:(i+d+TEACHER_ORDER.length)%TEACHER_ORDER.length]);};
+  document.getElementById('tPrev').onclick=()=>step(-1);
+  document.getElementById('tNext').onclick=()=>step(1);
 }
 function curView(){const b=document.querySelector('#tabs button.active');return b?b.dataset.v:'overview';}
 function updatePrintTitle(){const v=curView();let t='Tapping PS Semester 2 · ';const wk=' [Week '+week+']';

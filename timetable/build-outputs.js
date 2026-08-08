@@ -282,13 +282,13 @@ function buildHTML(reportHtml, vstats) {
   .cell{position:relative;border-radius:5px;border-left:4px solid var(--accent,var(--teal-300));padding:6px 9px 6px 10px;min-height:38px;display:flex;flex-direction:column;justify-content:center;gap:2px;text-align:left;}
   .cell .c1{font-weight:600;line-height:1.3;} .cell .c2{font-size:10.5px;color:var(--fg-secondary);line-height:1.3;}
   .cell.vac{justify-content:center;text-align:center;color:var(--fg-secondary);font-style:italic;border-left-color:transparent;background:var(--tint-off);}
-  /* teacher buttons */
-  .tbtns{margin:0 0 12px;border:1px solid var(--border-default);border-radius:8px;padding:8px 10px;background:#fff;}
-  .tbtns .grp{font-size:10px;color:var(--fg-secondary);margin:8px 0 4px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
-  .tbtns .grp:first-child{margin-top:0;}
-  .tbtns button{font:inherit;font-size:11px;margin:2px;padding:5px 10px;border:1px solid var(--border-default);background:#fff;border-radius:6px;cursor:pointer;color:var(--teal-700);}
-  .tbtns button:hover{background:var(--teal-50);}
-  .tbtns button.sel{background:var(--teal-700);color:#fff;border-color:var(--teal-700);font-weight:600;}
+  /* teacher picker bar (sticky: switch teachers without scrolling back up) */
+  .tbtns{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 12px;border:1px solid var(--border-default);border-radius:8px;padding:8px 10px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+  .tbtns .plab{font-size:10px;font-weight:700;color:var(--fg-secondary);text-transform:uppercase;letter-spacing:.04em;}
+  .tbtns select{font:inherit;font-size:13px;font-weight:600;padding:7px 10px;border:1px solid var(--border-default);border-radius:6px;background:#fff;color:var(--teal-700);flex:1;min-width:180px;max-width:360px;cursor:pointer;}
+  .tbtns .step{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--border-default);background:#fff;border-radius:6px;cursor:pointer;color:var(--teal-700);}
+  .tbtns .step:hover{background:var(--teal-50);}
+  @media print{.tbtns{display:none;}}
   /* dashboard */
   .dash{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 22px;}
   .dash .card{background:#fff;border:1px solid var(--border-default);border-radius:8px;padding:7px 13px;min-width:96px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
@@ -563,8 +563,8 @@ function renderSchool(){
 }
 function renderClass(){const code=document.getElementById('classPick').value;const fn=isEce(code)?((d,pid)=>eceClassCell(code,d,pid)):((d,pid)=>wholeSchoolCell(code,d,pid));document.getElementById('classGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);updatePrintTitle();}
 let curTeacher='';
-function renderTeacher(){const tk=curTeacher;const fn=tk.indexOf('ece:')===0?((d,pid)=>eceTeacherCell(tk.slice(4),d,pid)):((d,pid)=>teacherCell(tk,d,pid));document.getElementById('teacherDash').innerHTML=dashHTML(tk);document.getElementById('teacherGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);document.querySelectorAll('#teacherBtns button').forEach(b=>b.classList.toggle('sel',b.dataset.tk===tk));updatePrintTitle();}
-function activate(v){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.body.classList.toggle('on-home',v==='home');positionMdays();window.scrollTo(0,0);updatePrintTitle();syncURL();}
+function renderTeacher(){const tk=curTeacher;if(!tk)return;const fn=tk.indexOf('ece:')===0?((d,pid)=>eceTeacherCell(tk.slice(4),d,pid)):((d,pid)=>teacherCell(tk,d,pid));document.getElementById('teacherDash').innerHTML=dashHTML(tk);document.getElementById('teacherGrid').innerHTML=gridHTML(gridDays(),fn,d=>d);const tp=document.getElementById('teacherPick');if(tp&&tp.value!==tk)tp.value=tk;updatePrintTitle();}
+function activate(v){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.body.classList.toggle('on-home',v==='home');if(v==='teacher'&&!curTeacher&&TEACHER_ORDER.length){curTeacher=TEACHER_ORDER[0];renderTeacher();}positionMdays();window.scrollTo(0,0);updatePrintTitle();syncURL();}
 function goClass(code){document.getElementById('classPick').value=code;renderClass();activate('class');}
 function goTeacher(tk){curTeacher=tk;renderTeacher();activate('teacher');}
 /* ---- shareable / bookmarkable deep links (URL hash) ---- */
@@ -633,14 +633,25 @@ function renderSubject(){const subj=document.getElementById('subjectPick').value
     h+='</tr>';}
   document.getElementById('subjectGrid').innerHTML=h+'</tbody></table></div>';
 }
-/* ---- all-teacher quick buttons ---- */
-function buildTeacherButtons(){const box=document.getElementById('teacherBtns');let h='';
-  const grp=(lbl,items)=>{h+='<div class="grp">'+lbl+'</div>'+items.map(it=>'<button data-tk="'+it.v+'">'+it.t+'</button>').join('');};
-  grp('Classroom (Yr 1-6)',D.classes.map(c=>({v:c.code,t:last(c.teacher)+' · '+c.code})));
-  grp('Specialists',D.specList.map(s=>({v:s,t:last(D.specFull[s])})));
-  grp('Pre-Primary',ECE_T.filter(t=>t.phase==='PP').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
-  grp('Kindy',ECE_T.filter(t=>t.phase==='Kindy').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
-  box.innerHTML=h;box.querySelectorAll('button').forEach(b=>b.onclick=()=>goTeacher(b.dataset.tk));
+/* ---- sticky teacher picker: grouped dropdown + prev/next arrows ---- */
+let TEACHER_ORDER=[];
+function buildTeacherButtons(){const box=document.getElementById('teacherBtns');
+  const grp=(lbl,items)=>'<optgroup label="'+lbl+'">'+items.map(it=>'<option value="'+it.v+'">'+it.t+'</option>').join('')+'</optgroup>';
+  let h='<span class="plab">Teacher</span>';
+  h+='<button class="step" id="tPrev" title="Previous teacher">&#9664;</button>';
+  h+='<select id="teacherPick" title="Choose a teacher">';
+  h+=grp('Classroom (Yr 1-6)',D.classes.map(c=>({v:c.code,t:last(c.teacher)+' · '+c.code})));
+  h+=grp('Specialists',D.specList.map(s=>({v:s,t:last(D.specFull[s])})));
+  h+=grp('Pre-Primary',ECE_T.filter(t=>t.phase==='PP').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
+  h+=grp('Kindy',ECE_T.filter(t=>t.phase==='Kindy').map(t=>({v:'ece:'+t.name,t:last(t.name)+' · '+t.room})));
+  h+='</select><button class="step" id="tNext" title="Next teacher">&#9654;</button>';
+  box.innerHTML=h;
+  const sel=document.getElementById('teacherPick');
+  TEACHER_ORDER=[].slice.call(sel.querySelectorAll('option')).map(o=>o.value);
+  sel.onchange=()=>goTeacher(sel.value);
+  const step=d=>{const i=TEACHER_ORDER.indexOf(curTeacher);goTeacher(TEACHER_ORDER[i<0?0:(i+d+TEACHER_ORDER.length)%TEACHER_ORDER.length]);};
+  document.getElementById('tPrev').onclick=()=>step(-1);
+  document.getElementById('tNext').onclick=()=>step(1);
 }
 function curView(){const b=document.querySelector('#tabs button.active');return b?b.dataset.v:'overview';}
 function updatePrintTitle(){const v=curView();let t='Tapping PS Semester 2 · ';const wk=' [Week '+week+']';

@@ -6,6 +6,16 @@ taken 2026-08-06 from the repo `btrpchev/tapping-s2-timetable` at commit
 grad days"). The original repo and its live site
 (btrpchev.github.io/tapping-s2-timetable) remain untouched and OPERATIONAL.
 
+## Deliberate divergence from the original (Brad, 2026-08-08)
+
+The hub's timetable page is now the DEVELOPMENT LINE and no longer
+byte-identical to the original site: Brad is refining the UI here before
+releasing to staff. First divergence: the Teacher view's button wall was
+replaced with a sticky picker bar (grouped dropdown + prev/next arrows)
+so you can switch teachers without scrolling. The original live site
+keeps the old UI until switch-over. DATA still syncs from the original
+(see below); UI improvements happen here.
+
 ## Which copy is the source of truth?
 
 Until Brad deliberately switches staff over to the hub, the ORIGINAL repo is
