@@ -5,7 +5,7 @@
 export const MODULES = [
   {
     key: 'timetable',
-    name: 'Specialist Timetable',
+    name: 'Semester 2 Timetables',
     description:
       'The Semester 2 timetable: whole school, class and teacher views. Admin editing to follow.',
     status: 'live',

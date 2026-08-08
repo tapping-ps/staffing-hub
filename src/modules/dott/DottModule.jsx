@@ -443,7 +443,7 @@ export default function DottModule({ onHome }) {
   return (
     <div className="dott">
       <div className="dott-bar">
-        <button className="btn-link" onClick={onHome}>
+        <button className="hub-home" onClick={onHome}>
           ← Hub home
         </button>
         {session && (

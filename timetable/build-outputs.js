@@ -231,6 +231,9 @@ function buildHTML(reportHtml, vstats) {
   header.app .logo svg{height:52px;width:auto;display:block;}
   header.app .ttl h1{margin:0;font-size:21px;font-weight:700;letter-spacing:.01em;}
   header.app .ttl .sub{color:#d6ebe9;font-size:12px;margin-top:2px;}
+  /* Hub home: white-on-teal variant of the hub's uniform .hub-home pill */
+  header.app .hubhome{margin-left:auto;flex:0 0 auto;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.5);color:#fff;font-size:13px;font-weight:600;padding:5px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;}
+  header.app .hubhome:hover{background:rgba(255,255,255,.22);}
   .wrap{padding:14px 18px;max-width:1500px;}
   /* verification summary card */
   #vcard{background:var(--bg-card);border:1px solid var(--border-default);border-left:5px solid var(--color-action);border-radius:10px;padding:9px 14px;margin:14px 0;display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
@@ -378,7 +381,7 @@ function buildHTML(reportHtml, vstats) {
     #printall .page{page-break-after:always;} #printall .page:last-child{page-break-after:auto;} #printall table.grid{page-break-inside:avoid;}
   }
 </style></head><body>
-<header class="app"><div class="logo" onclick="activate('home')" title="Back to home">${LOGO_SVG}</div><div class="ttl"><h1>Tapping Primary School: Semester 2 Timetable</h1><div class="sub">Whole school: Kindy, Pre-Primary and Years 1-6 · Last updated ${BUILD_DATE}</div></div></header>
+<header class="app"><div class="logo" onclick="activate('home')" title="Back to home">${LOGO_SVG}</div><div class="ttl"><h1>Tapping Primary School: Semester 2 Timetable</h1><div class="sub">Whole school: Kindy, Pre-Primary and Years 1-6 · Last updated ${BUILD_DATE}</div></div><a class="hubhome" href="../">← Hub home</a></header>
 <div class="wrap">
 <nav class="tabs" id="tabs">
   <button data-v="home" class="active">Home</button>

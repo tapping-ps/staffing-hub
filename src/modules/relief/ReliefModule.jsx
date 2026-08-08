@@ -115,7 +115,7 @@ export default function ReliefModule({ onHome }) {
   return (
     <div className="dott relief">
       <div className="dott-bar">
-        <button className="btn-link" onClick={onHome}>
+        <button className="hub-home" onClick={onHome}>
           ← Hub home
         </button>
         {session && (

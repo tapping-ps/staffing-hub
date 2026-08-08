@@ -184,6 +184,26 @@
   display: inline-block;
 }
 
+/* The uniform "back to the hub" button: same look on every module. The
+   timetable page (static build) carries a white-on-teal variant of this. */
+.hub-home {
+  display: inline-block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-accent-hover);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hub-home:hover {
+  background: var(--color-surface-raised);
+  border-color: var(--color-accent);
+}
+
 .btn-link {
   background: none;
   border: none;
