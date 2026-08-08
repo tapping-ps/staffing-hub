@@ -30,8 +30,12 @@ function termDates(term) {
 }
 
 function timetableLink(key) {
+  // the timetable page keeps its state in the hash: #v=teacher&t=<key>
   const t = key.startsWith('spec:') ? key.slice(5) : key
-  return './timetable/?v=teacher&t=' + encodeURIComponent(t)
+  const p = new URLSearchParams()
+  p.set('v', 'teacher')
+  p.set('t', t)
+  return './timetable/#' + p.toString()
 }
 
 /* Editor for one day: create, change, annotate or remove that day's entry */
@@ -183,9 +187,14 @@ export default function TeacherSheet({ row, term, entries, canEdit, reload }) {
             {row.label} · FTE {row.fteLabel ?? row.fte.toFixed(1)}
           </p>
         </div>
-        <a className="btn-secondary" href={timetableLink(row.key)} target="_blank" rel="noreferrer">
-          View weekly timetable
-        </a>
+        <div className="sheet-links">
+          <a className="btn-secondary" href={timetableLink(row.key)} target="_blank" rel="noreferrer">
+            View weekly timetable
+          </a>
+          <button className="btn-secondary" disabled title="Links here once the Duty module is built">
+            Duty timetable · coming
+          </button>
+        </div>
       </div>
 
       <div className="sheet-cards">

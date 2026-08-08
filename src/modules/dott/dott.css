@@ -163,6 +163,27 @@
   color: var(--color-accent-hover);
 }
 
+.btn-secondary:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.btn-secondary:disabled:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-primary);
+}
+
+.sheet-links {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.sheet-links .btn-secondary {
+  text-decoration: none;
+  display: inline-block;
+}
+
 .btn-link {
   background: none;
   border: none;
