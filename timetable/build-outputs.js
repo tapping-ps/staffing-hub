@@ -1038,7 +1038,17 @@ function eceTeacherCellX(name, day, pid, week) {
     // as sub-numbers; the true surplus is what sits ABOVE the agreed package.
     const agreedExtras = [{ label: "collab", minutes: 15 }];
     if (c.grad && dott - 285 > 0) agreedExtras.push({ label: "graduate", minutes: dott - 285 });
+    // per-day release periods (class with a specialist = the teacher's DOTT
+    // that day) - the relief day view uses this to redistribute DOTT
+    const days = {};
+    for (const d of DAYS) {
+      const rel = L.filter(x => x.cls === c.code && x.day === d)
+        .sort((a, b) => TEACH.indexOf(a.period) - TEACH.indexOf(b.period))
+        .map(x => ({ p: x.period, min: PMIN[x.period], subj: x.subj, with: SPECIALIST_FULL[x.spec] }));
+      if (rel.length) days[d] = rel;
+    }
     staff.push({
+      days,
       key: c.code, name: c.teacher, group: "classroom",
       label: `Classroom · ${c.code} (${c.yrs})`, fte: 1.0,
       entitlement: 270, weeklyDott: dott, lead,
@@ -1063,7 +1073,17 @@ function eceTeacherCellX(name, day, pid, week) {
       free += PMIN[p];
     }
     free += 25 * SPEC_DAYS[sp].length;
+    // per-day lessons taught - if this specialist is absent, these classes
+    // lose their release and the class teacher loses that DOTT
+    const days = {};
+    for (const d of SPEC_DAYS[sp]) {
+      const taught = L.filter(x => x.spec === sp && x.day === d)
+        .sort((a, b) => TEACH.indexOf(a.period) - TEACH.indexOf(b.period))
+        .map(x => ({ p: x.period, min: PMIN[x.period], cls: x.cls, subj: x.subj, teacher: (C[x.cls] || {}).teacher || x.cls }));
+      if (taught.length) days[d] = taught;
+    }
     staff.push({
+      days,
       key: "spec:" + sp, name: SPECIALIST_FULL[sp], group: "specialist",
       label: "Specialist · works " + SPEC_DAYS[sp].join("/"),
       fte: parseFloat(SPEC_FTE[sp]) || 1.0, fteLabel: SPEC_FTE[sp],
@@ -1077,7 +1097,17 @@ function eceTeacherCellX(name, day, pid, week) {
   }
   // Kindy / Pre-Primary: the ECE ledger (fortnight-average weekly DOTT).
   for (const r of ECE.ledger()) {
+    // fortnightly DOTT periods per day, Week A and Week B separately
+    const t = ECE.eceTeachers.find(x => x.name === r.name);
+    const days = { A: {}, B: {} };
+    for (const wk of ["A", "B"]) for (const d of ECE.DAYS) {
+      const dott = (t[wk][d] || [])
+        .map((act, i) => (act === "dott" ? { p: ECE.PIDS[i], min: ECE.PMIN[ECE.PIDS[i]] } : null))
+        .filter(Boolean);
+      if (dott.length) days[wk][d] = dott;
+    }
     staff.push({
+      days,
       key: "ece:" + r.name, name: r.name, group: "ece",
       label: `${r.phase} · ${r.room}`, fte: r.fte,
       entitlement: r.target, weeklyDott: r.weekly, lead: 0,

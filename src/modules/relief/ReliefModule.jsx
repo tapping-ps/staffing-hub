@@ -3,6 +3,7 @@ import { supabase } from '../../lib/supabase.js'
 import { useAuth } from '../../context/AuthContext.jsx'
 import SignInPanel from '../dott/SignInPanel.jsx'
 import AbsenceEditor from './AbsenceEditor.jsx'
+import TodayView from './TodayView.jsx'
 import '../dott/dott.css'
 import './relief.css'
 
@@ -30,6 +31,7 @@ const COVER_LABELS = { tbc: 'TBC', relief: 'Relief', internal: 'Internal', none:
 
 export default function ReliefModule({ onHome }) {
   const { session, tier, ready, signOut } = useAuth()
+  const dayView = window.location.hash.startsWith('#/relief/day')
   const [registry, setRegistry] = useState([])
   const [terms, setTerms] = useState([])
   const [termId, setTermId] = useState(null)
@@ -143,9 +145,23 @@ export default function ReliefModule({ onHome }) {
         </div>
       )}
 
-      {session && (
+      {session && dayView && (
+        <TodayView
+          registry={registry}
+          reliefTeachers={reliefTeachers}
+          terms={terms}
+          canEdit={canEdit}
+          onBackToCalendar={() => (window.location.hash = '#/relief')}
+          refreshOuter={reload}
+        />
+      )}
+
+      {session && !dayView && (
         <>
           <div className="term-bar">
+            <button className="btn-primary" onClick={() => (window.location.hash = '#/relief/day')}>
+              Day view
+            </button>
             {terms.length > 0 ? (
               <label>
                 Term

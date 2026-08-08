@@ -72,3 +72,145 @@
 .chip-none {
   opacity: 0.8;
 }
+
+/* ---- day view ---- */
+.today-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.today-bar label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.today-bar input {
+  font: inherit;
+  padding: 7px 10px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.today-empty {
+  color: var(--color-text-secondary);
+  margin: var(--space-4) 0;
+}
+
+.today-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.today-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.today-head strong {
+  font-size: 1.05rem;
+  color: var(--color-teal-dark);
+  display: block;
+}
+
+.today-role {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.today-cover {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.today-cover .abs-chip {
+  width: auto;
+  margin-top: 0;
+  cursor: default;
+}
+
+.today-slots {
+  margin-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-3);
+}
+
+.today-slots-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.slot-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.slot-what {
+  font-size: 0.88rem;
+  min-width: 220px;
+}
+
+.slot-row select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.today-recorded {
+  margin-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-3);
+}
+
+.recorded-chip {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin: 0 6px 4px 0;
+  background: var(--color-surface-raised);
+}
+
+.today-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.today-notes {
+  margin-top: var(--space-2);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.today-add {
+  margin-top: var(--space-2);
+}

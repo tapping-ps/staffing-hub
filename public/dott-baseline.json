@@ -6,6 +6,52 @@
   },
   "staff": [
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "PE",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ]
+      },
       "key": "LA6",
       "name": "John Dunbar",
       "group": "classroom",
@@ -25,6 +71,50 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "PE",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ]
+      },
       "key": "LA7",
       "name": "Nicola Pigott",
       "group": "classroom",
@@ -44,6 +134,50 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P1",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "PE",
+            "with": "Aaron Bell"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ]
+      },
       "key": "LA8",
       "name": "Janette Crisp",
       "group": "classroom",
@@ -63,6 +197,58 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "PE",
+            "with": "Jake Pevitt"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Health",
+            "with": "Aaron Bell"
+          }
+        ]
+      },
       "key": "LA9",
       "name": "Lincoln Rose",
       "group": "classroom",
@@ -82,6 +268,52 @@
       "note": "+15 collab top-up (agreed); +45 leadership (separate)"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "PE",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ]
+      },
       "key": "LA14",
       "name": "Olivia Sheehy",
       "group": "classroom",
@@ -101,6 +333,50 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "PE",
+            "with": "Aaron Bell"
+          }
+        ]
+      },
       "key": "LA15",
       "name": "Georgia Mitchell",
       "group": "classroom",
@@ -120,6 +396,52 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "PE",
+            "with": "Aaron Bell"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ]
+      },
       "key": "LA16",
       "name": "Tanya Thieme",
       "group": "classroom",
@@ -139,6 +461,52 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P1",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Chantel Uhe"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "PE",
+            "with": "Jake Pevitt"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ]
+      },
       "key": "LA17",
       "name": "Cassidy Law",
       "group": "classroom",
@@ -158,6 +526,58 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "PE",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Health",
+            "with": "Aaron Bell"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Auslan",
+            "with": "Cheryl Peak"
+          }
+        ]
+      },
       "key": "LA18",
       "name": "Hannah Bouwmeester",
       "group": "classroom",
@@ -181,6 +601,52 @@
       "note": "Graduate class: protected extra Health period on top of the agreed package"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "PE",
+            "with": "Aaron Bell"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Cheryl Peak"
+          }
+        ]
+      },
       "key": "LA19",
       "name": "Savannah Espach",
       "group": "classroom",
@@ -200,6 +666,52 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "PE",
+            "with": "Jake Pevitt"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Cheryl Peak"
+          }
+        ]
+      },
       "key": "LA20",
       "name": "Anna Hendron",
       "group": "classroom",
@@ -219,6 +731,58 @@
       "note": "The 15-min collaboration top-up is agreed time for co-lab sessions"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P1",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "PE",
+            "with": "Jake Pevitt"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Health",
+            "with": "Aaron Bell"
+          }
+        ]
+      },
       "key": "LA21",
       "name": "Jasper Sirr-Davis",
       "group": "classroom",
@@ -238,6 +802,60 @@
       "note": "+15 collab top-up (agreed); +45 leadership (separate)"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "PE",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Health",
+            "with": "Aaron Bell"
+          }
+        ]
+      },
       "key": "LA22",
       "name": "Imogen Webb",
       "group": "classroom",
@@ -261,6 +879,58 @@
       "note": "Graduate class: protected extra Health period on top of the agreed package"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P1",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P3",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "PE",
+            "with": "Aaron Bell"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "Health",
+            "with": "Aaron Bell"
+          }
+        ]
+      },
       "key": "LA23",
       "name": "Ashlee Hutchings",
       "group": "classroom",
@@ -284,6 +954,52 @@
       "note": "Graduate class: protected extra Health period on top of the agreed package"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Visual Art",
+            "with": "Natalie Carter"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "Auslan",
+            "with": "Rachel Walker"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "subj": "Performing Arts",
+            "with": "Cheryl Peak"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "subj": "PE",
+            "with": "Jake Pevitt"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P4",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "subj": "STEM",
+            "with": "Lis Lowndes"
+          }
+        ]
+      },
       "key": "LA24",
       "name": "Chloe Moore",
       "group": "classroom",
@@ -303,6 +1019,96 @@
       "note": "Graduate: extra time delivered as grad days, not a timetabled Health period"
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P1",
+            "min": 45,
+            "cls": "LA8",
+            "subj": "STEM",
+            "teacher": "Janette Crisp"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA8",
+            "subj": "STEM",
+            "teacher": "Janette Crisp"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA9",
+            "subj": "STEM",
+            "teacher": "Lincoln Rose"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA9",
+            "subj": "STEM",
+            "teacher": "Lincoln Rose"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA6",
+            "subj": "STEM",
+            "teacher": "John Dunbar"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA6",
+            "subj": "STEM",
+            "teacher": "John Dunbar"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P1",
+            "min": 45,
+            "cls": "LA17",
+            "subj": "STEM",
+            "teacher": "Cassidy Law"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA17",
+            "subj": "STEM",
+            "teacher": "Cassidy Law"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA16",
+            "subj": "STEM",
+            "teacher": "Tanya Thieme"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA16",
+            "subj": "STEM",
+            "teacher": "Tanya Thieme"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA7",
+            "subj": "STEM",
+            "teacher": "Nicola Pigott"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA7",
+            "subj": "STEM",
+            "teacher": "Nicola Pigott"
+          }
+        ]
+      },
       "key": "spec:Uhe",
       "name": "Chantel Uhe",
       "group": "specialist",
@@ -317,6 +1123,179 @@
       "note": "0.4 teaching; her Mon/Thu office days carry the rest of her DOTT"
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA18",
+            "subj": "STEM",
+            "teacher": "Hannah Bouwmeester"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA18",
+            "subj": "STEM",
+            "teacher": "Hannah Bouwmeester"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA22",
+            "subj": "STEM",
+            "teacher": "Imogen Webb"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA22",
+            "subj": "STEM",
+            "teacher": "Imogen Webb"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P1",
+            "min": 45,
+            "cls": "LA23",
+            "subj": "STEM",
+            "teacher": "Ashlee Hutchings"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA23",
+            "subj": "STEM",
+            "teacher": "Ashlee Hutchings"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA20",
+            "subj": "STEM",
+            "teacher": "Anna Hendron"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA20",
+            "subj": "STEM",
+            "teacher": "Anna Hendron"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA15",
+            "subj": "STEM",
+            "teacher": "Georgia Mitchell"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA15",
+            "subj": "STEM",
+            "teacher": "Georgia Mitchell"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA21",
+            "subj": "STEM",
+            "teacher": "Jasper Sirr-Davis"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA21",
+            "subj": "STEM",
+            "teacher": "Jasper Sirr-Davis"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA19",
+            "subj": "STEM",
+            "teacher": "Savannah Espach"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA19",
+            "subj": "STEM",
+            "teacher": "Savannah Espach"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA6",
+            "subj": "PE",
+            "teacher": "John Dunbar"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA7",
+            "subj": "PE",
+            "teacher": "Nicola Pigott"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA14",
+            "subj": "PE",
+            "teacher": "Olivia Sheehy"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA18",
+            "subj": "PE",
+            "teacher": "Hannah Bouwmeester"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA22",
+            "subj": "PE",
+            "teacher": "Imogen Webb"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA14",
+            "subj": "STEM",
+            "teacher": "Olivia Sheehy"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA14",
+            "subj": "STEM",
+            "teacher": "Olivia Sheehy"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA24",
+            "subj": "STEM",
+            "teacher": "Chloe Moore"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA24",
+            "subj": "STEM",
+            "teacher": "Chloe Moore"
+          }
+        ]
+      },
       "key": "spec:Lowndes",
       "name": "Lis Lowndes",
       "group": "specialist",
@@ -331,6 +1310,119 @@
       "note": ""
     },
     {
+      "days": {
+        "Mon": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA16",
+            "subj": "Visual Art",
+            "teacher": "Tanya Thieme"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA17",
+            "subj": "Visual Art",
+            "teacher": "Cassidy Law"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA6",
+            "subj": "Visual Art",
+            "teacher": "John Dunbar"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA21",
+            "subj": "Visual Art",
+            "teacher": "Jasper Sirr-Davis"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA20",
+            "subj": "Visual Art",
+            "teacher": "Anna Hendron"
+          }
+        ],
+        "Tue": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA24",
+            "subj": "Visual Art",
+            "teacher": "Chloe Moore"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA19",
+            "subj": "Visual Art",
+            "teacher": "Savannah Espach"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA18",
+            "subj": "Visual Art",
+            "teacher": "Hannah Bouwmeester"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA7",
+            "subj": "Visual Art",
+            "teacher": "Nicola Pigott"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA14",
+            "subj": "Visual Art",
+            "teacher": "Olivia Sheehy"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA15",
+            "subj": "Visual Art",
+            "teacher": "Georgia Mitchell"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA23",
+            "subj": "Visual Art",
+            "teacher": "Ashlee Hutchings"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA22",
+            "subj": "Visual Art",
+            "teacher": "Imogen Webb"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA9",
+            "subj": "Visual Art",
+            "teacher": "Lincoln Rose"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA8",
+            "subj": "Visual Art",
+            "teacher": "Janette Crisp"
+          }
+        ]
+      },
       "key": "spec:Carter",
       "name": "Natalie Carter",
       "group": "specialist",
@@ -345,6 +1437,156 @@
       "note": ""
     },
     {
+      "days": {
+        "Tue": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA22",
+            "subj": "Performing Arts",
+            "teacher": "Imogen Webb"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA18",
+            "subj": "Performing Arts",
+            "teacher": "Hannah Bouwmeester"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA7",
+            "subj": "Performing Arts",
+            "teacher": "Nicola Pigott"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA17",
+            "subj": "Performing Arts",
+            "teacher": "Cassidy Law"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA16",
+            "subj": "Performing Arts",
+            "teacher": "Tanya Thieme"
+          }
+        ],
+        "Wed": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA14",
+            "subj": "Performing Arts",
+            "teacher": "Olivia Sheehy"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA15",
+            "subj": "Performing Arts",
+            "teacher": "Georgia Mitchell"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA23",
+            "subj": "Performing Arts",
+            "teacher": "Ashlee Hutchings"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA8",
+            "subj": "Performing Arts",
+            "teacher": "Janette Crisp"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA21",
+            "subj": "Performing Arts",
+            "teacher": "Jasper Sirr-Davis"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA24",
+            "subj": "Performing Arts",
+            "teacher": "Chloe Moore"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA6",
+            "subj": "Performing Arts",
+            "teacher": "John Dunbar"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA20",
+            "subj": "Performing Arts",
+            "teacher": "Anna Hendron"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA9",
+            "subj": "Performing Arts",
+            "teacher": "Lincoln Rose"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA19",
+            "subj": "Performing Arts",
+            "teacher": "Savannah Espach"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA22",
+            "subj": "Auslan",
+            "teacher": "Imogen Webb"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA19",
+            "subj": "Auslan",
+            "teacher": "Savannah Espach"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA20",
+            "subj": "Auslan",
+            "teacher": "Anna Hendron"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA23",
+            "subj": "Auslan",
+            "teacher": "Ashlee Hutchings"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA18",
+            "subj": "Auslan",
+            "teacher": "Hannah Bouwmeester"
+          }
+        ]
+      },
       "key": "spec:Peak",
       "name": "Cheryl Peak",
       "group": "specialist",
@@ -359,6 +1601,82 @@
       "note": ""
     },
     {
+      "days": {
+        "Wed": [
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA14",
+            "subj": "Auslan",
+            "teacher": "Olivia Sheehy"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA24",
+            "subj": "Auslan",
+            "teacher": "Chloe Moore"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA6",
+            "subj": "Auslan",
+            "teacher": "John Dunbar"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA9",
+            "subj": "Auslan",
+            "teacher": "Lincoln Rose"
+          }
+        ],
+        "Thu": [
+          {
+            "p": "P1",
+            "min": 45,
+            "cls": "LA21",
+            "subj": "Auslan",
+            "teacher": "Jasper Sirr-Davis"
+          },
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA15",
+            "subj": "Auslan",
+            "teacher": "Georgia Mitchell"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA8",
+            "subj": "Auslan",
+            "teacher": "Janette Crisp"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA7",
+            "subj": "Auslan",
+            "teacher": "Nicola Pigott"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA16",
+            "subj": "Auslan",
+            "teacher": "Tanya Thieme"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA17",
+            "subj": "Auslan",
+            "teacher": "Cassidy Law"
+          }
+        ]
+      },
       "key": "spec:Walker",
       "name": "Rachel Walker",
       "group": "specialist",
@@ -373,6 +1691,82 @@
       "note": ""
     },
     {
+      "days": {
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA8",
+            "subj": "PE",
+            "teacher": "Janette Crisp"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA16",
+            "subj": "PE",
+            "teacher": "Tanya Thieme"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA15",
+            "subj": "PE",
+            "teacher": "Georgia Mitchell"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA19",
+            "subj": "PE",
+            "teacher": "Savannah Espach"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA23",
+            "subj": "PE",
+            "teacher": "Ashlee Hutchings"
+          }
+        ],
+        "Fri": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA9",
+            "subj": "Health",
+            "teacher": "Lincoln Rose"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA21",
+            "subj": "Health",
+            "teacher": "Jasper Sirr-Davis"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA22",
+            "subj": "Health",
+            "teacher": "Imogen Webb"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA18",
+            "subj": "Health",
+            "teacher": "Hannah Bouwmeester"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA23",
+            "subj": "Health",
+            "teacher": "Ashlee Hutchings"
+          }
+        ]
+      },
       "key": "spec:Bell",
       "name": "Aaron Bell",
       "group": "specialist",
@@ -387,6 +1781,45 @@
       "note": "Includes leadership-release Health periods"
     },
     {
+      "days": {
+        "Thu": [
+          {
+            "p": "P2",
+            "min": 45,
+            "cls": "LA9",
+            "subj": "PE",
+            "teacher": "Lincoln Rose"
+          },
+          {
+            "p": "P3",
+            "min": 45,
+            "cls": "LA17",
+            "subj": "PE",
+            "teacher": "Cassidy Law"
+          },
+          {
+            "p": "P4",
+            "min": 45,
+            "cls": "LA21",
+            "subj": "PE",
+            "teacher": "Jasper Sirr-Davis"
+          },
+          {
+            "p": "P5",
+            "min": 45,
+            "cls": "LA20",
+            "subj": "PE",
+            "teacher": "Anna Hendron"
+          },
+          {
+            "p": "P6",
+            "min": 60,
+            "cls": "LA24",
+            "subj": "PE",
+            "teacher": "Chloe Moore"
+          }
+        ]
+      },
       "key": "spec:TBC",
       "name": "Jake Pevitt",
       "group": "specialist",
@@ -401,6 +1834,72 @@
       "note": ""
     },
     {
+      "days": {
+        "A": {
+          "Fri": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        },
+        "B": {
+          "Fri": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Jenny Martin",
       "name": "Jenny Martin",
       "group": "ece",
@@ -413,6 +1912,84 @@
       "note": "DOTT all Friday (Kelly Duggan covers LA5)."
     },
     {
+      "days": {
+        "A": {
+          "Wed": [
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ],
+          "Fri": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        },
+        "B": {
+          "Wed": [
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ],
+          "Fri": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Caroline Parkin",
       "name": "Caroline Parkin",
       "group": "ece",
@@ -425,6 +2002,64 @@
       "note": "DOTT all Friday (Donna Campbell covers LA2), plus Wed P6 grad DOTT (Lis Lowndes covers; her 0.05 FTE graduate allocation). Replaces Amy Hindmarsh."
     },
     {
+      "days": {
+        "A": {
+          "Fri": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        },
+        "B": {
+          "Fri": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Katie Digney",
       "name": "Katie Digney",
       "group": "ece",
@@ -437,6 +2072,32 @@
       "note": "Job-share LA1 with Nikki Luca. Does NOT work Thursday. Fri: DOTT except P5, where she teaches to give Nikki her P5 DOTT (Lis Lowndes covers LA1 at P6 for Nikki's other DOTT period)."
     },
     {
+      "days": {
+        "A": {
+          "Fri": [
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        },
+        "B": {
+          "Fri": [
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Nikki Luca",
       "name": "Nikki Luca",
       "group": "ece",
@@ -449,6 +2110,62 @@
       "note": "Works Thu & Fri (0.4). Teaches LA1 all Thursday (Katie off). Fri DOTT = P5 (Katie teaches) + P6 (Lis Lowndes covers) = 105 min vs 128 target; the -23 residual is paid back outside the timetable (Brad)."
     },
     {
+      "days": {
+        "A": {
+          "Mon": [
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        },
+        "B": {
+          "Mon": [
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ],
+          "Wed": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Kelly Duggan",
       "name": "Kelly Duggan",
       "group": "ece",
@@ -461,6 +2178,62 @@
       "note": "Mon P5-P6 DOTT (Anita covers). Whole-day DOTT odd-week (B) Wed. Covers Jenny Martin all Friday."
     },
     {
+      "days": {
+        "A": {
+          "Mon": [
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            }
+          ]
+        },
+        "B": {
+          "Mon": [
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            }
+          ],
+          "Wed": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Donna Campbell",
       "name": "Donna Campbell",
       "group": "ece",
@@ -473,6 +2246,54 @@
       "note": "Mon P3-P4 DOTT (Anita covers). Whole-day DOTT odd-week (B) Wed. Covers Caroline Parkin all Friday."
     },
     {
+      "days": {
+        "A": {
+          "Fri": [
+            {
+              "p": "P1",
+              "min": 45
+            }
+          ]
+        },
+        "B": {
+          "Wed": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ],
+          "Fri": [
+            {
+              "p": "P1",
+              "min": 45
+            }
+          ]
+        }
+      },
       "key": "ece:Fiona Dyer",
       "name": "Fiona Dyer",
       "group": "ece",
@@ -485,6 +2306,70 @@
       "note": "Whole-day DOTT odd-week (B) Wed. Fri P1 DOTT covered by Lis Lowndes (during assembly); teaches her own P6."
     },
     {
+      "days": {
+        "A": {
+          "Mon": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            }
+          ]
+        },
+        "B": {
+          "Mon": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            }
+          ],
+          "Wed": [
+            {
+              "p": "P0",
+              "min": 25
+            },
+            {
+              "p": "P1",
+              "min": 45
+            },
+            {
+              "p": "P2",
+              "min": 45
+            },
+            {
+              "p": "P3",
+              "min": 45
+            },
+            {
+              "p": "P4",
+              "min": 45
+            },
+            {
+              "p": "P5",
+              "min": 45
+            },
+            {
+              "p": "P6",
+              "min": 60
+            }
+          ]
+        }
+      },
       "key": "ece:Anita Currion",
       "name": "Anita Currion",
       "group": "ece",
